@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout :: head"></head>
+
+<body>
+<nav th:replace="layout :: nav"></nav>
+
+<section>
+    <div th:replace="layout :: logo"></div>
+    <div class="grid-container">
+        <div class="errors">
+            <p>You may only edit or delete recipes that you have created or edited last</p>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>

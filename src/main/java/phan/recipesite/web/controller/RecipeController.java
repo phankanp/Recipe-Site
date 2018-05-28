@@ -1,0 +1,232 @@
+package phan.recipesite.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import phan.recipesite.model.*;
+import phan.recipesite.service.IngredientService;
+import phan.recipesite.service.RecipeService;
+import phan.recipesite.service.StepService;
+import phan.recipesite.service.UserService;
+import phan.recipesite.validator.RecipeValidator;
+import phan.recipesite.web.FlashMessage;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+@Controller
+public class RecipeController {
+    @Autowired
+    IngredientService ingredientService;
+    @Autowired
+    private RecipeService recipeService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private StepService stepService;
+    @Autowired
+    private RecipeValidator recipeValidator;
+
+    // Index - Home page of all recipes
+    @RequestMapping("/")
+    public String recipesIndex(Model model, Authentication authentication) {
+
+        List<Recipe> recipes = recipeService.findAll();
+        List<Category> categories = recipeService.getAllCategories();
+
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("categories", categories);
+        model.addAttribute("selectedCategory", Category.ALL);
+
+        return "index";
+    }
+
+    // Favorite/Unfavorite existing recipes
+    @RequestMapping(value = "/recipes/{id}/favorite", method = RequestMethod.POST)
+    public String favoriteRecipe(@PathVariable Long id, Model model, HttpServletRequest request, Authentication
+            authentication) {
+
+        User user = userService.findByUsername(authentication.getName());
+        model.addAttribute("user", user);
+        Recipe recipe = recipeService.findById(id);
+
+        userService.toggleFavorite(user, recipe);
+
+        userService.save(user);
+
+        return "redirect:" + request.getHeader("Referer");
+    }
+
+    // Sort recipes by category
+    @RequestMapping("/recipes/category/{category}")
+    public String recipesByCategory(@PathVariable Category category, Model model, Authentication authentication) {
+        List<Category> categories = recipeService.getAllCategories();
+
+        List<Recipe> recipes = recipeService.findByCategory(category);
+
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("categories", categories);
+        model.addAttribute("selectedCategory", Category.valueOf(category.toString().toUpperCase()));
+
+        return "index";
+    }
+
+    // Details for a single recipe
+    @RequestMapping("/recipes/details/{id}")
+    public String recipeDetails(@PathVariable Long id, Model model) {
+        Recipe recipe = recipeService.findById(id);
+
+        model.addAttribute("recipe", recipe);
+
+        return "detail";
+    }
+
+    // Gets recipe image
+    @GetMapping(value = "/recipes/image/{imageId}", produces = MediaType.IMAGE_PNG_VALUE)
+    @ResponseBody
+    public byte[] recipeImage(@PathVariable Long imageId) {
+
+        return recipeService.findById(imageId).getImage();
+    }
+
+    // Add recipe form
+    @RequestMapping("/recipes/add")
+    public String formNewRecipe(Model model) {
+        List<Ingredient> ingredients = new ArrayList<>();
+        List<Step> steps = new ArrayList<>();
+        List<Category> categories = recipeService.getAllCategories();
+
+        if (!model.containsAttribute("recipe")) {
+            Recipe recipe = new Recipe();
+            recipe.getSteps().add(new Step());
+            recipe.getIngredients().add(new Ingredient());
+            model.addAttribute("recipe", recipe);
+        }
+
+
+        model.addAttribute("action", "/recipes");
+        model.addAttribute("heading", "New Recipe");
+        model.addAttribute("redirect", "/");
+        model.addAttribute("categories", categories);
+        model.addAttribute("ingredients", ingredients);
+        model.addAttribute("instructions", steps);
+
+        return "recipeForm";
+    }
+
+    // Add new recipe
+    @RequestMapping(value = "/recipes", method = RequestMethod.POST)
+    public String addRecipe(@Valid Recipe recipe, @RequestParam MultipartFile imageFile, BindingResult result,
+                            RedirectAttributes redirectAttributes, Authentication authentication) {
+
+        recipeValidator.validate(recipe, result);
+
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recipe", result);
+
+            redirectAttributes.addFlashAttribute("recipe", recipe);
+
+            return "redirect:/recipes/add";
+        }
+
+        User user = userService.findByUsername(authentication.getName());
+
+        recipeService.save(recipe, user, imageFile);
+
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
+                .Status.SUCCESS));
+
+        return "redirect:/recipes/details/" + recipe.getId();
+    }
+
+    // Edit recipe form with existing recipe details
+    @RequestMapping(value = "/recipes/{id}/edit")
+    @PreAuthorize("isAuthenticated() and hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
+    public String editRecipeForm(@PathVariable Long id, Model model, RedirectAttributes
+            redirectAttributes, Authentication authentication, HttpServletRequest request) {
+
+        Recipe recipe = recipeService.findById(id);
+
+        if (!model.containsAttribute("recipe")) {
+            model.addAttribute("recipe", recipe);
+        }
+
+        model.addAttribute("recipe", recipe);
+        model.addAttribute("categories", Arrays.asList(Category.values()));
+        model.addAttribute("redirect", "/recipes/details/" + recipe.getId());
+        model.addAttribute("heading", "Edit Recipe");
+        model.addAttribute("action", "/recipes/" + id);
+        model.addAttribute("submit", "Save");
+
+        return "recipeForm";
+    }
+
+    // Edit an existing recipe
+    @RequestMapping(value = "/recipes/{id}", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated() and hasPermission(#recipe, 'ROLE_USER')")
+    public String editRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
+            RedirectAttributes redirectAttributes, Authentication authentication) {
+
+        User user = userService.findByUsername(authentication.getName());
+
+        recipeService.save(recipe, user, imageFile);
+
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
+                .Status.SUCCESS));
+
+        return "redirect:/recipes/details/" + recipe.getId();
+    }
+
+    // Delete an existing recipe
+    @RequestMapping(value = "/recipes/{id}/delete", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated() and hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
+    public String deleteRecipe(@PathVariable Long id, @Valid User user, BindingResult result, RedirectAttributes
+            redirectAttributes, Authentication authentication, HttpServletRequest request) {
+
+        Recipe recipe = recipeService.findById(id);
+
+        recipeService.delete(recipe);
+
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully delete recipe!", FlashMessage
+                .Status.SUCCESS));
+
+        return "redirect:/";
+    }
+
+    // Search for recipes by description or ingredients
+    @RequestMapping("/recipes/search")
+    public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication
+            authentication) {
+
+        List<Category> categories = recipeService.getAllCategories();
+
+        List<Recipe> recipes = new ArrayList<>();
+        List<Recipe> results = new ArrayList<>();
+
+        if (searchq != null) {
+            recipes = recipeService.findByDescriptionOrIngredients(searchq);
+
+            for (Recipe r : recipes) {
+                if (!results.contains(r)) {
+                    results.add(r);
+                }
+            }
+        }
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("recipes", results);
+        model.addAttribute("selectedCategory", Category.ALL);
+
+        return "index";
+    }
+}
