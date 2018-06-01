@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +15,6 @@ public class User {
 
     private String username;
 
-    @JsonIgnore
     private String password;
 
     private String passwordConfirm;

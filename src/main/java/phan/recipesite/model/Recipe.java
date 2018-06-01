@@ -13,7 +13,6 @@ import java.util.List;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-
 public class Recipe extends BaseEntity {
     @Lob
     private byte[] image;
