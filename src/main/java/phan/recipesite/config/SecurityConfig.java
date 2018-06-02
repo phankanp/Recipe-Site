@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anonymous()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/recipes", "/recipes?**","/recipes/details/**",
+                .antMatchers("/", "/index", "/recipes", "/recipes?**","/details/**",
                          "/signup", "/recipes/image/**", "/assets/**", "/recipes/category/**", "/recipes/search").permitAll()
                 .anyRequest().authenticated()
                 .and()

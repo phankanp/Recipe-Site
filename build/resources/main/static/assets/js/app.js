@@ -31,11 +31,10 @@ $(document).on("change", "#select-category", function () {
     window.location.href = '/recipes/category/' + category;
 });
 
-$('#search').on('keypress', function (e) {
-    if (e.which === 13) {
-        $(this).attr("disabled", "disabled");
+$('#search').on('keydown', function (e) {
+    if (e.which === 13 && this.value.length < 13) {
+        $(this).prop("disabled", true);
         var search = $('#search').val();
-        var searchMode = $('#search-mode').val();
         window.location.href = '/recipes/search?' + 'searchq' + '=' + search;
     }
 });

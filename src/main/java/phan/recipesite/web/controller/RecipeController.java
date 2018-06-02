@@ -38,7 +38,7 @@ public class RecipeController {
     private RecipeValidator recipeValidator;
 
     // Index - Home page of all recipes
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String recipesIndex(Model model, Authentication authentication) {
 
         List<Recipe> recipes = recipeService.findAll();
@@ -68,7 +68,7 @@ public class RecipeController {
     }
 
     // Sort recipes by category
-    @RequestMapping("/recipes/category/{category}")
+    @RequestMapping(value = "/recipes/category/{category}", method = RequestMethod.GET)
     public String recipesByCategory(@PathVariable Category category, Model model, Authentication authentication) {
         List<Category> categories = recipeService.getAllCategories();
 
@@ -82,7 +82,7 @@ public class RecipeController {
     }
 
     // Details for a single recipe
-    @RequestMapping("/recipes/details/{id}")
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String recipeDetails(@PathVariable Long id, Model model) {
         Recipe recipe = recipeService.findById(id);
 
@@ -100,7 +100,7 @@ public class RecipeController {
     }
 
     // Add recipe form
-    @RequestMapping("/recipes/add")
+    @RequestMapping(value = "/recipes/add", method = RequestMethod.GET)
     public String formNewRecipe(Model model) {
         List<Ingredient> ingredients = new ArrayList<>();
         List<Step> steps = new ArrayList<>();
@@ -146,11 +146,11 @@ public class RecipeController {
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
                 .Status.SUCCESS));
 
-        return "redirect:/recipes/details/" + recipe.getId();
+        return "redirect:/details/" + recipe.getId();
     }
 
     // Edit recipe form with existing recipe details
-    @RequestMapping(value = "/recipes/{id}/edit")
+    @RequestMapping(value = "/recipes/{id}/edit", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated() and hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
     public String editRecipeForm(@PathVariable Long id, Model model, RedirectAttributes
             redirectAttributes, Authentication authentication, HttpServletRequest request) {
@@ -163,7 +163,7 @@ public class RecipeController {
 
         model.addAttribute("recipe", recipe);
         model.addAttribute("categories", Arrays.asList(Category.values()));
-        model.addAttribute("redirect", "/recipes/details/" + recipe.getId());
+        model.addAttribute("redirect", "/details/" + recipe.getId());
         model.addAttribute("heading", "Edit Recipe");
         model.addAttribute("action", "/recipes/" + id);
         model.addAttribute("submit", "Save");
@@ -184,7 +184,7 @@ public class RecipeController {
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
                 .Status.SUCCESS));
 
-        return "redirect:/recipes/details/" + recipe.getId();
+        return "redirect:/details/" + recipe.getId();
     }
 
     // Delete an existing recipe
@@ -204,7 +204,7 @@ public class RecipeController {
     }
 
     // Search for recipes by description or ingredients
-    @RequestMapping("/recipes/search")
+    @RequestMapping(value = "/recipes/search", method = RequestMethod.GET)
     public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication
             authentication) {
 

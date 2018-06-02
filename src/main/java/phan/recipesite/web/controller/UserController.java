@@ -62,7 +62,7 @@ public class UserController {
     }
 
     // Login form
-    @RequestMapping(path = "/login")
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
     public String loginForm(Model model, HttpServletRequest request) {
         model.addAttribute("user", new User());
         try {
@@ -77,7 +77,7 @@ public class UserController {
     }
 
     // User profile
-    @RequestMapping("/userprofile")
+    @RequestMapping(value = "/userprofile", method = RequestMethod.GET)
     public String userProfile(Model model, Authentication authentication) {
 
         User user = userService.findByUsername(authentication.getName());

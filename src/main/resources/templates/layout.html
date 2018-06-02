@@ -35,16 +35,6 @@
     </a>
 </div>
 
-<div th:fragment="favorite">
-    <form th:action="@{|/recipes/${recipe.id}/favorite|}" method="post" style="display:inline">
-        <button type="submit">
-            <span><img
-                    th:src="${recipe.isFavorite(user)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
-                    style="height: 12px;"></span>
-        </button>
-    </form>
-</div>
-
 <div th:fragment="scripts">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script th:src="@{/assets/js/app.js}"></script>

@@ -37,7 +37,7 @@
                 <div class="clear"></div>
 
                 <div class="grid-100 row addHover" th:each="recipe : ${recipes}">
-                    <a th:href="@{|/recipes/details/${recipe.id}|}">
+                    <a th:href="@{|/details/${recipe.id}|}">
                         <div class="grid-70">
                             <p>
                             <form th:action="@{|/recipes/${recipe.id}/favorite|}" method="post" style="display:inline">
