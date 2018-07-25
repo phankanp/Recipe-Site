@@ -9,6 +9,7 @@ import phan.recipesite.model.User;
 import phan.recipesite.service.UserService;
 
 @Component
+// Validates fields for user login and registration
 public class UserValidator implements Validator {
     @Autowired
     private UserService userService;

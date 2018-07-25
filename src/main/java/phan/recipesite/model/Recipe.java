@@ -76,7 +76,7 @@ public class Recipe extends BaseEntity {
         this.cookTime = cookTime;
         this.category = category;
         this.ingredients = ingredients;
-        this.steps = steps;;
+        this.steps = steps;
     }
 
     public User getUser() {

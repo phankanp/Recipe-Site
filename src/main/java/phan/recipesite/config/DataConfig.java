@@ -14,16 +14,20 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-
+// Allows spring to pick up configuration at boot time.
 @Configuration
+// Scans the package of the annotated configuration class for Spring Data repositories by default.
 @EnableJpaRepositories(basePackages = "phan.recipesite.dao")
 @EnableTransactionManagement
+// Contains all hibernate properties.
 @PropertySource("application.properties")
 public class DataConfig {
 
+    // Hibernate properties from application.properties are loaded into environment variable.
     @Autowired
     private Environment env;
 
+    // FactoryBean that creates a JPA EntityManagerFactory according to JPA's standard container bootstrap contract.
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -38,6 +42,8 @@ public class DataConfig {
         return factory;
     }
 
+    // Configures a Custom DataSource
+    // Spring Boot reuses DataSource anywhere one is required, including database initialization
     @Bean
     public DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
@@ -49,6 +55,7 @@ public class DataConfig {
         return ds;
     }
 
+    // Specifies hibernate configuration properties
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));

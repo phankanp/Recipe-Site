@@ -103,40 +103,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         });
     }
 
-    @Bean
-    public EvaluationContextExtension securityExtension() {
-        return new EvaluationContextExtensionSupport() {
-            @Override
-            public String getExtensionId() {
-                return "security";
-            }
-
-            @Override
-            public Object getRootObject() {
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                return new SecurityExpressionRoot(authentication) {
-                };
-            }
-        };
-    }
-
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    @Configuration
-    @ComponentScan("phan.recipesite")
-    public static class FormLoginWebSecurityConfigurerAdapter extends GlobalMethodSecurityConfiguration {
-        @Autowired
-        RecipePermissionEvaluator recipePermissionEvaluator;
-
-        protected MethodSecurityExpressionHandler createExpressionHandler() {
-            DefaultMethodSecurityExpressionHandler expressionHandler =
-                    new DefaultMethodSecurityExpressionHandler();
-            expressionHandler.setPermissionEvaluator(recipePermissionEvaluator);
-            return expressionHandler;
-        }
-    }
 }

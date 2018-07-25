@@ -15,7 +15,6 @@ import phan.recipesite.service.IngredientService;
 import phan.recipesite.service.RecipeService;
 import phan.recipesite.service.StepService;
 import phan.recipesite.service.UserService;
-import phan.recipesite.validator.RecipeValidator;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +33,7 @@ public class RecipeController {
     private UserService userService;
     @Autowired
     private StepService stepService;
-    @Autowired
-    private RecipeValidator recipeValidator;
+
 
     // Index - Home page of all recipes
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -128,16 +126,6 @@ public class RecipeController {
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
     public String addRecipe(@Valid Recipe recipe, @RequestParam MultipartFile imageFile, BindingResult result,
                             RedirectAttributes redirectAttributes, Authentication authentication) {
-
-        recipeValidator.validate(recipe, result);
-
-        if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recipe", result);
-
-            redirectAttributes.addFlashAttribute("recipe", recipe);
-
-            return "redirect:/recipes/add";
-        }
 
         User user = userService.findByUsername(authentication.getName());
 

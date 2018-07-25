@@ -12,12 +12,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-//import org.thymeleaf.spring4.SpringTemplateEngine;
-//import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
-//import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-
 @Configuration
-public class TemplateConfig implements WebMvcConfigurer {
+public class TemplateConfig implements WebMvcConfigurer{
+    // Specifies the location and type of view files
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         final SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -28,6 +25,7 @@ public class TemplateConfig implements WebMvcConfigurer {
         return templateResolver;
     }
 
+    // Thymeleaf template engine with spring integration
     @Bean
     public SpringTemplateEngine templateEngine() {
         final SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
@@ -36,6 +34,7 @@ public class TemplateConfig implements WebMvcConfigurer {
         return springTemplateEngine;
     }
 
+    // Runs after controller ends its execution. It receives the view name to be processed.
     @Bean
     public ThymeleafViewResolver viewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();

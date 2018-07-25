@@ -84,7 +84,6 @@ public class User {
         favorites.add(recipe);
     }
 
-
     public void removeFavorite(Recipe recipe) {
         favorites.remove(recipe);
     }

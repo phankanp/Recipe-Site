@@ -7,6 +7,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 import org.springframework.validation.Validator;
 
 @Configuration
+// Configuration for validating data from users
 public class RestConfig extends RepositoryRestConfigurerAdapter {
     @Autowired
     private Validator validator;

@@ -14,6 +14,7 @@ import phan.recipesite.service.UserService;
 import java.io.Serializable;
 
 @Component
+// Determines user permission for editing and deleting recipes
 public class RecipePermissionEvaluator implements PermissionEvaluator {
 
     @Autowired
