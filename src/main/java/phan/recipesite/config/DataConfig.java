@@ -44,13 +44,24 @@ public class DataConfig {
 
     // Configures a Custom DataSource
     // Spring Boot reuses DataSource anywhere one is required, including database initialization
+//    @Bean
+//    public DataSource dataSource() {
+//        BasicDataSource ds = new BasicDataSource();
+//        ds.setDriverClassName(env.getProperty("recipesite.datasource.driver-class-name"));
+//        ds.setUrl(env.getProperty("recipesite.datasource.url"));
+//        ds.setUsername(env.getProperty("recipesite.datasource.username"));
+//        ds.setPassword(env.getProperty("recipesite.datasource.password"));
+//
+//        return ds;
+//    }
+
     @Bean
     public DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName(env.getProperty("recipesite.datasource.driver-class-name"));
-        ds.setUrl(env.getProperty("recipesite.datasource.url"));
-        ds.setUsername(env.getProperty("recipesite.datasource.username"));
-        ds.setPassword(env.getProperty("recipesite.datasource.password"));
+        ds.setDriverClassName(env.getProperty("recipesite.db.driver"));
+        ds.setUrl(env.getProperty("recipesite.db.url"));
+        ds.setUsername(env.getProperty("recipesite.db.username"));
+        ds.setPassword(env.getProperty("recipesite.db.password"));
 
         return ds;
     }

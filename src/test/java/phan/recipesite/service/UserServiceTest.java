@@ -1,17 +1,22 @@
 package phan.recipesite.service;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import phan.recipesite.dao.UserDao;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
+import phan.recipesite.web.controller.RecipeController;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static phan.recipesite.data.TestData.recipesList;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -20,6 +25,17 @@ public class UserServiceTest {
 
     @InjectMocks
     private UserService userService = new UserServiceImpl();
+
+    @InjectMocks
+    private RecipeController recipeController;
+
+
+    private MockMvc mockMvc;
+
+    @Before
+    public void setup() {
+        mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+    }
 
     @Test
     public void findByUsername() throws Exception {
@@ -36,8 +52,9 @@ public class UserServiceTest {
 
     @Test
     public void toggleFavorite_ShouldAddFavorite() throws Exception {
-        User user = new User();
-        Recipe recipe = new Recipe();
+        Recipe recipe = recipesList.get(0);
+
+        User user = recipe.getUser();
 
         userService.toggleFavorite(user, recipe);
 
@@ -46,8 +63,10 @@ public class UserServiceTest {
 
     @Test
     public void toggleFavorite_ShouldRemoveFavorite() throws Exception {
-        User user = new User();
-        Recipe recipe = new Recipe();
+        Recipe recipe = recipesList.get(0);
+
+        User user = recipe.getUser();
+
         user.getFavorites().add(recipe);
 
         userService.toggleFavorite(user, recipe);

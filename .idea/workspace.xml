@@ -1,121 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b0be80a-4675-425b-be8b-2f24046a0dc3" name="Default" comment="">
+    <list default="true" id="4b8dea9e-9289-4bae-8c11-1280103e0713" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/annotation-processors.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/RecipeSite.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/RecipeSite_main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/DataConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/DataConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/RecipePermissionEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/RecipePermissionEvaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/RestConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/RestConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/SecurityConfig$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/SecurityConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/SecurityConfig$FormLoginWebSecurityConfigurerAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/TemplateConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/config/TemplateConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/Ingredient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/validator/RecipeValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/validator/UserValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/validator/UserValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/web/controller/RecipeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/web/controller/RecipeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/recipeForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/recipeForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/validation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/validation.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/import.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/DataConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/RecipePermissionEvaluator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/RestConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/SecurityConfig$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/SecurityConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/SecurityConfig$FormLoginWebSecurityConfigurerAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/config/TemplateConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/core/BaseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/core/DatabaseLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/dao/IngredientRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/dao/RecipeDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/dao/RoleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/dao/StepRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Ingredient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Recipe$RecipeBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Recipe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/Step.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/IngredientService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/IngredientServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/RecipeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/RecipeServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/SecurityService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/SecurityServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/StepService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/StepServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/UserAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/service/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/validator/UserValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/web/FlashMessage$Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/web/FlashMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/web/controller/RecipeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/phan/recipesite/web/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/css/unsemantic-grid-responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/brownies.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/chefbot.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/delete.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/edit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/favorite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/favorited.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/images/pancakes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/static/assets/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/403.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/recipeForm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/signup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/templates/welcome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/validation.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/phan/recipesite/controller/RecipeControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/phan/recipesite/data/TestData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/phan/recipesite/service/IngredientServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/phan/recipesite/service/RecipeServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/phan/recipesite/service/UserServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/DataConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RecipePermissionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RecipePermissionEvaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RestConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/TemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/config/TemplateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/validator/RecipeValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/validator/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/recipeForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/recipeForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/validation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/validation.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,12 +67,39 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RecipeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java">
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1279">
-              <caret line="128" selection-start-line="128" selection-end-line="128" />
+            <state relative-caret-position="770">
+              <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/DataConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -379,6 +313,10 @@
                 <option name="name" value="eclipseJdt" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="stage" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="build" />
@@ -405,9 +343,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6105937884181" />
+        <entry key="$PROJECT_DIR$" value="6135045143454" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="493235999" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1997478949" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2083459160" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="523190565" />
       </map>
@@ -601,14 +539,18 @@
     </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 7/InstaTeam-with-Spring-and-Hibernate/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 7/Project 7" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 7/Project-7---InstaTeam-with-Spring-and-Hibernate-master/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 8/techdegree-javaweb-ecommerce_V2" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 8/techdegree-javaweb-ecommerce_V2/techdegree-javaweb-ecommerce-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 9/techdegree-javaweb-angular-todo-0.0.1" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../Java Techdegree/Project 9/techdegree-javaweb-angular-todo-0.0.1/techdegree-javaweb-angular-todo-0.0.1" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../Project 7/Project-7---InstaTeam-with-Spring-and-Hibernate-master/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 7/InstaTeam-with-Spring-and-Hibernate/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 7/Project 7" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 7/Project-7---InstaTeam-with-Spring-and-Hibernate-master/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 8/techdegree-javaweb-ecommerce_V2" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 8/techdegree-javaweb-ecommerce_V2/techdegree-javaweb-ecommerce-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 9/techdegree-javaweb-angular-todo-0.0.1" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Java Techdegree/Project 9/techdegree-javaweb-angular-todo-0.0.1/techdegree-javaweb-angular-todo-0.0.1" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+        <entry key="$PROJECT_DIR$/../Treehouse/Java Techdegree/Project 10/home-automation-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Treehouse/Java Techdegree/Project 12/Recipe Site" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Treehouse/Java Techdegree/Project 7/Project-7---InstaTeam-with-Spring-and-Hibernate-master/Project-7---InstaTeam-with-Spring-and-Hibernate-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Treehouse/Java Techdegree/Project 9/techdegree-javaweb-angular-todo-0.0.1" value="PREVIEW" />
         <entry key="$USER_HOME$/Downloads/InstaTeam-master" value="PREVIEW" />
         <entry key="$USER_HOME$/Downloads/New folder/spring-instateams-master" value="PREVIEW" />
         <entry key="$USER_HOME$/Downloads/Project-7-InstaTeam-master" value="PREVIEW" />
@@ -636,19 +578,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/DataConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/TemplateConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/validator/UserValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RecipePermissionEvaluator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RestConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/validation.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/validator/RecipeValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/recipeForm.html" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -659,52 +592,51 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-12" />
-    <option name="width" value="1944" />
-    <option name="height" value="2112" />
+    <option name="x" value="1909" />
+    <option name="width" value="1940" />
+    <option name="height" value="2111" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="phan" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -712,8 +644,8 @@
               <item name="recipesite" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -722,133 +654,28 @@
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="validator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="phan" type="462c0819:PsiDirectoryNode" />
-              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe-Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Recipe Site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Recipe Site" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -865,14 +692,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Recipe Site [bootRun]">
+  <component name="RunManager" selected="Gradle.Recipe-Site [bootRun]">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="Recipe Site [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Recipe-Site [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -946,11 +773,11 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.App" />
-      <item itemvalue="Gradle.Recipe Site [bootRun]" />
+      <item itemvalue="Gradle.Recipe-Site [bootRun]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Recipe Site [bootRun]" />
+        <item itemvalue="Gradle.Recipe-Site [bootRun]" />
       </list>
     </recent_temporary>
   </component>
@@ -959,96 +786,56 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b0be80a-4675-425b-be8b-2f24046a0dc3" name="Default" comment="" />
-      <created>1530150909808</created>
+      <changelist id="4b8dea9e-9289-4bae-8c11-1280103e0713" name="Default" comment="" />
+      <created>1533761529821</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1530150909808</updated>
-      <workItem from="1530150911096" duration="11182000" />
-      <workItem from="1531191791102" duration="8223000" />
-      <workItem from="1531240681183" duration="7180000" />
+      <updated>1533761529821</updated>
+      <workItem from="1533761532872" duration="717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26585000" />
+    <option name="totallyTimeSpent" value="717000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1296" height="1408" extended-state="0" />
+    <frame x="1273" y="0" width="1293" height="1407" extended-state="0" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info anchor="bottom" id="Build" weight="0.3296617" />
+      <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
+      <window_info id="UI Designer" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.331761" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25728154" />
-      <window_info anchor="right" id="Bean Validation" order="3" />
-      <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3294025" />
-      <window_info id="Learn" order="2" />
-      <window_info anchor="right" id="Gradle" order="3" weight="0.17112733" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info id="Persistence" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3296617" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Persistence" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3296617" />
-      <window_info id="Designer" order="3" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info id="Image Layers" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32917318" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.17112733" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25447154" />
-      <window_info id="Learn" order="8" />
-      <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Web" order="9" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3296617" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3296617" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28061637" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info id="Web" side_tool="true" />
+      <window_info id="Learn" />
+      <window_info anchor="right" id="Gradle" visible="true" weight="0.16950527" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Bean Validation" order="10" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-    </layout-to-restore>
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1056,335 +843,32 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/validator/RecipeValidator.java">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+        <state relative-caret-position="770">
+          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/recipeForm.html">
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="160" column="74" selection-start-line="160" selection-start-column="74" selection-end-line="160" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/validation.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Step.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/TemplateConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="46" column="32" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.thymeleaf/thymeleaf-spring5/3.0.9.RELEASE/c13a0d99aad3e1a814c2645f847f49c02f622a93/thymeleaf-spring5-3.0.9.RELEASE-sources.jar!/org/thymeleaf/spring5/view/ThymeleafViewResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/SecurityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/SecurityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/IngredientServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/dao/RoleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Step.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/dao/RecipeDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/FlashMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/RecipePermissionEvaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="987">
-          <caret line="105" column="48" lean-forward="true" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/dao/IngredientDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/RestConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/DataConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-188">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="55" />
+        <state relative-caret-position="582">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/config/TemplateConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/validation.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="38" column="2" lean-forward="true" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/validator/UserValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/validator/RecipeValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2683" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/recipeForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="72" column="88" selection-start-line="72" selection-start-column="88" selection-end-line="72" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1279">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
+          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1404,7 +888,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>9</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

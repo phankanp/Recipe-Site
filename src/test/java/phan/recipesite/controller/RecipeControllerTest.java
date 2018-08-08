@@ -109,7 +109,7 @@ public class RecipeControllerTest {
         when(recipeService.findById(1L)).thenReturn(recipe);
 
 
-        mockMvc.perform(get("/recipes/1"))
+        mockMvc.perform(get("/details/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("detail"))
                 .andExpect(model().attribute("recipe", recipe));
@@ -123,7 +123,7 @@ public class RecipeControllerTest {
 
         when(recipeService.findById(1L)).thenReturn(recipe);
 
-        mockMvc.perform(get("/recipes/1"))
+        mockMvc.perform(get("/details/1"))
                 .andReturn().getResponse().getContentAsByteArray().equals(recipe.getImage());
         verify(recipeService).findById(1L);
     }
@@ -132,8 +132,7 @@ public class RecipeControllerTest {
     public void formNewRecipe_ShouldReturnEditForm() throws Exception {
         mockMvc.perform(get("/recipes/add"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("recipeForm"))
-                .andExpect(model().attribute("recipe", new Recipe()));
+                .andExpect(view().name("recipeForm"));
     }
 
     @Test
