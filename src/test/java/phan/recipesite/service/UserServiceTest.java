@@ -8,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import phan.recipesite.dao.UserDao;
+import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
 import phan.recipesite.web.controller.RecipeController;
@@ -21,7 +21,7 @@ import static phan.recipesite.data.TestData.recipesList;
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
     @Mock
-    private UserDao userDao;
+    private UserRepository userDao;
 
     @InjectMocks
     private UserService userService = new UserServiceImpl();

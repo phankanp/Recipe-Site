@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import phan.recipesite.dao.IngredientDao;
+import phan.recipesite.repository.IngredientRepository;
 import phan.recipesite.model.Ingredient;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class IngredientServiceTest {
     @Mock
-    IngredientDao ingredientDao;
+    IngredientRepository ingredientDao;
 
     @InjectMocks
     private IngredientService ingredientService = new IngredientServiceImpl();

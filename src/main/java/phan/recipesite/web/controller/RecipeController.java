@@ -1,20 +1,20 @@
 package phan.recipesite.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import phan.recipesite.model.*;
-import phan.recipesite.service.IngredientService;
-import phan.recipesite.service.RecipeService;
-import phan.recipesite.service.StepService;
-import phan.recipesite.service.UserService;
+import phan.recipesite.service.*;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +33,15 @@ public class RecipeController {
     private UserService userService;
     @Autowired
     private StepService stepService;
+    @Autowired
+    private RecipeServiceImpl recipeServiceimpl;
+    @Autowired
+    private UserServiceImpl userServiceImpl;
 
 
     // Index - Home page of all recipes
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String recipesIndex(Model model, Authentication authentication) {
+    public String recipesIndex(Model model) {
 
         List<Recipe> recipes = recipeService.findAll();
         List<Category> categories = recipeService.getAllCategories();
@@ -49,7 +53,7 @@ public class RecipeController {
         return "index";
     }
 
-    // Favorite/Unfavorite existing recipes
+     //Favorite/Unfavorite existing recipes
     @RequestMapping(value = "/recipes/{id}/favorite", method = RequestMethod.POST)
     public String favoriteRecipe(@PathVariable Long id, Model model, HttpServletRequest request, Authentication
             authentication) {
@@ -67,7 +71,7 @@ public class RecipeController {
 
     // Sort recipes by category
     @RequestMapping(value = "/recipes/category/{category}", method = RequestMethod.GET)
-    public String recipesByCategory(@PathVariable Category category, Model model, Authentication authentication) {
+    public String recipesByCategory(@PathVariable Category category, Model model) {
         List<Category> categories = recipeService.getAllCategories();
 
         List<Recipe> recipes = recipeService.findByCategory(category);
@@ -124,8 +128,21 @@ public class RecipeController {
 
     // Add new recipe
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
-    public String addRecipe(@Valid Recipe recipe, @RequestParam MultipartFile imageFile, BindingResult result,
+    public String addRecipe(@Valid Recipe recipe,  BindingResult result, @RequestParam MultipartFile imageFile,
                             RedirectAttributes redirectAttributes, Authentication authentication) {
+
+        if (result.hasErrors()) {
+            List<FieldError> errors = result.getFieldErrors();
+            List<String> messages = new ArrayList<>();
+
+            for (FieldError e : errors) {
+                messages.add(e.getDefaultMessage());
+            }
+
+            redirectAttributes.addFlashAttribute("flash", messages);
+            redirectAttributes.addFlashAttribute("recipe", recipe);
+            return "redirect:/recipes/add";
+        }
 
         User user = userService.findByUsername(authentication.getName());
 
@@ -164,6 +181,19 @@ public class RecipeController {
     @PreAuthorize("isAuthenticated() and hasPermission(#recipe, 'ROLE_USER')")
     public String editRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
             RedirectAttributes redirectAttributes, Authentication authentication) {
+
+        if (result.hasErrors()) {
+            List<FieldError> errors = result.getFieldErrors();
+            List<String> messages = new ArrayList<>();
+
+            for (FieldError e : errors) {
+                messages.add(e.getDefaultMessage());
+            }
+
+            redirectAttributes.addFlashAttribute("flash", messages);
+            redirectAttributes.addFlashAttribute("recipe", recipe);
+            return "redirect:/recipes/" + recipe.getId() + "/edit";
+        }
 
         User user = userService.findByUsername(authentication.getName());
 

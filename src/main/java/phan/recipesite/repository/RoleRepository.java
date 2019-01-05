@@ -1,10 +1,10 @@
-package phan.recipesite.dao;
+package phan.recipesite.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import phan.recipesite.model.Role;
 
 @Repository
-public interface RoleDao extends CrudRepository<Role, Long> {
+public interface RoleRepository extends CrudRepository<Role, Long> {
     Role findByName(String name);
 }

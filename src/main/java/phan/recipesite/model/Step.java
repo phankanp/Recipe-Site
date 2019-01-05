@@ -3,9 +3,12 @@ package phan.recipesite.model;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Step extends BaseEntity {
+
+    @NotEmpty(message = "Must enter step name for every field")
     private String name;
 
     public Step() {

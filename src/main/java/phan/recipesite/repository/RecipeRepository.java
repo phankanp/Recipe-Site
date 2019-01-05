@@ -1,4 +1,4 @@
-package phan.recipesite.dao;
+package phan.recipesite.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,7 +10,7 @@ import phan.recipesite.model.Recipe;
 import java.util.List;
 
 @Repository
-public interface RecipeDao extends CrudRepository<Recipe, Long> {
+public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     List<Recipe> findAll();
 

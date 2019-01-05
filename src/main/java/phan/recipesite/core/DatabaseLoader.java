@@ -6,9 +6,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import phan.recipesite.dao.RecipeDao;
-import phan.recipesite.dao.RoleDao;
-import phan.recipesite.dao.UserDao;
+import phan.recipesite.repository.RecipeRepository;
+import phan.recipesite.repository.RoleRepository;
+import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.*;
 import phan.recipesite.service.UserService;
 
@@ -19,13 +19,13 @@ import java.util.*;
 @Component
 public class DatabaseLoader implements ApplicationRunner {
     public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
-    private final RecipeDao recipeDao;
-    private final UserDao userDao;
-    private final RoleDao roleDao;
+    private final RecipeRepository recipeDao;
+    private final UserRepository userDao;
+    private final RoleRepository roleDao;
     private final UserService userService;
 
     @Autowired
-    public DatabaseLoader(RecipeDao recipeDao, UserDao userDao, RoleDao roleDao, UserService userService) {
+    public DatabaseLoader(RecipeRepository recipeDao, UserRepository userDao, RoleRepository roleDao, UserService userService) {
         this.recipeDao = recipeDao;
         this.userDao = userDao;
         this.roleDao = roleDao;
@@ -49,8 +49,8 @@ public class DatabaseLoader implements ApplicationRunner {
         role1.add(roleUser);
         role2.add(roleUser);
 
-        User testUser1 = new User("user1", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode("password"));
-        User testUser2 = new User("user2", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode("password"));
+        User testUser1 = new User("AdminUser", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode("password"));
+        User testUser2 = new User("RoleUser", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode("password"));
 
         testUser1.setRoles(role1);
         testUser2.setRoles(role2);

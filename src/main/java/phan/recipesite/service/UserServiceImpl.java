@@ -5,21 +5,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import phan.recipesite.dao.RoleDao;
-import phan.recipesite.dao.UserDao;
+import phan.recipesite.repository.RoleRepository;
+import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserDao userDao;
+    UserRepository userDao;
 
     @Autowired
     UserService userService;
 
     @Autowired
-    RoleDao roleDao;
+    RoleRepository roleDao;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;

@@ -3,8 +3,8 @@ package phan.recipesite.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import phan.recipesite.dao.RecipeDao;
-import phan.recipesite.dao.UserDao;
+import phan.recipesite.repository.RecipeRepository;
+import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Category;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
@@ -17,10 +17,10 @@ import java.util.List;
 public class RecipeServiceImpl implements RecipeService {
 
     @Autowired
-    RecipeDao recipeDao;
+    RecipeRepository recipeDao;
 
     @Autowired
-    UserDao userDao;
+    UserRepository userDao;
 
     @Autowired
     UserService userService;
@@ -87,6 +87,29 @@ public class RecipeServiceImpl implements RecipeService {
     public void save(Recipe recipe) {
         recipeDao.save(recipe);
     }
+
+
+    public Recipe savetest(Recipe recipe, User user) {
+        Recipe _recipe = recipeDao.save(
+                new Recipe(
+                        recipe.getImage(),
+                        recipe.getName(),
+                        recipe.getDescription(),
+                        recipe.getPrepTime(),
+                        recipe.getCookTime(),
+                        recipe.getCategory(),
+                        recipe.getIngredients(),
+                        recipe.getSteps()
+                )
+        );
+
+        _recipe.setUser(user);
+
+        recipeDao.save(_recipe);
+
+        return _recipe;
+    }
+
 
     @Override
     public void delete(Recipe recipe) {

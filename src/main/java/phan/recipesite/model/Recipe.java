@@ -1,9 +1,13 @@
 package phan.recipesite.model;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Range;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,14 +19,19 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Recipe extends BaseEntity {
     @Lob
+    @Type(type = "org.hibernate.type.ImageType")
     private byte[] image;
 
+    @NotEmpty(message = "Must enter a recipe name")
     private String name;
 
+    @NotEmpty(message = "Must enter a recipe description")
     private String description;
 
+    @Min(value = 1, message = "Preptime must be greater than or equal to 1")
     private int prepTime;
 
+    @Min(value = 1, message = " Preptime must be greater than or equal to 1")
     private int cookTime;
 
     private String favoritedRecipe;

@@ -19,7 +19,7 @@
                     <div class="grid-50">
                         <form th:action="@{|/recipes/${recipe.id}/favorite|}" method="post" style="display:inline">
                             <button type="submit" id="favorite-button-detail" class="flush-right">
-                                <img th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
+                                <img id="change-img" th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
                                      style="height: 12px;">
                             </button>
                         </form>

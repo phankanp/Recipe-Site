@@ -3,13 +3,13 @@ package phan.recipesite.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import phan.recipesite.dao.StepDao;
+import phan.recipesite.repository.StepRepository;
 import phan.recipesite.model.Step;
 
 @Service
 public class StepServiceImpl implements StepService {
     @Autowired
-    private StepDao stepDao;
+    private StepRepository stepDao;
 
     @Override
     public void save(Step step) {

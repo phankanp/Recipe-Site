@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import phan.recipesite.dao.RecipeDao;
+import phan.recipesite.repository.RecipeRepository;
 import phan.recipesite.model.Category;
 import phan.recipesite.model.Recipe;
 
@@ -25,7 +25,7 @@ import static phan.recipesite.data.TestData.recipesList;
 public class RecipeServiceTest {
 
     @Mock
-    private RecipeDao recipeDao;
+    private RecipeRepository recipeDao;
 
     @InjectMocks
     private RecipeService recipeService = new RecipeServiceImpl();

@@ -2,7 +2,7 @@ package phan.recipesite.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import phan.recipesite.dao.IngredientDao;
+import phan.recipesite.repository.IngredientRepository;
 import phan.recipesite.model.Ingredient;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class IngredientServiceImpl implements IngredientService {
     @Autowired
-    private IngredientDao ingredientDao;
+    private IngredientRepository ingredientDao;
 
     @Override
     public List<Ingredient> findAll() {
