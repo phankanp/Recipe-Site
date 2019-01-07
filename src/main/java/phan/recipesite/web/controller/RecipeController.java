@@ -1,9 +1,7 @@
 package phan.recipesite.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,9 +17,7 @@ import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class RecipeController {
@@ -53,20 +49,23 @@ public class RecipeController {
         return "index";
     }
 
-     //Favorite/Unfavorite existing recipes
-    @RequestMapping(value = "/recipes/{id}/favorite", method = RequestMethod.POST)
-    public String favoriteRecipe(@PathVariable Long id, Model model, HttpServletRequest request, Authentication
-            authentication) {
-
+    // Favorite/Unfavorite existing recipes
+    @PostMapping("/recipes/{id}/favorite")
+    @ResponseBody
+    public Map<String, Object> favoriteRecipe(@PathVariable("id") Long id, Authentication authentication) {
         User user = userService.findByUsername(authentication.getName());
-        model.addAttribute("user", user);
+
         Recipe recipe = recipeService.findById(id);
-
         userService.toggleFavorite(user, recipe);
-
         userService.save(user);
 
-        return "redirect:" + request.getHeader("Referer");
+        boolean hasFavorite = recipe.getUserFavorites().contains(authentication.getName());
+
+        Map<String, Object> resultJson = new HashMap<>();
+        System.out.println(resultJson.toString());
+        resultJson.put("favorited", hasFavorite);
+
+        return resultJson;
     }
 
     // Sort recipes by category
@@ -128,7 +127,7 @@ public class RecipeController {
 
     // Add new recipe
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
-    public String addRecipe(@Valid Recipe recipe,  BindingResult result, @RequestParam MultipartFile imageFile,
+    public String addRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
                             RedirectAttributes redirectAttributes, Authentication authentication) {
 
         if (result.hasErrors()) {
@@ -179,8 +178,9 @@ public class RecipeController {
     // Edit an existing recipe
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated() and hasPermission(#recipe, 'ROLE_USER')")
-    public String editRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
-            RedirectAttributes redirectAttributes, Authentication authentication) {
+    public String editRecipe(@Valid Recipe recipe, BindingResult result, @PathVariable Long id, @RequestParam
+            MultipartFile imageFile,
+                             RedirectAttributes redirectAttributes, Authentication authentication) {
 
         if (result.hasErrors()) {
             List<FieldError> errors = result.getFieldErrors();
@@ -197,7 +197,7 @@ public class RecipeController {
 
         User user = userService.findByUsername(authentication.getName());
 
-        recipeService.save(recipe, user, imageFile);
+        recipeServiceimpl.save(recipe, user, imageFile);
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
                 .Status.SUCCESS));

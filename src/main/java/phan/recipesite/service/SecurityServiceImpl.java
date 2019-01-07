@@ -13,11 +13,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
-    private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
+    private final AuthenticationManager authenticationManager;
+
+    private final UserDetailsService userDetailsService;
+
     @Autowired
-    AuthenticationManager authenticationManager;
-    @Autowired
-    private UserDetailsService userDetailsService;
+    public SecurityServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     public boolean login(String username, String password) {

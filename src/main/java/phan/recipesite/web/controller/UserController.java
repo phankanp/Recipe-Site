@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     SecurityService securityService;
     @Autowired

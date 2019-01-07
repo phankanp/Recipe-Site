@@ -8,9 +8,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
+import phan.recipesite.repository.UserRepository;
 import phan.recipesite.web.controller.RecipeController;
 
 import static org.junit.Assert.assertEquals;

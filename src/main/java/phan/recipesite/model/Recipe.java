@@ -1,7 +1,8 @@
 package phan.recipesite.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.Range;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.*;
@@ -14,9 +15,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 @Entity
+@Data
+@NoArgsConstructor
 public class Recipe extends BaseEntity {
     @Lob
     @Type(type = "org.hibernate.type.ImageType")
@@ -46,22 +47,18 @@ public class Recipe extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "recipe_id")
     @Valid
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
+    ;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "recipe_id")
     @Valid
-    private List<Step> steps;
+    private List<Step> steps = new ArrayList<>();
+    ;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Recipe() {
-        super();
-        ingredients = new ArrayList<>();
-        steps = new ArrayList<>();
-    }
 
     public Recipe(RecipeBuilder builder) {
         this.name = builder.name;
@@ -71,8 +68,12 @@ public class Recipe extends BaseEntity {
         this.description = builder.description;
         this.prepTime = builder.prepTime;
         this.cookTime = builder.cookTime;
-        if (builder.ingredients != null) { this.ingredients = builder.ingredients; }
-        if (builder.steps != null) { this.steps = builder.steps; }
+        if (builder.ingredients != null) {
+            this.ingredients = builder.ingredients;
+        }
+        if (builder.steps != null) {
+            this.steps = builder.steps;
+        }
     }
 
     public Recipe(byte[] image, String name, String description, int prepTime, int cookTime,
@@ -86,90 +87,6 @@ public class Recipe extends BaseEntity {
         this.category = category;
         this.ingredients = ingredients;
         this.steps = steps;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public int getPrepTime() {
-        return prepTime;
-    }
-
-    public void setPrepTime(int prepTime) {
-        this.prepTime = prepTime;
-    }
-
-    public int getCookTime() {
-        return cookTime;
-    }
-
-    public void setCookTime(int cookTime) {
-        this.cookTime = cookTime;
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public List<Step> getSteps() {
-        return steps;
-    }
-
-    public void setSteps(List<Step> steps) {
-        this.steps = steps;
-    }
-
-    public String getFavoritedRecipe() {
-        return favoritedRecipe;
-    }
-
-    public void setFavoritedRecipe(String favoritedRecipe) {
-        this.favoritedRecipe = favoritedRecipe;
-    }
-
-    public boolean isFavorite(User user) {
-        return user.getFavorites().contains(this);
     }
 
     public List<String> getUserFavorites() {

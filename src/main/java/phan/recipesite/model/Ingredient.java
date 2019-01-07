@@ -1,11 +1,15 @@
 package phan.recipesite.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Ingredient extends BaseEntity {
 
     @NotEmpty(message = "Must enter an ingredient name for every field")
@@ -17,38 +21,10 @@ public class Ingredient extends BaseEntity {
     @NotEmpty(message = "Must enter an ingredient quantity for every field")
     private String quantity;
 
-    public Ingredient() {
-        super();
-    }
-
     public Ingredient(String name, String ingredientCondition, String quantity) {
         this();
         this.name = name;
         this.ingredientCondition = ingredientCondition;
-        this.quantity = quantity;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getIngredientCondition() {
-        return ingredientCondition;
-    }
-
-    public void setIngredientCondition(String ingredientCondition) {
-        this.ingredientCondition = ingredientCondition;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

@@ -38,3 +38,32 @@ $('#search').on('keydown', function (e) {
         window.location.href = '/recipes/search?' + 'searchq' + '=' + search;
     }
 });
+
+var id = "";
+
+$('.favorite-button-index').each(function () {
+    $(this).click(function () {
+        id = $(this).attr('id');
+    });
+});
+
+
+$(".test").on("submit", function (e) {
+
+    e.preventDefault();
+
+    $.post(this.action, function (data) {
+        var imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+        $('#' + id + '>img').attr('src', imageUrl);
+    });
+})
+
+$(".test-detail").on("submit", function (e) {
+
+    e.preventDefault();
+
+    $.post(this.action, function (data) {
+        var imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+        $('#favorite-button-detail>img').attr('src', imageUrl);
+    });
+})

@@ -5,28 +5,28 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import phan.recipesite.repository.RoleRepository;
-import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
+import phan.recipesite.repository.RoleRepository;
+import phan.recipesite.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserRepository userDao;
+    UserRepository userRepository;
 
     @Autowired
     UserService userService;
 
     @Autowired
-    RoleRepository roleDao;
+    RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public User findByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User with %s doesn't exist!", username));
         }
@@ -51,6 +51,6 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setPasswordConfirm(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.save(user);
+        userRepository.save(user);
     }
 }

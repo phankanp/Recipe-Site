@@ -3,11 +3,11 @@ package phan.recipesite.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import phan.recipesite.repository.RecipeRepository;
-import phan.recipesite.repository.UserRepository;
 import phan.recipesite.model.Category;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.User;
+import phan.recipesite.repository.RecipeRepository;
+import phan.recipesite.repository.UserRepository;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,10 +17,10 @@ import java.util.List;
 public class RecipeServiceImpl implements RecipeService {
 
     @Autowired
-    RecipeRepository recipeDao;
+    RecipeRepository recipeRepository;
 
     @Autowired
-    UserRepository userDao;
+    UserRepository userRepository;
 
     @Autowired
     UserService userService;
@@ -36,7 +36,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<Recipe> findAll() {
-        return recipeDao.findAll();
+        return recipeRepository.findAll();
     }
 
     @Override
@@ -51,13 +51,13 @@ public class RecipeServiceImpl implements RecipeService {
         if (cat == Category.ALL) {
             return findAll();
         } else {
-            return recipeDao.findByCategory(cat);
+            return recipeRepository.findByCategory(cat);
         }
     }
 
     @Override
     public Recipe findById(Long id) {
-        return recipeDao.findRecipeById(id);
+        return recipeRepository.findRecipeById(id);
     }
 
     @Override
@@ -78,54 +78,30 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.getSteps().forEach(step -> stepService.save(step));
         recipe.setUser(user);
 
-        userDao.save(user);
+        userRepository.save(user);
 
-        recipeDao.save(recipe);
+        recipeRepository.save(recipe);
     }
 
     @Override
     public void save(Recipe recipe) {
-        recipeDao.save(recipe);
+        recipeRepository.save(recipe);
     }
-
-
-    public Recipe savetest(Recipe recipe, User user) {
-        Recipe _recipe = recipeDao.save(
-                new Recipe(
-                        recipe.getImage(),
-                        recipe.getName(),
-                        recipe.getDescription(),
-                        recipe.getPrepTime(),
-                        recipe.getCookTime(),
-                        recipe.getCategory(),
-                        recipe.getIngredients(),
-                        recipe.getSteps()
-                )
-        );
-
-        _recipe.setUser(user);
-
-        recipeDao.save(_recipe);
-
-        return _recipe;
-    }
-
 
     @Override
     public void delete(Recipe recipe) {
-        List<User> users = userDao.findByFavoritesId(recipe.getId());
+        List<User> users = userRepository.findByFavoritesId(recipe.getId());
 
         users.forEach(user -> userService.toggleFavorite(recipe.getUser(), recipe));
 
-        users.forEach(userDao::save);
+        users.forEach(userRepository::save);
 
-        recipeDao.save(recipe);
-        recipeDao.delete(recipe);
+        recipeRepository.save(recipe);
+        recipeRepository.delete(recipe);
     }
 
     @Override
     public List<Recipe> findByDescriptionOrIngredients(String search) {
-        return recipeDao.findByDescriptionContainingOrIngredientsNameIgnoreCase(search, search);
+        return recipeRepository.findByDescriptionContainingOrIngredientsNameIgnoreCase(search, search);
     }
-
 }

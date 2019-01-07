@@ -5,9 +5,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import phan.recipesite.repository.RecipeRepository;
 import phan.recipesite.model.Category;
 import phan.recipesite.model.Recipe;
+import phan.recipesite.repository.RecipeRepository;
 
 import java.util.Arrays;
 import java.util.List;
