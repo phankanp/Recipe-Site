@@ -48,7 +48,7 @@ $('.favorite-button-index').each(function () {
 });
 
 
-$(".test").on("submit", function (e) {
+$(".favorite").on("submit", function (e) {
 
     e.preventDefault();
 
@@ -58,7 +58,7 @@ $(".test").on("submit", function (e) {
     });
 })
 
-$(".test-detail").on("submit", function (e) {
+$(".favorite-detail").on("submit", function (e) {
 
     e.preventDefault();
 

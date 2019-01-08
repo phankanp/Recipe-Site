@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 
 <head th:replace="layout :: head"></head>
 
@@ -17,9 +17,11 @@
                         <h2 th:text="${recipe.name}"> Recipe Name </h2>
                     </div>
                     <div class="grid-50">
-                        <form th:action="@{|/recipes/${recipe.id}/favorite|}" method="post" style="display:inline">
-                            <button type="submit" id="favorite-button-detail" class="flush-right">
-                                <img id="change-img" th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
+                        <form class="favorite-detail" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
+                              style="display:inline">
+                            <button id="favorite-button-detail" class="flush-right" sec:authorize="hasRole('ROLE_USER')">
+                                <img id="change-img"
+                                     th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
                                      style="height: 12px;">
                             </button>
                         </form>
@@ -185,5 +187,6 @@
     </div> <!-- grid-container -->
 
 </section>
+<div th:replace="layout :: scripts"></div>
 </body>
 </html>

@@ -40,7 +40,7 @@
                     <a th:href="@{|/details/${recipe.id}|}">
                         <div class="grid-70">
                             <p>
-                            <form class="test" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
+                            <form class="favorite" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
                                   style="display:inline" sec:authorize="hasRole('ROLE_USER')">
                                 <button class="favorite-button-index" th:id="'favorite-button-index' + ${recipe.id}">
                                     <img th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"

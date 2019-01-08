@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="layout :: head"></head>
 
 <body>
@@ -16,17 +16,18 @@
 
                 <div class="grid-100 row controls">
                     <div class="grid-100">
-                        <h2 th:text="*{username}"> Chandra S. </h2>
+                        <h2 th:text="*{username} + ' Favorites'"> Chandra S. </h2>
                     </div>
                 </div>
                 <div class="clear"></div>
 
                 <div class="grid-100 row addHover" th:each="recipe : *{favorites}">
-                    <a href="detail.html" th:href="@{|/details/${recipe.id}|}">
+                    <a th:href="@{|/details/${recipe.id}|}">
                         <div class="grid-70">
                             <p>
-                            <form th:action="@{|/recipes/${recipe.id}/favorite|}" method="post" style="display:inline">
-                                <button type="submit" id="favorite-button-index">
+                            <form class="favorite" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
+                                  style="display:inline">
+                                <button class="favorite-button-index" th:id="'favorite-button-index' + ${recipe.id}">
                                     <img th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
                                          style="height: 12px;">
                                 </button>

@@ -17,7 +17,7 @@
                         <h2 th:text="${recipe.name}"> Recipe Name </h2>
                     </div>
                     <div class="grid-50">
-                        <form class="test-detail" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
+                        <form class="favorite-detail" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
                               style="display:inline">
                             <button id="favorite-button-detail" class="flush-right" sec:authorize="hasRole('ROLE_USER')">
                                 <img id="change-img"

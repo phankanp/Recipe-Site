@@ -145,7 +145,7 @@ button:hover {
     float: right;
 }
 
-#favorite-button-index {
+.favorite-button-index {
     padding: 0;
     border: none;
     background-color: transparent;
@@ -166,6 +166,17 @@ button:hover {
     color: #808080;
     text-decoration: none;
     cursor: pointer;
+}
+
+.button:active,
+button:active,
+.button:focus,
+button:focus,
+.button:hover,
+button:hover.favorite-button-index {
+    border: none !important;
+    outline: none !important;
+    background: transparent;
 }
 
 /*# sourceMappingURL=styles.css.map */
