@@ -23,7 +23,7 @@ public class IngredientServiceTest {
     IngredientRepository ingredientDao;
 
     @InjectMocks
-    private IngredientService ingredientService = new IngredientServiceImpl();
+    private IngredientService ingredientService = new IngredientService();
 
     private List<Ingredient> ingredients;
 

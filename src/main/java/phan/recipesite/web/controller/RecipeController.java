@@ -30,9 +30,9 @@ public class RecipeController {
     @Autowired
     private StepService stepService;
     @Autowired
-    private RecipeServiceImpl recipeServiceimpl;
+    private RecipeService recipeServiceimpl;
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userServiceImpl;
 
 
     // Index - Home page of all recipes
@@ -222,7 +222,7 @@ public class RecipeController {
     }
 
     // Search for recipes by description or ingredients
-    @RequestMapping(value = "/recipes/search", method = RequestMethod.GET)
+    @RequestMapping(value = "/recipes/search", method = RequestMethod.DELETE)
     public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication
             authentication) {
 
