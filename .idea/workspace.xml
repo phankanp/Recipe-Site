@@ -939,10 +939,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecipeServiceTest.findByCategory_ReturnsOneRecipe" />
+        <item itemvalue="Gradle.Recipe-Site [bootRun]" />
         <item itemvalue="Gradle.Recipe-Site [bootRun]" />
         <item itemvalue="JUnit.RecipeServiceTest.findByCategory_ReturnsOneRecipe" />
         <item itemvalue="Gradle.Recipe-Site [bootRun]" />
-        <item itemvalue="JUnit.RecipeServiceTest.findByCategory_ReturnsOneRecipe" />
       </list>
     </recent_temporary>
   </component>
