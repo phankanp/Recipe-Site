@@ -24,7 +24,7 @@ public class UserServiceTest {
     private UserRepository userDao;
 
     @InjectMocks
-    private UserService userService = new UserServiceImpl();
+    private UserService userService = new UserService();
 
     @InjectMocks
     private RecipeController recipeController;

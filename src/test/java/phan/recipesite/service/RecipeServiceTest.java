@@ -28,7 +28,7 @@ public class RecipeServiceTest {
     private RecipeRepository recipeDao;
 
     @InjectMocks
-    private RecipeService recipeService = new RecipeServiceImpl();
+    private RecipeService recipeService = new RecipeService();
 
     @Test
     public void findAll_ShouldReturnTwo() throws Exception {

@@ -1,7 +1,9 @@
 package phan.recipesite.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.Type;
 import phan.recipesite.core.BaseEntity;
 
@@ -18,6 +20,8 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
+@ToString
 public class Recipe extends BaseEntity {
     @Lob
     @Type(type = "org.hibernate.type.ImageType")
@@ -48,13 +52,13 @@ public class Recipe extends BaseEntity {
     @JoinColumn(name = "recipe_id")
     @Valid
     private List<Ingredient> ingredients = new ArrayList<>();
-    ;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "recipe_id")
     @Valid
     private List<Step> steps = new ArrayList<>();
-    ;
+
+    private int voteCount = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -101,44 +105,6 @@ public class Recipe extends BaseEntity {
             userFavorites = new ArrayList<>(map.values());
         }
         return userFavorites;
-    }
-
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                ", bytes=" + Arrays.toString(image) +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", category='" + category + '\'' +
-                ", prepTime=" + prepTime +
-                ", cookTime=" + cookTime +
-                ", ingredients=" + ingredients +
-                ", steps=" + steps +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Recipe)) return false;
-
-        Recipe recipe = (Recipe) o;
-
-        if (prepTime != recipe.prepTime) return false;
-        if (cookTime != recipe.cookTime) return false;
-        if (!Arrays.equals(image, recipe.image)) return false;
-        if (name != null ? !name.equals(recipe.name) : recipe.name != null) return false;
-        if (description != null ? !description.equals(recipe.description) : recipe.description != null) return false;
-        if (favoritedRecipe != null ? !favoritedRecipe.equals(recipe.favoritedRecipe) : recipe.favoritedRecipe != null)
-            return false;
-        if (category != recipe.category) return false;
-        if (ingredients != null ? !ingredients.equals(recipe.ingredients) : recipe.ingredients != null) return false;
-        return steps != null ? steps.equals(recipe.steps) : recipe.steps == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return name != null ? name.hashCode() : 0;
     }
 
     public static class RecipeBuilder {

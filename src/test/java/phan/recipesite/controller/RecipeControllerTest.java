@@ -17,10 +17,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import phan.recipesite.model.Category;
 import phan.recipesite.model.Recipe;
-import phan.recipesite.service.IngredientService;
-import phan.recipesite.service.RecipeService;
-import phan.recipesite.service.StepService;
-import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 import phan.recipesite.web.controller.RecipeController;
 
