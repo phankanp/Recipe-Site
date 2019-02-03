@@ -1,4 +1,4 @@
-package phan.recipesite.validator;
+package phan.recipesite.model.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,8 +9,8 @@ import phan.recipesite.model.User;
 import phan.recipesite.service.UserService;
 
 @Component
-// Validates fields for user login and registration
-public class UserValidator implements Validator {
+public class PasswordValidator implements Validator {
+
     @Autowired
     private UserService userService;
 
@@ -42,6 +42,10 @@ public class UserValidator implements Validator {
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.user.passwordConfirm");
+        }
+
+        if (userService.findByEmail(user.getEmail()) != null) {
+            errors.rejectValue("email", "Duplicate.user.email");
         }
     }
 }

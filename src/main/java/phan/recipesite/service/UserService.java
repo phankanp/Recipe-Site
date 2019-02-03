@@ -14,7 +14,7 @@ import phan.recipesite.repository.UserRepository;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
     @Autowired
     UserRepository userRepository;
 
@@ -25,10 +25,17 @@ public class UserService implements UserDetailsService {
     RoleRepository roleRepository;
 
     @Autowired
+    RoleService roleService;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public List<User> findByFavoritesId(Long id) {return userRepository.findByFavoritesId(id);}
@@ -41,17 +48,21 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(String.format("User with %s doesn't exist!", username));
-        }
-        return new UserAdapter(user);
-    }
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException(String.format("User with %s doesn't exist!", username));
+//        }
+//
+//    }
 
     public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setPasswordConfirm(bCryptPasswordEncoder.encode(user.getPassword()));
+        String password = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(password);
+        user.setPasswordConfirm(password);
+
+        user.addRole(roleService.findByName("ROLE_USER"));
+
         userRepository.save(user);
     }
 }

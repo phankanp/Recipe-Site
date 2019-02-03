@@ -18,7 +18,7 @@ import java.util.*;
 
 @Component
 public class DatabaseLoader implements ApplicationRunner {
-    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+    public static final BCryptPasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     private final RecipeRepository recipeDao;
     private final UserRepository userDao;
     private final RoleRepository roleDao;
@@ -50,13 +50,15 @@ public class DatabaseLoader implements ApplicationRunner {
         role1.add(roleUser);
         role2.add(roleUser);
 
-        User testUser1 = new User("AdminUser", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode
-                ("password"));
-        User testUser2 = new User("RoleUser", PASSWORD_ENCODER.encode("password"), PASSWORD_ENCODER.encode("password"));
+        String secret = PASSWORD_ENCODER.encode("password");
+
+        User testUser1 = new User("Admin", "User","AdminUser@gmail.com", "AdminUser", secret, secret);
+        User testUser2 = new User("Role", "User","RoleUser@gmail.com", "RoleUser",  secret, secret);
 
         testUser1.setRoles(role1);
         testUser2.setRoles(role2);
 
+        testUser1.setEnabled(true);
 
         userDao.save(testUser1);
         userDao.save(testUser2);

@@ -1,6 +1,7 @@
 package phan.recipesite.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import phan.recipesite.service.UserDetailsServiceImpl;
 import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 
@@ -28,77 +30,42 @@ import phan.recipesite.web.FlashMessage;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserService userService;
+    private UserDetailsServiceImpl userDetailsService;
+
+
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // Configures spring to use userService for authentication
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-    }
-
-    // Password encoder which uses BCrypt hashing
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10);
-    }
-
-    // Tells spring to bypass static assets
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/assets/**");
-    }
-
     // Configures security for authorizing user requests, login page, and logout process
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .anonymous()
-                .and()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/recipes", "/recipes?**", "/details/**",
-                        "/signup", "/recipes/image/**", "/assets/**", "/recipes/category/**", "/recipes/search")
-                .permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN")
+                .antMatchers("/").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .successHandler(loginSuccessHandler())
-                .failureHandler(loginFailureHandler())
+                .loginPage("/login").permitAll()
+                .usernameParameter("username")
                 .and()
                 .logout()
-                .permitAll()
-                .logoutSuccessUrl("/login")
+                .and()
+                .rememberMe()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .csrf().disable();
     }
 
-    // Redirects to application root upon authentication success
-    private AuthenticationSuccessHandler loginSuccessHandler() {
-        return ((request, response, authentication) -> response.sendRedirect("/"));
-    }
-
-    // Redirects back to login if authentication fails
-    private AuthenticationFailureHandler loginFailureHandler() {
-        return ((request, response, exception) -> {
-            request.getSession().setAttribute("flash", new FlashMessage("Incorrect username and/or password. " +
-                    "Please try again.", FlashMessage.Status.FAILURE));
-            response.sendRedirect("/login");
-        });
-    }
-
-    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 
 }

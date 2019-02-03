@@ -1,32 +1,63 @@
 package phan.recipesite.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
-public class User {
+//@RequiredArgsConstructor
+
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Must enter a first name")
+    @Size(min = 2)
+    private String firstName;
+
+    @NotEmpty(message = "Must enter a last name")
+    @Size(min = 2)
+    private String lastName;
+
+    @NotEmpty(message = "Must enter an email address")
+    @Size(min = 8, max = 20)
+    @Column(unique = true)
+    @Email(message = "Must enter a valid email address")
+    private String email;
+
+    @NotEmpty(message = "Must enter a username")
+    @Size(min = 8, max = 20)
+    @Column(unique = true)
     private String username;
 
+    @NotEmpty(message = "Must enter a password")
+    @Size(min = 6, max = 60)
     private String password;
 
+    @Transient
+    @NotEmpty(message = "Please enter Password Confirmation.")
     private String passwordConfirm;
+
+    @NonNull
+    @Column(nullable = false)
+    private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name
             = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_favorites",
@@ -34,8 +65,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     private List<Recipe> favorites;
 
-    public User(String username, String password, String passwordConfirm) {
+    public User(String firstName, String lastName, String email, String username, String password, String passwordConfirm) {
         this();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.username = username;
         favorites = new ArrayList<>();
         setPassword(password);
@@ -43,36 +77,41 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                '}';
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public void addRoles(Set<Role> roles) {
+        roles.forEach(this::addRole);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (passwordConfirm != null ? !passwordConfirm.equals(user.passwordConfirm) : user.passwordConfirm != null)
-            return false;
-        if (roles != null ? !roles.equals(user.roles) : user.roles != null) return false;
-        return favorites != null ? favorites.equals(user.favorites) : user.favorites == null;
+    public String getUsername() {
+        return username;
     }
 
     @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (passwordConfirm != null ? passwordConfirm.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
-        result = 31 * result + (favorites != null ? favorites.hashCode() : 0);
-        return result;
+    public boolean isAccountNonExpired() {
+        return true;
     }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
 }
