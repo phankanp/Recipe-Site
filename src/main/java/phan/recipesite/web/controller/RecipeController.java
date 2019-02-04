@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import phan.recipesite.model.*;
-import phan.recipesite.service.*;
+import phan.recipesite.service.IngredientService;
+import phan.recipesite.service.RecipeService;
+import phan.recipesite.service.StepService;
+import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,18 +24,20 @@ import java.util.*;
 
 @Controller
 public class RecipeController {
+
+    private final IngredientService ingredientService;
+    private final RecipeService recipeService;
+    private final UserService userService;
+    private final RecipeService recipeServiceimpl;
+
     @Autowired
-    IngredientService ingredientService;
-    @Autowired
-    private RecipeService recipeService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private StepService stepService;
-    @Autowired
-    private RecipeService recipeServiceimpl;
-    @Autowired
-    private UserService userServiceImpl;
+    public RecipeController(IngredientService ingredientService, RecipeService recipeService, UserService
+            userService, RecipeService recipeServiceimpl) {
+        this.ingredientService = ingredientService;
+        this.recipeService = recipeService;
+        this.userService = userService;
+        this.recipeServiceimpl = recipeServiceimpl;
+    }
 
 
     // Index - Home page of all recipes

@@ -15,46 +15,77 @@
             <div class="recipes">
                 <form th:object="${user}" th:action="@{/signup}" method="post" enctype="form-data"
                       modelAttribute="user">
-                    <div class="prefix-20 grid-60 suffix-20"
-                         th:classappend="${#fields.hasErrors('username')}? 'error' : ''">
-                        <p>
-                            <input id="username" type="text" th:field="*{username}" placeholder="Username"/>
-                        <div class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name
-                            error
+                    <div class="row" th:if="${validationErrors}">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+            <span class="text-danger align-middle">
+                <ul th:each="error : ${validationErrors}">
+                    <li th:text="${error.getDefaultMessage()}"></li>
+                </ul>
+            </span>
                         </div>
-                        </p>
                     </div>
-                    <div class="clear"></div>
                     <div class="prefix-20 grid-60 suffix-20"
-                         th:classappend="${#fields.hasErrors('password')}? 'error' : ''">
-                        <p>
-                            <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
-                        <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name
-                            error
-                        </div>
-                        </p>
+                    <p>
+                        <input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name"/>
+                    <div class="error-message" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name
+                        error
                     </div>
-                    <div class="clear"></div>
-                    <div class="prefix-20 grid-60 suffix-20"
-                         th:classappend="${#fields.hasErrors('passwordConfirm')}? 'error' : ''">
-                        <p>
-                            <input id="confirm-password" type="password" th:field="*{passwordConfirm}"
-                                   placeholder="Password again"/>
-                        <div class="error-message" th:if="${#fields.hasErrors('passwordConfirm')}"
-                             th:errors="*{passwordConfirm}">Name error
-                        </div>
-                        </p>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="prefix-20 grid-60 suffix-20">
-                        <p>
-                            <button id="sign-up" type="submit">Sign-up</button>
-                        </p>
-                    </div>
-                    <div class="clear"></div>
-                </form>
-            </div> <!-- recipes -->
-        </div> <!-- grid-100 -->
+                    </p>
+            </div>
+            <div class="prefix-20 grid-60 suffix-20"
+            <p>
+                <input id="lastName" type="text" th:field="*{lastName}" placeholder="Last Name"/>
+            <div class="error-message" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name
+                error
+            </div>
+            </p>
+        </div>
+        <div class="prefix-20 grid-60 suffix-20"
+        <p>
+            <input id="email" type="text" th:field="*{email}" placeholder="Email"/>
+        <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name
+            error
+        </div>
+        </p>
+    </div>
+    <div class="prefix-20 grid-60 suffix-20"
+    <p>
+        <input id="username" type="text" th:field="*{username}" placeholder="Username"/>
+    <div class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name
+        error
+    </div>
+    </p>
+    </div>
+    <div class="clear"></div>
+    <div class="prefix-20 grid-60 suffix-20"
+    <p>
+        <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
+    <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name
+        error
+    </div>
+    </p>
+    </div>
+    <div class="clear"></div>
+    <div class="prefix-20 grid-60 suffix-20"
+    <p>
+        <input id="confirm-password" type="password" th:field="*{passwordConfirm}"
+               placeholder="Password again"/>
+    <div class="error-message" th:if="${#fields.hasErrors('passwordConfirm')}"
+         th:errors="*{passwordConfirm}">Name error
+    </div>
+    </p>
+    </div>
+    <div class="clear"></div>
+    <div class="prefix-20 grid-60 suffix-20">
+        <p>
+            <button id="sign-up" type="submit">Sign-up</button>
+        </p>
+    </div>
+    <div class="clear"></div>
+    </form>
+    </div> <!-- recipes -->
+    </div> <!-- grid-100 -->
     </div> <!-- grid-container -->
 </section>
 </body>

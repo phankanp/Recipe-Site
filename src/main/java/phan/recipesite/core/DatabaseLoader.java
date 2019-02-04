@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import phan.recipesite.model.*;
 import phan.recipesite.repository.RecipeRepository;
@@ -52,8 +51,8 @@ public class DatabaseLoader implements ApplicationRunner {
 
         String secret = PASSWORD_ENCODER.encode("password");
 
-        User testUser1 = new User("Admin", "User","AdminUser@gmail.com", "AdminUser", secret, secret);
-        User testUser2 = new User("Role", "User","RoleUser@gmail.com", "RoleUser",  secret, secret);
+        User testUser1 = new User("Admin", "User", "AdminUser@gmail.com", "AdminUser", secret, secret);
+        User testUser2 = new User("Role", "User", "RoleUser@gmail.com", "RoleUser", secret, secret);
 
         testUser1.setRoles(role1);
         testUser2.setRoles(role2);

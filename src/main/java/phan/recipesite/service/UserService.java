@@ -1,9 +1,6 @@
 package phan.recipesite.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import phan.recipesite.model.Recipe;
@@ -38,7 +35,9 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public List<User> findByFavoritesId(Long id) {return userRepository.findByFavoritesId(id);}
+    public List<User> findByFavoritesId(Long id) {
+        return userRepository.findByFavoritesId(id);
+    }
 
     public void toggleFavorite(User user, Recipe recipe) {
         if (user.getFavorites().contains(recipe)) {

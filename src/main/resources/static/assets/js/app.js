@@ -67,3 +67,24 @@ $(".favorite-detail").on("submit", function (e) {
         $('#favorite-button-detail>img').attr('src', imageUrl);
     });
 })
+
+
+$('.upvote').click(function(e) {
+    const direction = 1;
+    const recipeId = $(this).attr("data-id")
+    const voteSum = $("#votecount-" + recipeId).html()
+
+    $.get(`http://localhost:8080/vote/recipe/${recipeId}/direction/${direction}/votecount/${voteSum}`, function (data) {
+        $("#votecount-" + recipeId).html(data)
+    })
+})
+
+$('.downvote').click(function(e) {
+    const direction = -1;
+    const recipeId = $(this).attr("data-id")
+    const voteSum = $("#votecount-" + recipeId).html()
+
+    $.get(`http://localhost:8080/vote/recipe/${recipeId}/direction/${direction}/votecount/${voteSum}`, function (data) {
+        $("#votecount-" + recipeId).html(data)
+    })
+})

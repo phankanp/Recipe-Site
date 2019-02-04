@@ -13,14 +13,13 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @ToString
 public class Recipe extends BaseEntity {
     @Lob
@@ -57,6 +56,9 @@ public class Recipe extends BaseEntity {
     @JoinColumn(name = "recipe_id")
     @Valid
     private List<Step> steps = new ArrayList<>();
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Vote> votes = new ArrayList<>();
 
     private int voteCount = 0;
 

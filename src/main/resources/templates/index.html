@@ -37,6 +37,11 @@
                 <div class="clear"></div>
 
                 <div class="grid-100 row addHover" th:each="recipe : ${recipes}">
+                    <div class="col-1">
+                        <div><a href="#" class="upvote" th:data-id="${recipe.id}"><i class="fas fa-arrow-up"></i></a></div>
+                        <div><span th:id="|votecount-${recipe.id}|" class="votecount" th:text="${recipe.getVoteCount()}">0</span></div>
+                        <div><a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i class="fas fa-arrow-down"></i></a></div>
+                    </div>
                     <a th:href="@{|/details/${recipe.id}|}">
                         <div class="grid-70">
                             <p>

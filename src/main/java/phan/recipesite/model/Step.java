@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @ToString
 public class Step extends BaseEntity {
 

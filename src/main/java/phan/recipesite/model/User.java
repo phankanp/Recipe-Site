@@ -1,6 +1,8 @@
 package phan.recipesite.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -65,7 +67,8 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     private List<Recipe> favorites;
 
-    public User(String firstName, String lastName, String email, String username, String password, String passwordConfirm) {
+    public User(String firstName, String lastName, String email, String username, String password, String
+            passwordConfirm) {
         this();
         this.firstName = firstName;
         this.lastName = lastName;

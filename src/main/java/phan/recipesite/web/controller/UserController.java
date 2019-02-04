@@ -15,7 +15,6 @@ import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 @Controller
@@ -53,19 +52,19 @@ public class UserController {
             redirectAttributes.addFlashAttribute("user", user);
 
 
-          redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
 
 
             return "redirect:/signup";
         }
 
 
-
         try {
             userService.save(user);
 
         } catch (DataIntegrityViolationException ex) {
-            redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully not created account! Please login.",
+            redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully not created account! Please " +
+                    "login.",
                     FlashMessage.Status.FAILURE));
             redirectAttributes.addFlashAttribute("user", user);
             return "redirect:/signup";
