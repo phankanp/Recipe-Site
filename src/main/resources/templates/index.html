@@ -1,85 +1,108 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="layout :: head"></head>
 
 <body>
 <nav th:replace="layout :: nav"></nav>
+<div th:replace="layout :: jumbotron"></div>
 <section>
-
-    <div class="grid-container">
-        <div th:replace="layout :: logo"></div>
-        <div th:replace="layout :: flash"></div>
-        <div class="grid-100">
+    <!--<div th:replace="layout :: logo"></div>-->
+    <div th:replace="layout :: flash"></div>
+    <div class="container">
 
 
-            <div class="recipes">
+        <div class="row">
+            <div class="col-sm">
+                <select id="select-category" class="form-control">
+                    <option th:each="category : ${categories}" th:value="${category}"
+                            th:text="${category.name}" th:selected="${category} == ${selectedCategory}">
+                        Breakfast
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
 
-                <div class="grid-100 row controls">
-                    <div class="grid-30">
-                        <select id="select-category">
-                            <option th:each="category : ${categories}" th:value="${category}"
-                                    th:text="${category.name}" th:selected="${category} == ${selectedCategory}">
-                                Breakfast
-                            </option>
-                        </select>
-                    </div>
-                    <div class="grid-40">
-                        <input id="search" placeholder="Search by Description or Ingredients"/>
-                    </div>
-                    <div class="grid-30">
-                        <div class="flush-right">
-                            <form th:action="@{/recipes/add}">
-                                <button>+ Add Recipe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
+        </div>
 
-                <div class="grid-100 row addHover" th:each="recipe : ${recipes}">
-                    <div class="col-1">
-                        <div><a href="#" class="upvote" th:data-id="${recipe.id}"><i class="fas fa-arrow-up"></i></a></div>
-                        <div><span th:id="|votecount-${recipe.id}|" class="votecount" th:text="${recipe.getVoteCount()}">0</span></div>
-                        <div><a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i class="fas fa-arrow-down"></i></a></div>
-                    </div>
-                    <a th:href="@{|/details/${recipe.id}|}">
-                        <div class="grid-70">
-                            <p>
+
+        <div class="list">
+            <div class="container">
+
+
+                <div class="col-lg-12">
+
+                    <div class="box list recipes" th:each="recipe : ${recipes}">
+                        <div class="by">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span th:text="${recipe.user.username}">User</span>
                             <form class="favorite" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
-                                  style="display:inline" sec:authorize="hasRole('ROLE_USER')">
-                                <button class="favorite-button-index" th:id="'favorite-button-index' + ${recipe.id}">
-                                    <img th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
+                                  style="display:inline">
+                                <button class="favorite-button-index"
+                                        th:id="'favorite-button-index' + ${recipe.id}">
+                                    <img class="testimg"
+                                         th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
                                          style="height: 12px;">
                                 </button>
                             </form>
-                            <span th:text="${recipe.name}"> </span>
-
-                            </p>
                         </div>
-                    </a>
-                    <div class="hoverBlock">
 
-                        <div class="grid-30">
-                            <div class="flush-right">
-                                <form th:action="@{|/recipes/${recipe.id}/delete|}" method="post">
-                                    <p>
-                                        <a th:href="@{|/recipes/${recipe.id}/edit|}"> <img
-                                                th:src="@{/assets/images/edit.svg}" height="12px"> Edit </a>
-                                        <button class="delete-button" type="submit">
-                                            <img th:src="@{/assets/images/delete.svg}" height="12px"> Delete </a>
-                                        </button>
-                                    </p>
-                                </form>
+                        <div>
+                            <a th:href="@{|/details/${recipe.id}|}">
+
+                                <img class="index-img" th:src="@{|/recipes/image/${recipe.id}|}"/>
+
+                            </a>
+                            <h2>
+
+                                <a th:href="@{|/details/${recipe.id}|}" th:text="${recipe.name}">Pancakes</a>
+
+                            </h2>
+                            <div>
+                                <a href="#" class="upvote" th:data-id="${recipe.id}"><i
+                                        class="fas fa-arrow-up"></i></a>
+                            </div>
+                            <p th:text="${recipe.description}">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit.</p>
+
+
+                            <div>
+                                <span th:id="|votecount-${recipe.id}|" class="votecount"
+                                      th:text="${recipe.getVoteCount()}">0</span>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <form th:action="@{|/recipes/${recipe.id}/delete|}" method="post">
+                                        <p>
+                                            <a th:href="@{|/recipes/${recipe.id}/edit|}"> <img
+                                                    th:src="@{/assets/images/edit.svg}" height="12px"> Edit </a>
+
+                                            <button class="delete-button" type="submit">
+                                                <img th:src="@{/assets/images/delete.svg}" height="12px">
+                                                Delete
+
+                                            </button>
+
+                                        </p>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
+                                        class="fas fa-arrow-down"></i></a>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <div class="clear"></div>
 
-                <div class="row">&nbsp;</div>
+            </div>
+        </div>
 
-            </div> <!-- recipes -->
-        </div> <!-- grid-100 -->
+        <div class="row">&nbsp;</div>
     </div> <!-- grid-container -->
 </section>
 <div th:replace="layout :: scripts"></div>

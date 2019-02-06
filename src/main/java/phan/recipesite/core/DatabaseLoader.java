@@ -95,7 +95,7 @@ public class DatabaseLoader implements ApplicationRunner {
                         .withIngredients(ingredient1)
                         .withSteps(step1)
                         .withImage(Files.readAllBytes(Paths.get("./src/main/resources/static/assets/images/pancakes" +
-                                ".png")))
+                                ".jpg")))
                         .withUser(testUser1)
                         .build(),
 
@@ -106,7 +106,7 @@ public class DatabaseLoader implements ApplicationRunner {
                         .withIngredients(ingredient2)
                         .withSteps(step2)
                         .withImage(Files.readAllBytes(Paths.get("./src/main/resources/static/assets/images/brownies" +
-                                ".png")))
+                                ".jpg")))
                         .withUser(testUser2)
                         .build()
         );

@@ -47,28 +47,15 @@ public class UserController {
 
         passwordValidator.validate(user, result);
 
-
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("user", user);
 
-
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
 
-
             return "redirect:/signup";
         }
 
-
-        try {
-            userService.save(user);
-
-        } catch (DataIntegrityViolationException ex) {
-            redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully not created account! Please " +
-                    "login.",
-                    FlashMessage.Status.FAILURE));
-            redirectAttributes.addFlashAttribute("user", user);
-            return "redirect:/signup";
-        }
+        userService.save(user);
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully created account! Please login.",
                 FlashMessage.Status.SUCCESS));

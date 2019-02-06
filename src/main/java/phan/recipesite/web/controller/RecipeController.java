@@ -2,6 +2,7 @@ package phan.recipesite.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import phan.recipesite.model.*;
-import phan.recipesite.service.IngredientService;
-import phan.recipesite.service.RecipeService;
-import phan.recipesite.service.StepService;
-import phan.recipesite.service.UserService;
+import phan.recipesite.service.*;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,14 +27,16 @@ public class RecipeController {
     private final RecipeService recipeService;
     private final UserService userService;
     private final RecipeService recipeServiceimpl;
+    private final CommentService commmentService;
 
     @Autowired
     public RecipeController(IngredientService ingredientService, RecipeService recipeService, UserService
-            userService, RecipeService recipeServiceimpl) {
+            userService, RecipeService recipeServiceimpl, CommentService commmentService) {
         this.ingredientService = ingredientService;
         this.recipeService = recipeService;
         this.userService = userService;
         this.recipeServiceimpl = recipeServiceimpl;
+        this.commmentService = commmentService;
     }
 
 
@@ -251,5 +251,16 @@ public class RecipeController {
         model.addAttribute("selectedCategory", Category.ALL);
 
         return "index";
+    }
+
+    @Secured({"ROLE_USER"})
+    @PostMapping("/recipe/comments")
+    public String addComment(@Valid Comment comment, BindingResult result,  RedirectAttributes redirectAttributes){
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("flash", result);
+        } else {
+            commmentService.save(comment);
+        }
+        return "redirect:/recipe/" + comment.getRecipe().getId();
     }
 }
