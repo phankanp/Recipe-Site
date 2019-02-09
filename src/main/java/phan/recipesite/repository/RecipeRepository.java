@@ -17,4 +17,5 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     List<Recipe> findByDescriptionContainingOrIngredientsNameIgnoreCase(String search, String search2);
 
+    Recipe findRecipeByComments(Long id);
 }

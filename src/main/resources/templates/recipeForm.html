@@ -7,220 +7,141 @@
 <nav th:replace="layout :: nav"></nav>
 
 <section>
-    <div class="grid-container">
-        <div th:replace="layout :: logo"></div>
-        <div th:if="${flash != null}" class="container">
-            <div th:each="fl : ${flash}">
-                <div th:text="${fl}" class="flash"></div>
+
+
+    <div class="add-recipe">
+
+        <div class="title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 justify-content-center">
+                        <h3>Add Recipe</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form th:action="@{${action}}" enctype="multipart/form-data" method="post" th:object="${recipe}"
+                              modelAttribute="recipe">
+                            <div class="form-group">
+                                <label class="addNewRecipe">Photo</label>
+                                <p>
+                                    <img th:if="${recipe.image}" th:src="@{|/recipes/image/${recipe.id}|}" height="256"
+                                         width="256"/>
+                                    <input type="file" name="imageFile" class="form-control-file"/>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Recipe Title</label>
+                                <p>
+                                    <input placeholder="Recipe Title"  class="form-control add" type="text" th:field="*{name}"/>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Description</label>
+
+                                <p>
+                                    <textarea placeholder="Recipe Description" class="form-control add" rows="4" th:field="*{description}"></textarea>
+                                </p>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Category</label>
+                                <p>
+                                    <select class="form-control add" th:field="*{category}">
+                                        <option value="" disabled="disabled">All Categories</option>
+                                        <option th:each="cat : ${categories}"
+                                                th:value="${cat}"
+                                                th:text="${cat.name}">All Categories
+                                        </option>
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Prep Time</label>
+                                <p>
+                                    <input class="form-control add" type="number" th:field="*{prepTime}"/>
+                                </p>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Cook Time</label>
+                                <p>
+                                    <input  class="form-control add" type="number" th:field="*{cookTime}"/>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Ingredients</label>
+                                <div class="ingredient-row" th:each="ingredient, stat : *{ingredients}">
+                                    <input type="hidden" th:field="*{ingredients[__${stat.index}__].id}"
+                                           th:value="${ingredient.id}"/>
+                                    <div>
+                                        <p>
+                                            <input class="form-control add" placeholder="Ingredient Name" type="text"
+                                                   th:field="*{ingredients[__${stat.index}__].name}"
+                                                   th:value="${ingredient.name}"/>
+                                        </p>
+                                        <p>
+                                            <input  class="form-control add" placeholder="Ingredient Condition" type="text"
+                                                   th:field="*{ingredients[__${stat.index}__].ingredientCondition}"
+                                                   th:value="${ingredient.ingredientCondition}"/>
+                                        </p>
+                                        <p>
+                                            <input class="form-control add" placeholder="Ingredient Quantity" type="text"
+                                                   th:field="*{ingredients[__${stat.index}__].quantity}"
+                                                   th:value="${ingredient.quantity}"/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="add-ingredient-row">
+                                    <p>
+                                        <button id="add-ingredient" class="btn btn-primary" type="button">+ Add
+                                            Ingredient
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Steps</label>
+                                <div class="step-row" th:each="step, stat : *{steps}">
+                                    <input type="hidden" name="id" th:field="*{steps[__${stat.index}__].id}"
+                                           th:value="${step.id}"/>
+                                    <div>
+                                        <p>
+                                            <input class="form-control add" placeholder="Step Description" type="text" name="name"
+                                                   th:field="*{steps[__${stat.index}__].name}"
+                                                   th:value="${step.name}"/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="add-step-row" class="prefix-20 grid-80 add-row">
+                                    <p>
+                                        <button id="add-step" class="btn btn-primary" type="button">+ Add Step</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="addNewRecipe">Save</label>
+                                <div>
+                                    <p>
+                                        <button id="btnSave" class="btn btn-primary" type="submit" value="save">Save Recipe</button>
+                                        <button id="btnCancel" class="btn btn-danger">
+                                            <a id="cancelRecipe" th:href="@{${redirect}}">Cancel</a>
+                                      </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="grid-100">
+    </div>
 
-            <div class="recipes">
-
-                <form th:action="@{${action}}" enctype="multipart/form-data" method="post" th:object="${recipe}"
-                      modelAttribute="recipe">
-                    <div class="grid-100 row controls">
-                        <div class="grid-50">
-                            <h2 th:text="${heading}"> Recipe Editor </h2>
-                        </div>
-
-                        <div class="grid-50">
-                            <div class="flush-right">
-                                <button type="submit" value="save">Save Recipe</button>
-                                <a th:href="@{${redirect}}" class="secondary">Cancel</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Photo </label>
-                            </p>
-                        </div>
-                        <div class="grid-40">
-                            <p>
-                                <img th:if="${recipe.image}" th:src="@{|/recipes/image/${recipe.id}|}" height="256"
-                                     width="256"/>
-                                <input type="file" name="imageFile" id="imageFile"/>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Name </label>
-                            </p>
-                        </div>
-                        <div class="grid-40">
-                            <p>
-                                <input type="text" th:field="*{name}"/>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Description </label>
-                            </p>
-                        </div>
-                        <div class="grid-40">
-                            <p>
-                                <textarea rows="4" th:field="*{description}"></textarea>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Category </label>
-                            </p>
-                        </div>
-                        <div class="grid-30">
-                            <p>
-                                <select th:field="*{category}">
-                                    <option value="" disabled="disabled">All Categories</option>
-                                    <option th:each="cat : ${categories}"
-                                            th:value="${cat}"
-                                            th:text="${cat.name}">All Categories
-                                    </option>
-                                </select>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Prep Time (minutes) </label>
-                            </p>
-                        </div>
-                        <div class="grid-20">
-                            <p>
-                                <input type="number" th:field="*{prepTime}"/>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Cook Time (minutes) </label>
-                            </p>
-                        </div>
-                        <div class="grid-20">
-                            <p>
-                                <input type="number" th:field="*{cookTime}"/>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Ingredients </label>
-                            </p>
-                        </div>
-                        <div class="grid-30">
-                            <p class="label-spacing">
-                                <label> Item <label>
-                            </p>
-                        </div>
-                        <div class="grid-30">
-                            <p class="label-spacing">
-                                <label> Condition <label>
-                            </p>
-                        </div>
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Quantity <label>
-                            </p>
-                        </div>
-
-                        <div class="ingredient-row" th:each="ingredient, stat : *{ingredients}">
-                            <input type="hidden" th:field="*{ingredients[__${stat.index}__].id}"
-                                   th:value="${ingredient.id}"/>
-                            <div class="prefix-20 grid-30">
-                                <p>
-                                    <input type="text" th:field="*{ingredients[__${stat.index}__].name}"
-                                           th:value="${ingredient.name}"/>
-                                </p>
-                            </div>
-                            <div class="grid-30">
-                                <p>
-                                    <input type="text" th:field="*{ingredients[__${stat.index}__].ingredientCondition}"
-                                           th:value="${ingredient.ingredientCondition}"/>
-                                </p>
-                            </div>
-                            <div class="grid-10 suffix-10">
-                                <p>
-                                    <input type="text" th:field="*{ingredients[__${stat.index}__].quantity}"
-                                           th:value="${ingredient.quantity}"/>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div id="add-ingredient-row" class="prefix-20 grid-80 add-row">
-                            <p>
-                                <button id="add-ingredient" type="button">+ Add Ingredient</button>
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="grid-100 row">
-                        <div class="grid-20">
-                            <p class="label-spacing">
-                                <label> Steps </label>
-                            </p>
-                        </div>
-                        <div class="grid-80">
-                            <p class="label-spacing">
-                                <label> Description <label>
-                            </p>
-                        </div>
-
-                        <div class="step-row" th:each="step, stat : *{steps}">
-                            <input type="hidden" name="id" th:field="*{steps[__${stat.index}__].id}"
-                                   th:value="${step.id}"/>
-                            <div class="prefix-20 grid-80">
-                                <p>
-                                    <input type="text" name="name" th:field="*{steps[__${stat.index}__].name}"
-                                           th:value="${step.name}"/>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div id="add-step-row" class="prefix-20 grid-80 add-row">
-                            <p>
-                                <button id="add-step" type="button">+ Add Step</button>
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="clear"></div>
-
-                    <div class="row">&nbsp;</div>
-                </form>
-
-            </div> <!-- recipes -->
-        </div> <!-- grid-100 -->
-
-    </div> <!-- grid-container -->
 </section>
 <div th:replace="layout :: scripts"></div>
 

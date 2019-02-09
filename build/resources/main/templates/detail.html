@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head th:replace="layout :: head"></head>
 
@@ -7,185 +7,141 @@
 <nav th:replace="layout :: nav"></nav>
 
 <section>
-    <div class="grid-container">
-        <div th:replace="layout :: logo"></div>
+    <div class="detail-title">
+    <div class="title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 justify-content-center">
+                    <h3>Recipe Details</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+
+        <!--<div th:replace="layout :: logo"></div>-->
         <div th:replace="layout :: flash"></div>
-        <div th:object="${recipe}" class="grid-100">
-            <div class="recipes">
-                <div class="grid-100 row controls">
-                    <div class="grid-50">
-                        <h2 th:text="${recipe.name}"> Recipe Name </h2>
-                    </div>
-                    <div class="grid-50">
-                        <form class="favorite-detail" th:action="@{|/recipes/${recipe.id}/favorite|}" method="post"
-                              style="display:inline">
-                            <button id="favorite-button-detail" class="flush-right"
-                                    sec:authorize="hasRole('ROLE_USER')">
-                                <img id="change-img"
-                                     th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
-                                     style="height: 12px;">
-                            </button>
-                        </form>
-                    </div>
-                </div>
 
-                <div class="clear"></div>
+        <div th:object="${recipe}">
+            <div class="recipe-detail">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="stuff">
+                            <h1 class="name" th:text="${recipe.name}" style="display: inline-block">
+                                Recipe Name
+                            </h1>
 
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Photo </label>
-                        </p>
+                            <div class="by">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span th:text="${recipe.user.username}">User</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid-40" th:if="*{image} != null">
-                        <p>
-                            <img th:src="@{|/recipes/image/${recipe.id}|}" height="256" width="256"/>
-                        </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Last Edited By </label>
-                        </p>
-                    </div>
-                    <div class="grid-40">
-                        <p th:text="${recipe.user.username}">
-                            user1
-                        </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Name </label>
-                        </p>
-                    </div>
-                    <div class="grid-40">
-                        <p th:text="${recipe.name}">
-                            Brioche French Toast with Nutella
-                        </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Description </label>
-                        </p>
-                    </div>
-                    <div class="grid-40">
-                        <p th:text="${recipe.description}">
+                    <div class="col-lg-8">
+                        <img th:src="@{|/recipes/image/${recipe.id}|}"/>
+                        <div class="info">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4">
+                                    <p>Category:</p>
+                                    <p>
+                                        <strong>
+                                            <i class="far fa-object-group" aria-hidden="true"></i>
+                                            <span th:text="${recipe.category.name}">Category</span>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-sm-4">
+                                    <p>Prep Time:</p>
+                                    <p>
+                                        <strong>
+                                            <i class="fa fa-clock" aria-hidden="true"></i>
+                                            <span th:text="${recipe.prepTime} + ' ' + mins">Prep Time</span>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-sm-4">
+                                    <p>Cook Time:</p>
+                                    <p>
+                                        <strong>
+                                            <i class="fa fa-clock" aria-hidden="true"></i>
+                                            <span th:text="${recipe.cookTime}  + ' ' + mins">Cook Time</span>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-left" th:text="${recipe.description}">
                             Yummmy dessert toast covered in egg wash and topped with nutella and seasonal fruit.
                         </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Category </label>
-                        </p>
-                    </div>
-                    <div class="grid-30">
-                        <p th:text="*{category.name}">
-                            Dessert
-                        </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Prep Time </label>
-                        </p>
-                    </div>
-                    <div class="grid-20">
-                        <p><span th:text="${recipe.prepTime}">5</span> minutes </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Cook Time </label>
-                        </p>
-                    </div>
-                    <div class="grid-20">
-                        <p>
-                            <span th:text="${recipe.cookTime}">15</span> minutes
-                        </p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p>
-                            <label> Ingredients </label>
-                        </p>
-                    </div>
-                    <div class="grid-30">
-                        <p>
-                            <label> Item </label>
-                        </p>
-                    </div>
-                    <div class="grid-30">
-                        <p>
-                            <label> Condition </label>
-                        </p>
-                    </div>
-                    <div class="grid-20">
-                        <p>
-                            <label> Quantity </label>
-                        </p>
-                    </div>
-
-                    <div th:each="ingredient : ${recipe.ingredients}" class="ingredient-row">
-                        <div class="prefix-20 grid-30">
-                            <p th:text="${ingredient.name}"> Eggs </p>
+                        <div class="ingredient-direction">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6 text-left">
+                                    <h3 class="text-center">Ingredients</h3>
+                                    <table class="table" th:each="ingredient : ${recipe.ingredients}">
+                                        <tr>
+                                            <td scope="col"
+                                                th:text="${ingredient.quantity + ' ' + ingredient.ingredientCondition + ' ' + ingredient.name}">
+                                                #
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 text-left">
+                                    <h3 class="text-center">Directions</h3>
+                                    <table class="table" th:each="step : ${recipe.steps}">
+                                        <tr>
+                                            <!--<th class="counterCell"></th>-->
+                                            <td class="counterCell" scope="col" th:text="${'   ' + step.name}">1. Crack
+                                                your eggs and beat them.
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <div class="grid-30">
-                            <p th:text="${ingredient.ingredientCondition}"> Fresh </p>
-                        </div>
-                        <div class="grid-10 suffix-10">
-                            <p th:text="${ingredient.quantity}"> 2 </p>
-                        </div>
-                    </div>
+                        <!-- link comments -->
+                        <div id="comments" class="comments">
+                            <div class="row header">
+                                <div class="col-12 comment-title">
+                                    <h3>
+                                        Comments
+                                    </h3>
 
+                                </div>
+                            </div>
+                            <div class="row addcomment">
+                                <div class="col-12">
+                                    <form id="frmAddComment" method="POST" th:action="@{/recipe/comments}"
+                                          th:object="${comment}">
+                                        <input type="hidden" th:field="*{recipe}"/>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="comment" rows="3"
+                                                      th:field="*{body}"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- single comment -->
+                            <div class="row comment" th:each="comment : ${recipe.getComments()}">
+                                <div class="col-12">
+                                    <span class="comment-user" th:text="${comment.getCreatedBy()} + ' ' + 'says:'"><i
+                                            class="far fa-user"></i>User</span>
+                                    <p class="body" th:text="${comment.getBody()}">Test Comment</p>
+                                    <hr>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-                <div class="clear"></div>  <!-- ingredients -->
 
-                <div class="grid-100 row">
-                    <div class="grid-20">
-                        <p><label> Steps </label></p>
-                    </div>
-                    <div class="grid-80">
-                        <p><label> Description </label></p>
-                    </div>
-                    <div th:each="step : ${recipe.steps}" class="step-row">
-                        <div class="prefix-20 grid-80">
-                            <p th:text="${step.name}">
-                                1. Crack your eggs and beat them.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>  <!-- steps -->
-
-                <div class="row">&nbsp;</div>
-
-            </div> <!-- recipes -->
-        </div> <!-- grid-100 -->
-    </div> <!-- grid-container -->
+                <!-- recipes -->
+            </div> <!-- grid-100 -->
+        </div> <!-- grid-container -->
 
 </section>
 <div th:replace="layout :: scripts"></div>

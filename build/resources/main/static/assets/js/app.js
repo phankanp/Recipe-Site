@@ -1,25 +1,27 @@
 $('#add-ingredient').click(function () {
-    var ingredientCount = $('.ingredient-row').length;
-    var ingredientRow = '<div class="ingredient-row">' +
-        '<div class="prefix-20 grid-30">' +
-        '<p> <input type="text" id="ingredients' + ingredientCount + '.item" name="ingredients[' + ingredientCount + '].name" />' +
+    let ingredientCount = $('.ingredient-row').length;
+    let ingredientRow = '<div class="ingredient-row">' +
+        '<div >' +
+        '<hr class="addRows">' +
+        '<p> <input placeholder="Ingredient Name" type="text" id="ingredients' + ingredientCount + '.item" name="ingredients[' + ingredientCount + '].name" />' +
         '</p> </div>' +
-        '<div class="grid-30">' +
-        '<p> <input type="text" id="ingredients' + ingredientCount + '.ingredientCondition" name="ingredients[' + ingredientCount + '].ingredientCondition" />' +
+        '<div>' +
+        '<p> <input placeholder="Ingredient Condition" type="text" id="ingredients' + ingredientCount + '.ingredientCondition" name="ingredients[' + ingredientCount + '].ingredientCondition" />' +
         '</p> </div>' +
-        '<div class="grid-10 suffix-10">' +
-        '<p> <input type="text" id="ingredients' + ingredientCount + '.quantity" name="ingredients[' + ingredientCount + '].quantity" />' +
+        '<div">' +
+        '<p> <input placeholder="Ingredient Quantity" type="text" id="ingredients' + ingredientCount + '.quantity" name="ingredients[' + ingredientCount + '].quantity" />' +
         '</p> </div>' +
-        '</div>'
+        '</div>';
     $("#add-ingredient-row").before(ingredientRow);
 });
 
 $('#add-step').click(function () {
-    var stepCount = $('.step-row').length;
-    var stepRow = '<div class="step-row">' +
-        '<div class="prefix-20 grid-80">' +
+    let stepCount = $('.step-row').length;
+    let stepRow = '<div class="step-row">' +
+        '<div>' +
+        '<hr class="addRows">' +
         '<p>' +
-        '<input  type="text" id="steps' + stepCount + '.stepName" name="steps[' + stepCount + '].name" />' +
+        '<input placeholder="Step Description" type="text" id="steps' + stepCount + '.stepName" name="steps[' + stepCount + '].name" />' +
         '</p>' +
         '</div>' +
         '</div>'
@@ -27,19 +29,19 @@ $('#add-step').click(function () {
 });
 
 $(document).on("change", "#select-category", function () {
-    var category = $('#select-category').val();
+    let category = $('#select-category').val();
     window.location.href = '/recipes/category/' + category;
 });
 
 $('#search').on('keydown', function (e) {
     if (e.which === 13 && this.value.length < 13) {
         $(this).prop("disabled", true);
-        var search = $('#search').val();
+        let search = $('#search').val();
         window.location.href = '/recipes/search?' + 'searchq' + '=' + search;
     }
 });
 
-var id = "";
+let id = "";
 
 $('.favorite-button-index').each(function () {
     $(this).click(function () {
@@ -53,7 +55,7 @@ $(".favorite").on("submit", function (e) {
     e.preventDefault();
 
     $.post(this.action, function (data) {
-        var imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+        let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
         $('#' + id + '>img').attr('src', imageUrl);
     });
 })
@@ -63,7 +65,7 @@ $(".favorite-detail").on("submit", function (e) {
     e.preventDefault();
 
     $.post(this.action, function (data) {
-        var imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+        let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
         $('#favorite-button-detail>img').attr('src', imageUrl);
     });
 })
@@ -88,3 +90,14 @@ $('.downvote').click(function(e) {
         $("#votecount-" + recipeId).html(data)
     })
 })
+
+let max = 50;
+let tot, str;
+$('.test').each(function() {
+    str = String($(this).html());
+    tot = str.length;
+    str = (tot <= max)
+        ? str
+        : str.substring(0,(max + 1))+"...";
+    $(this).html(str);
+});

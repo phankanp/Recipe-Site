@@ -92,7 +92,11 @@ public class RecipeController {
     public String recipeDetails(@PathVariable Long id, Model model) {
         Recipe recipe = recipeService.findById(id);
 
+        Comment comment = new Comment();
+        comment.setRecipe(recipe);
+
         model.addAttribute("recipe", recipe);
+        model.addAttribute("comment", comment);
 
         return "detail";
     }
@@ -227,7 +231,7 @@ public class RecipeController {
     }
 
     // Search for recipes by description or ingredients
-    @RequestMapping(value = "/recipes/search", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/recipes/search", method = RequestMethod.GET)
     public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication
             authentication) {
 
@@ -256,11 +260,15 @@ public class RecipeController {
     @Secured({"ROLE_USER"})
     @PostMapping("/recipe/comments")
     public String addComment(@Valid Comment comment, BindingResult result,  RedirectAttributes redirectAttributes){
+        //Recipe recipe = recipeService.findByCommentId(comment.getId());
+
+        //System.out.println(recipe.getId());
+
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("flash", result);
         } else {
             commmentService.save(comment);
         }
-        return "redirect:/recipe/" + comment.getRecipe().getId();
+        return "redirect:/details/" + comment.getRecipe().getId();
     }
 }

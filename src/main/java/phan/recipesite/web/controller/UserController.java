@@ -82,9 +82,9 @@ public class UserController {
     @RequestMapping(value = "/userprofile", method = RequestMethod.GET)
     public String userProfile(Model model, Authentication authentication) {
 
-        //User user = userService.findByUsername(authentication.getName());
+        User user = userService.findByUsername(authentication.getName());
 
-        //model.addAttribute("user", user);
+        model.addAttribute("user", user);
 
         return "profile";
     }

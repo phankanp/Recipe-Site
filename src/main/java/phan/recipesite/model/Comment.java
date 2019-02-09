@@ -1,17 +1,16 @@
 package phan.recipesite.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import org.springframework.boot.CommandLineRunner;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-@Data
-@RequiredArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
 public class Comment extends BaseEntity {
 
@@ -22,4 +21,11 @@ public class Comment extends BaseEntity {
     @NonNull
     private Recipe recipe;
 
+    @NonNull
+    private String createdBy;
+
+    public Comment(@NonNull String body, Recipe recipe) {
+        this.body = body;
+        this.recipe = recipe;
+    }
 }

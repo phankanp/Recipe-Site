@@ -9,9 +9,10 @@ import javax.persistence.ManyToMany;
 import java.util.Collection;
 
 @Entity
-@Data
+@Getter
+@Setter
 @RequiredArgsConstructor
-@ToString
+
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Role extends BaseEntity {

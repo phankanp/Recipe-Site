@@ -1,19 +1,17 @@
 package phan.recipesite.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@ToString
 public class Ingredient extends BaseEntity {
 
     @NotEmpty(message = "Must enter an ingredient name for every field")
@@ -25,11 +23,15 @@ public class Ingredient extends BaseEntity {
     @NotEmpty(message = "Must enter an ingredient quantity for every field")
     private String quantity;
 
-    public Ingredient(String name, String ingredientCondition, String quantity) {
-        this();
+    @ManyToOne
+    @NonNull
+    private Recipe recipe;
+
+    public Ingredient(String name, String ingredientCondition, String quantity, Recipe recipe) {
         this.name = name;
         this.ingredientCondition = ingredientCondition;
         this.quantity = quantity;
+        this.recipe = recipe;
     }
 
 }

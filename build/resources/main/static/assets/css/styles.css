@@ -1,3 +1,5 @@
+/* Body */
+
 body {
     /*max-width: 800px;*/
     background:whitesmoke;
@@ -7,20 +9,20 @@ body {
     margin: 0 auto;
     font-size: 16px;
     padding-bottom: 80px;
+    counter-reset: tableCount;
 }
 
+/* Jumbotron */
 
 .jumbotron{
-    background-color: deepskyblue !important;
+    background-color: deepskyblue;
     color:#ffffff;
 }
 .jumbotron {
-    padding: 80px;
-    padding-bottom: 40px;
-
+    padding: 80px 80px 40px;
 }
 .jumbotron h2 {
-    color: black !important;
+    color: black;
 }
 .jumbotron a, .jumbotron a:visited {
     color:#ffffff
@@ -77,28 +79,46 @@ select:focus, input:focus, textarea:focus {
     margin-top: 26px;
 }
 
-input, textarea {
-    width: 89%;
-    background-color: white;
-    color: #808080;
-    text-align: center;
-    border-radius: 4px;
-    border: 2px solid #bfbab4;
-    outline: 0;
+ .form-control.add {
+     display: inline;
+    width: 50%;
+    /*background-color: white;*/
+    /*color: #808080;*/
     text-align: left;
-    padding: 10px;
+    /*border-radius: 4px;*/
+    /*border: 2px solid #bfbab4;*/
+    /*outline: 0;*/
+    /*text-align: left;*/
+    /*padding: 10px;*/
+
 }
 
 select {
-    background-color: white;
-    color: #808080;
-    border-radius: 3px;
-    border: 2px solid #bfbab4;
-    outline: 0;
-    height: 41px;
-    width: 100%;
-    text-align: left;
-    padding-left: 10px;
+    /*background-color: white;*/
+    /*color: #808080;*/
+    /*border-radius: 3px;*/
+    /*border: 2px solid #bfbab4;*/
+    /*outline: 0;*/
+    /*height: 41px;*/
+    width: 50%;
+    text-align: center;
+    /*padding-left: 10px;*/
+}
+
+input[type="number"] {
+    text-align: center;
+    width: 25%;
+}
+
+.addRows {
+    width: 50%;
+}
+
+.form-control-file {
+    display: inline-block;
+    width: 50%;
+    align-content: center;
+
 }
 
 button {
@@ -114,14 +134,14 @@ button {
     /*background: #bfbab4;*/
 /*}*/
 
-button.secondary:hover {
-    background: #a8a198;
-}
+/*button.secondary:hover {*/
+    /*background: #a8a198;*/
+/*}*/
 
-button:hover {
-    background: #676767;
-    transition: background ease-in-out 0.3s;
-}
+/*button:hover {*/
+    /*background: #676767;*/
+    /*transition: background ease-in-out 0.3s;*/
+/*}*/
 
 button.nav-link {
     background: none;
@@ -146,6 +166,68 @@ button.nav-link {
 
 .recipes .row:last-child {
     border-radius: 0 0 8px 8px;
+}
+
+.recipe-detail {
+    padding: 60px 0;
+}
+
+.recipe-detail img {
+    width: 100%;
+    /*padding-top: 10px;*/
+}
+
+.recipe-detail .stuff {
+    /*margin-bottom: 20px;*/
+    width: 100%;
+    padding: 3px;
+    color: white;
+    background-color: red;
+}
+
+.recipe-detail .name {
+    position: relative;
+    top: -10px;
+}
+
+.recipe-detail .by {
+    position: relative;
+    top: -10px;
+}
+
+.recipe-detail .info {
+    margin-bottom: 20px;
+    padding: 6px;
+    color: white;
+    background-color: deepskyblue;
+}
+
+.recipe-detail .ingredient-direction h3 {
+    width: 100%;
+    padding: 3px;
+    color: white;
+    background-color: red;
+}
+
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+    color: white;
+    background-color: deepskyblue;
+}
+
+.comment-title h3 {
+    margin: auto auto 10px;
+    width: 50%;
+    padding: 3px;
+    color: white;
+    background-color: red;
+}
+
+
+.test{
+    position: relative;
+    /*width: 550px; !* Could be anything you like. *!*/
 }
 
 .add-row {
@@ -230,7 +312,7 @@ button:hover.favorite-button-index {
     padding: 20px 15px;
     text-align: left;
     color: white;
-    background-color: blue;
+    background-color: deepskyblue;
 }
 
 .box.list.recipes
@@ -274,6 +356,106 @@ button:hover.favorite-button-index {
     float: right;
 }
 
+/* comments */
+.comments .title {
+    border-bottom: 1px dotted #000000;
+    margin-bottom: 20px;
+}
+.addcomment {
+    margin-bottom:20px;
+}
+.comment {
+    margin-top:20px;
+}
+.comment .body {
+    margin: 0 0 5px 0;
+    padding:0px;
+}
 
+.comment-user {
+    font-weight: bold;
+}
 
+.add-recipe .title {
+    padding: 60px 60px 0px;
+    background-color: deepskyblue;
+    color: white;
+    margin-bottom: 30px;
+}
 
+.detail-title .title {
+    padding: 60px 60px 0px;
+    background-color: deepskyblue;
+    color: white;
+    /*margin-bottom: 30px;*/
+}
+
+.login-title, .signup-title .title {
+    padding: 60px 60px 0px;
+    background-color: deepskyblue;
+    color: white;
+    margin-bottom: 60px;
+}
+
+.addNewRecipe {
+    width: 50%;
+    padding: 3px;
+    color: white;
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+#cancelRecipe {
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+#btnSave
+{
+    /*display: inline-block;*/
+    width: 25%;
+    vertical-align: top;
+}
+
+#btnCancel{
+    /*display: inline-block;*/
+    width: 25%;
+    vertical-align: top;
+}
+
+.row-profile {
+    width: 50%;
+    padding: 2px;
+    color: white;
+    background-color: red;
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.signin, .signuptest{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.signin .checkbox {
+    font-weight: 200;
+}
+
+.form-check-input {
+    position: relative;
+}
+
+.form-check-label  {
+    position: relative;
+}
+
+.mb-4 {
+    position: relative;
+    bottom: -15px;
+}

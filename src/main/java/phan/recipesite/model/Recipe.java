@@ -1,9 +1,6 @@
 package phan.recipesite.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Type;
 import phan.recipesite.core.BaseEntity;
 
@@ -17,10 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@ToString
 public class Recipe extends BaseEntity {
     @Lob
     @Type(type = "org.hibernate.type.ImageType")
@@ -30,6 +27,7 @@ public class Recipe extends BaseEntity {
     private String name;
 
     @NotEmpty(message = "Must enter a recipe description")
+    @Column(length = 1024)
     private String description;
 
     @Min(value = 1, message = "Preptime must be greater than or equal to 1")
@@ -47,13 +45,11 @@ public class Recipe extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "recipe_id")
+    @OneToMany(mappedBy = "recipe")
     @Valid
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "recipe_id")
+    @OneToMany(mappedBy = "recipe")
     @Valid
     private List<Step> steps = new ArrayList<>();
 
@@ -61,6 +57,9 @@ public class Recipe extends BaseEntity {
     private List<Vote> votes = new ArrayList<>();
 
     private int voteCount = 0;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -74,6 +73,7 @@ public class Recipe extends BaseEntity {
         this.description = builder.description;
         this.prepTime = builder.prepTime;
         this.cookTime = builder.cookTime;
+        this.comments = builder.comments;
         if (builder.ingredients != null) {
             this.ingredients = builder.ingredients;
         }
@@ -83,16 +83,25 @@ public class Recipe extends BaseEntity {
     }
 
     public Recipe(byte[] image, String name, String description, int prepTime, int cookTime,
-                  @NotNull(message = "please select a category") Category category, @Valid List<Ingredient>
-                          ingredients, @Valid List<Step> steps) {
+                  @NotNull(message = "please select a category") Category category) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.prepTime = prepTime;
         this.cookTime = cookTime;
         this.category = category;
-        this.ingredients = ingredients;
-        this.steps = steps;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public void addStep(Step step) {
+        steps.add(step);
+    }
+
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
     }
 
     public List<String> getUserFavorites() {
@@ -117,12 +126,18 @@ public class Recipe extends BaseEntity {
         private String description;
         private int prepTime;
         private int cookTime;
+        private List<Comment> comments;
         private List<Ingredient> ingredients;
         private List<Step> steps;
 
         public RecipeBuilder(String name, Category category) {
             this.name = name;
             this.category = category;
+        }
+
+        public RecipeBuilder withComments(List<Comment> comments) {
+            this.comments = comments;
+            return this;
         }
 
         public RecipeBuilder withUser(User user) {

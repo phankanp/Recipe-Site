@@ -103,4 +103,6 @@ public class RecipeService {
     public List<Recipe> findByDescriptionOrIngredients(String search) {
         return recipeRepository.findByDescriptionContainingOrIngredientsNameIgnoreCase(search, search);
     }
+
+    //public Recipe findByCommentId(Long id) {return recipeRepository.findRecipeByCommentsId(id);}
 }
