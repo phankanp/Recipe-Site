@@ -143,10 +143,16 @@ button {
     /*transition: background ease-in-out 0.3s;*/
 /*}*/
 
+nav .nav-item {
+    padding-right:10px;
+}
+
 button.nav-link {
     background: none;
     border:none;
     cursor: pointer;
+    float: left;
+    width: 100%;
 }
 
 .recipes {
@@ -333,26 +339,26 @@ button:hover.favorite-button-index {
 }
 
 .upvote {
-    vertical-align: top;
-    padding-right: 33px;
-    position: relative;
-    top: -30px;
+    /*vertical-align: top;*/
+    /*padding-right: 33px;*/
+    /*position: relative;*/
+    /*top: -30px;*/
     float: right;
 }
 
 .downvote {
-    vertical-align: bottom;
-    padding-right: 33px;
-    position: relative;
-    top: -66px;
+    /*vertical-align: bottom;*/
+    /*padding-right: 33px;*/
+    /*position: relative;*/
+    /*top: -66px;*/
     float: right;
 }
 
 .votecount {
-    vertical-align: middle;
-    padding-right: 35px;
-    position: relative;
-    top: -40px;
+    /*vertical-align: middle;*/
+    /*padding-right: 35px;*/
+    /*position: relative;*/
+    /*top: -40px;*/
     float: right;
 }
 
@@ -459,3 +465,12 @@ button:hover.favorite-button-index {
     position: relative;
     bottom: -15px;
 }
+
+/*.form-control-file {*/
+    /*display: inline;*/
+    /*position: relative;*/
+    /*left: 40px;*/
+    /*!* content: close-quote; *!*/
+    /*width: 50%;*/
+    /*align-items: center;*/
+/*}*/

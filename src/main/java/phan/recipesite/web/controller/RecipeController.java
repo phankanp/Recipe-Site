@@ -1,7 +1,9 @@
 package phan.recipesite.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import phan.recipesite.model.*;
 import phan.recipesite.service.*;
+import phan.recipesite.util.CustomErrorType;
 import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -139,6 +142,7 @@ public class RecipeController {
     public String addRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
                             RedirectAttributes redirectAttributes, Authentication authentication) {
 
+
         if (result.hasErrors()) {
             List<FieldError> errors = result.getFieldErrors();
             List<String> messages = new ArrayList<>();
@@ -214,20 +218,26 @@ public class RecipeController {
         return "redirect:/details/" + recipe.getId();
     }
 
-    // Delete an existing recipe
+    // Delete a recipe
     @RequestMapping(value = "/recipes/{id}/delete", method = RequestMethod.POST)
-    @PreAuthorize("isAuthenticated() and hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
-    public String deleteRecipe(@PathVariable Long id, @Valid User user, BindingResult result, RedirectAttributes
-            redirectAttributes, Authentication authentication, HttpServletRequest request) {
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    public ResponseEntity<?> deleteRecipe(@PathVariable("id") Long id, Authentication authentication) {
+        User currentUser = userService.findByUsername(authentication.getName());
+        User recipeUser = recipeService.findById(id).getUser();
 
-        Recipe recipe = recipeService.findById(id);
+        List<String> roles = new ArrayList<>();
 
-        recipeService.delete(recipe);
+        for (Role role : currentUser.getRoles()) {
+            roles.add(role.getName());
+        }
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully delete recipe!", FlashMessage
-                .Status.SUCCESS));
-
-        return "redirect:/";
+        if (currentUser == recipeUser || roles.contains("ROLE_ADMIN")) {
+            recipeService.delete(recipeService.findById(id));
+            return new ResponseEntity<>("Recipe has been deleted!", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new CustomErrorType("You can only delete recipes which you created"),
+                    HttpStatus.FORBIDDEN);
+        }
     }
 
     // Search for recipes by description or ingredients
@@ -257,18 +267,21 @@ public class RecipeController {
         return "index";
     }
 
-    @Secured({"ROLE_USER"})
-    @PostMapping("/recipe/comments")
-    public String addComment(@Valid Comment comment, BindingResult result,  RedirectAttributes redirectAttributes){
-        //Recipe recipe = recipeService.findByCommentId(comment.getId());
+    @RequestMapping(value = "/recipe/comments", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    public ResponseEntity<?> addComment(@RequestBody Comment comment, @RequestParam(value = "recipe_id") long recipeID, BindingResult result, RedirectAttributes redirectAttributes, Authentication
+            authentication){
 
-        //System.out.println(recipe.getId());
+       Recipe recipe = recipeService.findById(recipeID);
 
-        if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("flash", result);
-        } else {
-            commmentService.save(comment);
-        }
-        return "redirect:/details/" + comment.getRecipe().getId();
+        String commentCreator = authentication.getName();
+
+        Comment newComment = (commmentService.save(comment, recipe, commentCreator));
+
+        Map<String, String> map = new HashMap<>();
+        map.put("commentBody", newComment.getBody());
+        map.put("createdBy", newComment.getCreatedBy());
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

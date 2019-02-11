@@ -3,9 +3,7 @@ package phan.recipesite.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import phan.recipesite.model.Category;
-import phan.recipesite.model.Recipe;
-import phan.recipesite.model.User;
+import phan.recipesite.model.*;
 import phan.recipesite.repository.RecipeRepository;
 import phan.recipesite.repository.UserRepository;
 
@@ -33,6 +31,9 @@ public class RecipeService {
 
     @Autowired
     StepService stepService;
+
+    @Autowired
+    CommentService commentService;
 
 
     public List<Recipe> findAll() {
@@ -74,13 +75,38 @@ public class RecipeService {
             recipe.setImage(image);
         }
 
-        recipe.getIngredients().forEach(ingredient -> ingredientService.save(ingredient));
-        recipe.getSteps().forEach(step -> stepService.save(step));
         recipe.setUser(user);
-
-        userService.save(user);
-
         recipeRepository.save(recipe);
+
+//        for (Ingredient ingredient : recipe.getIngredients()) {
+//            Ingredient ingredient1 = new Ingredient(ingredient.getName(), ingredient.getIngredientCondition(), ingredient.getQuantity(), recipe);
+////            ingredient.setRecipe(recipe);
+//            ingredientService.save(ingredient1);
+//            recipe.addIngredient(ingredient);
+//        }
+
+        for(Step step : recipe.getSteps()) {
+            step.setRecipe(recipe);
+//            stepService.save(step);
+//            recipe.addStep(step);
+        }
+//
+        recipe.getIngredients().forEach(ingredient ->
+            ingredient.setRecipe(recipe));
+
+        recipe.getIngredients().forEach(ingredient ->
+            ingredientService.save(ingredient));
+
+//
+//        recipe.getSteps().forEach(step -> {
+//            stepService.save(step);
+//            recipe.addStep(step);
+//        });
+
+//
+//        userService.save(user);
+
+
     }
 
 
@@ -91,12 +117,21 @@ public class RecipeService {
 
     public void delete(Recipe recipe) {
         List<User> users = userService.findByFavoritesId(recipe.getId());
+        List<Comment> comments = recipe.getComments();
+        List<Ingredient> ingredients = recipe.getIngredients();
+        List<Step> steps = recipe.getSteps();
+
+        System.out.println(comments.size());
+
+        comments.forEach(comment -> commentService.delete(comment));
+        ingredients.forEach(ingredient -> ingredientService.delete(ingredient));
+        steps.forEach(step -> stepService.delete(step));
 
         users.forEach(user -> userService.toggleFavorite(recipe.getUser(), recipe));
 
         users.forEach(userService::save);
 
-        recipeRepository.save(recipe);
+        //recipeRepository.save(recipe);
         recipeRepository.delete(recipe);
     }
 

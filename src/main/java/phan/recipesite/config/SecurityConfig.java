@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .and()
-                .rememberMe()
+                .rememberMe().key("secretKey").tokenValiditySeconds(86400)
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()

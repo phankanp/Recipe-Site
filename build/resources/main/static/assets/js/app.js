@@ -2,15 +2,16 @@ $('#add-ingredient').click(function () {
     let ingredientCount = $('.ingredient-row').length;
     let ingredientRow = '<div class="ingredient-row">' +
         '<div >' +
-        '<hr class="addRows">' +
-        '<p> <input placeholder="Ingredient Name" type="text" id="ingredients' + ingredientCount + '.item" name="ingredients[' + ingredientCount + '].name" />' +
+        '<p> <input class="form-control add" placeholder="Ingredient Name" type="text" id="ingredients' + ingredientCount + '.item" name="ingredients[' + ingredientCount + '].name" />' +
         '</p> </div>' +
         '<div>' +
-        '<p> <input placeholder="Ingredient Condition" type="text" id="ingredients' + ingredientCount + '.ingredientCondition" name="ingredients[' + ingredientCount + '].ingredientCondition" />' +
+        '<p> <input class="form-control add" placeholder="Ingredient Condition" type="text" id="ingredients' + ingredientCount + '.ingredientCondition" name="ingredients[' + ingredientCount + '].ingredientCondition" />' +
         '</p> </div>' +
         '<div">' +
-        '<p> <input placeholder="Ingredient Quantity" type="text" id="ingredients' + ingredientCount + '.quantity" name="ingredients[' + ingredientCount + '].quantity" />' +
-        '</p> </div>' +
+        '<p> <input class="form-control add" placeholder="Ingredient Quantity" type="text" id="ingredients' + ingredientCount + '.quantity" name="ingredients[' + ingredientCount + '].quantity" />' +
+        '</p>' +
+        '<hr class="addRows">' +
+        '</div>' +
         '</div>';
     $("#add-ingredient-row").before(ingredientRow);
 });
@@ -21,7 +22,7 @@ $('#add-step').click(function () {
         '<div>' +
         '<hr class="addRows">' +
         '<p>' +
-        '<input placeholder="Step Description" type="text" id="steps' + stepCount + '.stepName" name="steps[' + stepCount + '].name" />' +
+        '<input class="form-control add" placeholder="Step Description" type="text" id="steps' + stepCount + '.stepName" name="steps[' + stepCount + '].name" />' +
         '</p>' +
         '</div>' +
         '</div>'
@@ -91,6 +92,21 @@ $('.downvote').click(function(e) {
     })
 })
 
+$('.delete-button').click(function(e) {
+    const recipeId = $(this).attr("data-id")
+    const button = $(this)
+
+    e.preventDefault();
+
+    $.post(`http://localhost:8080/recipes/${recipeId}/delete`, function (data) {
+        console.log(this)
+        $(button).closest('.box').remove();
+    })
+    .fail(function (e) {
+        window.location.href = '/403';
+    })
+})
+
 let max = 50;
 let tot, str;
 $('.test').each(function() {
@@ -101,3 +117,56 @@ $('.test').each(function() {
         : str.substring(0,(max + 1))+"...";
     $(this).html(str);
 });
+
+
+$(document).ready(function () {
+    $('#addComment').click(function (e) {
+        e.preventDefault()
+        ajaxComment()
+    })
+
+    function ajaxComment() {
+        let formData = {
+            body: $('#comment').val(),
+            recipe_id: $("#modelAttr").val()
+        }
+        let id = $("#modelAttr").val()
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            contentType : "application/json",
+            url : `http://localhost:8080/recipe/comments` + '?' + 'recipe_id=' + id,
+            data : JSON.stringify(formData),
+            dataType : 'json',
+            success : function(data) {
+                let commentadd = `<div class="row comment"><div class="col-12"><span class="comment-user">${data.createdBy} says:</span><p class="body">${data.commentBody}</p><hr></div></div>`;
+
+                $(".comments").append(commentadd)
+            }
+        })
+
+        resetData()
+    }
+
+    function resetData() {
+        $('#comment').val("")
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

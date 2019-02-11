@@ -8,7 +8,6 @@
 
 <section>
 
-
     <div class="add-recipe">
 
         <div class="title">
@@ -19,6 +18,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div th:if="${flash != null}" class="container">
+            <hr class="addRows">
+            <div th:each="fl : ${flash}">
+                <div th:text="${fl}" class="flash"></div>
+            </div>
+            <hr class="addRows">
         </div>
         <div class="form-content">
             <div class="container">
@@ -31,6 +37,8 @@
                                 <p>
                                     <img th:if="${recipe.image}" th:src="@{|/recipes/image/${recipe.id}|}" height="256"
                                          width="256"/>
+                                </p>
+                                <p>
                                     <input type="file" name="imageFile" class="form-control-file"/>
                                 </p>
                             </div>
@@ -61,14 +69,14 @@
                                 </p>
                             </div>
                             <div class="form-group">
-                                <label class="addNewRecipe">Prep Time</label>
+                                <label class="addNewRecipe">Prep Time(mins)</label>
                                 <p>
                                     <input class="form-control add" type="number" th:field="*{prepTime}"/>
                                 </p>
 
                             </div>
                             <div class="form-group">
-                                <label class="addNewRecipe">Cook Time</label>
+                                <label class="addNewRecipe">Cook Time(mins)</label>
                                 <p>
                                     <input  class="form-control add" type="number" th:field="*{cookTime}"/>
                                 </p>
@@ -80,9 +88,9 @@
                                            th:value="${ingredient.id}"/>
                                     <div>
                                         <p>
-                                            <input class="form-control add" placeholder="Ingredient Name" type="text"
-                                                   th:field="*{ingredients[__${stat.index}__].name}"
-                                                   th:value="${ingredient.name}"/>
+                                            <input class="form-control add" placeholder="Ingredient Quantity" type="text"
+                                                   th:field="*{ingredients[__${stat.index}__].quantity}"
+                                                   th:value="${ingredient.quantity}"/>
                                         </p>
                                         <p>
                                             <input  class="form-control add" placeholder="Ingredient Condition" type="text"
@@ -90,10 +98,12 @@
                                                    th:value="${ingredient.ingredientCondition}"/>
                                         </p>
                                         <p>
-                                            <input class="form-control add" placeholder="Ingredient Quantity" type="text"
-                                                   th:field="*{ingredients[__${stat.index}__].quantity}"
-                                                   th:value="${ingredient.quantity}"/>
+
+                                            <input class="form-control add" placeholder="Ingredient Name" type="text"
+                                                   th:field="*{ingredients[__${stat.index}__].name}"
+                                                   th:value="${ingredient.name}"/>
                                         </p>
+                                        <hr class="addRows">
                                     </div>
                                 </div>
                                 <div id="add-ingredient-row">

@@ -45,6 +45,7 @@ public class Recipe extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+
     @OneToMany(mappedBy = "recipe")
     @Valid
     private List<Ingredient> ingredients = new ArrayList<>();

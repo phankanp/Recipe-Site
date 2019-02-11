@@ -317,14 +317,6 @@ public class DatabaseLoader implements ApplicationRunner {
 
         userDao.save(testUser2);
 
-
-
-
-
-
-
-
-
     }
 
     private void addUserToComment(User testUser1, User testUser2, Recipe brownies, Comment[] pastaComments) {

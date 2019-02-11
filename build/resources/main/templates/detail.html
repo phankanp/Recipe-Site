@@ -100,7 +100,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- link comments -->
                         <div id="comments" class="comments">
                             <div class="row header">
                                 <div class="col-12 comment-title">
@@ -114,17 +113,15 @@
                                 <div class="col-12">
                                     <form id="frmAddComment" method="POST" th:action="@{/recipe/comments}"
                                           th:object="${comment}">
-                                        <input type="hidden" th:field="*{recipe}"/>
+                                        <input type="hidden" id="modelAttr" th:field="*{recipe}"/>
                                         <div class="form-group">
-                                            <textarea class="form-control" id="comment" rows="3"
-                                                      th:field="*{body}"></textarea>
+                                            <textarea class="form-control"  id="comment" rows="3" th:field="*{body}"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                                        <button type="submit" id="addComment" class="btn btn-primary">Add Comment</button>
                                         <hr>
                                     </form>
                                 </div>
                             </div>
-                            <!-- single comment -->
                             <div class="row comment" th:each="comment : ${recipe.getComments()}">
                                 <div class="col-12">
                                     <span class="comment-user" th:text="${comment.getCreatedBy()} + ' ' + 'says:'"><i
@@ -142,7 +139,7 @@
                 <!-- recipes -->
             </div> <!-- grid-100 -->
         </div> <!-- grid-container -->
-
+    </div>
 </section>
 <div th:replace="layout :: scripts"></div>
 </body>

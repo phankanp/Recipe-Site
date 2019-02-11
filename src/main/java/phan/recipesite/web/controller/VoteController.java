@@ -3,9 +3,8 @@ package phan.recipesite.web.controller;
 import jdk.internal.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.Vote;
 import phan.recipesite.service.RecipeService;
@@ -23,8 +22,8 @@ public class VoteController {
         this.recipeService = recipeService;
     }
 
-    @Secured({"ROLE_USER"})
-    @GetMapping("/vote/recipe/{recipeId}/direction/{direction}/votecount/{voteCount}")
+    @RequestMapping(value = "/vote/recipe/{recipeId}/direction/{direction}/votecount/{voteCount}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public int vote(@PathVariable Long recipeId, @PathVariable short direction, @PathVariable int voteCount) {
         Recipe recipe = recipeService.findById(recipeId);
 
@@ -37,7 +36,6 @@ public class VoteController {
             recipeService.save(recipe);
             return updatedVoteCount;
         }
-
         return voteCount;
     }
 }
