@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")
-                .failureHandler(loginFailureHandler())
+//                .failureHandler(loginFailureHandler())
                 .and()
                 .logout()
                 .and()
@@ -64,13 +64,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
-    // Redirects back to login if authentication fails
-    private AuthenticationFailureHandler loginFailureHandler() {
-        return ((request, response, exception) -> {
-            request.getSession().setAttribute("flash", new FlashMessage("Incorrect username and/or password. " +
-                    "Please try again.", FlashMessage.Status.FAILURE));
-            response.sendRedirect("/login");
-        });
-    }
+//    // Redirects back to login if authentication fails
+//    private AuthenticationFailureHandler loginFailureHandler() {
+//        return ((request, response, exception) -> {
+//            request.getSession().setAttribute("flash", new FlashMessage("Incorrect username and/or password. " +
+//                    "Please try again.", FlashMessage.Status.FAILURE));
+//            response.sendRedirect("/login");
+//        });
+//    }
 
 }

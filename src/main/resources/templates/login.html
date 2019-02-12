@@ -24,6 +24,9 @@
     <div th:replace="layout :: flash"></div>
     </p>
 
+    <p th:text="${error}">Error</p>
+    <p th:text="${logout}">Logout</p>
+
     <form class="signin" th:object="${user}" th:action="@{/login}" method="post" enctype="form-data">
         <input type="hidden" th:field="*{id}"/>
         <div class="text-center mb-4">

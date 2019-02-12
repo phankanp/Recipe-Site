@@ -82,7 +82,7 @@
         <div class="form-group">
         <p>
             <input class="form-control" id="confirm-password" type="password" th:field="*{passwordConfirm}"
-                   placeholder="Password again"/>
+                   placeholder="Confirm Password"/>
         <div class="error-message" th:if="${#fields.hasErrors('passwordConfirm')}"
              th:errors="*{passwordConfirm}">Name error
         </div>

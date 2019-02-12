@@ -65,16 +65,16 @@ public class UserController {
 
     // Login form
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String loginForm(Model model, HttpServletRequest request) {
+    public String loginForm(Model model, String error, String logout) {
         model.addAttribute("user", new User());
-        try {
-            Object flash = request.getSession().getAttribute("flash");
-            model.addAttribute("flash", flash);
 
-            request.getSession().removeAttribute("flash");
-        } catch (Exception ex) {
-            // "flash" session attribute must not exist. Do nothing and proceed normally
+        if (error != null) {
+            model.addAttribute("error", "Your username or password is invalid.");
         }
+
+        if (logout != null)
+            model.addAttribute("logout", "You have been logged out successfully.");
+
         return "login";
     }
 
