@@ -466,11 +466,8 @@ button:hover.favorite-button-index {
     bottom: -15px;
 }
 
-/*.form-control-file {*/
-    /*display: inline;*/
-    /*position: relative;*/
-    /*left: 40px;*/
-    /*!* content: close-quote; *!*/
-    /*width: 50%;*/
-    /*align-items: center;*/
-/*}*/
+.form-control-file {
+    display: inline-block;
+    width: 20%;
+
+}

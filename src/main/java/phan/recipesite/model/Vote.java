@@ -10,13 +10,17 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Vote extends BaseEntity {
-    @NonNull
+
     private short direction;
 
     @NonNull
     @ManyToOne
     private Recipe recipe;
 
+    public Vote(short direction, @NonNull Recipe recipe) {
+        this.direction = direction;
+        this.recipe = recipe;
+    }
 }

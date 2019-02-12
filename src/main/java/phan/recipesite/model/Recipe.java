@@ -30,10 +30,10 @@ public class Recipe extends BaseEntity {
     @Column(length = 1024)
     private String description;
 
-    @Min(value = 1, message = "Preptime must be greater than or equal to 1")
+    @Min(value = 1, message = "Prep time must be greater than or equal to 1")
     private int prepTime;
 
-    @Min(value = 1, message = " Preptime must be greater than or equal to 1")
+    @Min(value = 1, message = "Cook time must be greater than or equal to 1")
     private int cookTime;
 
     private String favoritedRecipe;
@@ -44,7 +44,6 @@ public class Recipe extends BaseEntity {
     @NotNull(message = "please select a category")
     @Enumerated(EnumType.STRING)
     private Category category;
-
 
     @OneToMany(mappedBy = "recipe")
     @Valid
@@ -65,23 +64,6 @@ public class Recipe extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Recipe(RecipeBuilder builder) {
-        this.name = builder.name;
-        this.category = builder.category;
-        this.user = builder.user;
-        this.image = builder.image;
-        this.description = builder.description;
-        this.prepTime = builder.prepTime;
-        this.cookTime = builder.cookTime;
-        this.comments = builder.comments;
-        if (builder.ingredients != null) {
-            this.ingredients = builder.ingredients;
-        }
-        if (builder.steps != null) {
-            this.steps = builder.steps;
-        }
-    }
 
     public Recipe(byte[] image, String name, String description, int prepTime, int cookTime,
                   @NotNull(message = "please select a category") Category category) {
@@ -117,67 +99,5 @@ public class Recipe extends BaseEntity {
             userFavorites = new ArrayList<>(map.values());
         }
         return userFavorites;
-    }
-
-    public static class RecipeBuilder {
-        private String name;
-        private Category category;
-        private User user;
-        private byte[] image;
-        private String description;
-        private int prepTime;
-        private int cookTime;
-        private List<Comment> comments;
-        private List<Ingredient> ingredients;
-        private List<Step> steps;
-
-        public RecipeBuilder(String name, Category category) {
-            this.name = name;
-            this.category = category;
-        }
-
-        public RecipeBuilder withComments(List<Comment> comments) {
-            this.comments = comments;
-            return this;
-        }
-
-        public RecipeBuilder withUser(User user) {
-            this.user = user;
-            return this;
-        }
-
-        public RecipeBuilder withImage(byte[] image) {
-            this.image = image;
-            return this;
-        }
-
-        public RecipeBuilder withDescription(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public RecipeBuilder withPrepTime(int prepTime) {
-            this.prepTime = prepTime;
-            return this;
-        }
-
-        public RecipeBuilder withCookTime(int cookTime) {
-            this.cookTime = cookTime;
-            return this;
-        }
-
-        public RecipeBuilder withIngredients(List<Ingredient> ingredients) {
-            this.ingredients = ingredients;
-            return this;
-        }
-
-        public RecipeBuilder withSteps(List<Step> steps) {
-            this.steps = steps;
-            return this;
-        }
-
-        public Recipe build() {
-            return new Recipe(this);
-        }
     }
 }

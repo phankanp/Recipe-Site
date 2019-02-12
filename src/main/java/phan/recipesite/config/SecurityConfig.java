@@ -10,8 +10,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import phan.recipesite.service.UserDetailsServiceImpl;
+import phan.recipesite.web.FlashMessage;
 
 
 @Configuration
@@ -44,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")
+                .failureHandler(loginFailureHandler())
                 .and()
                 .logout()
                 .and()
@@ -51,12 +55,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .headers().frameOptions().disable();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
+    }
+
+    // Redirects back to login if authentication fails
+    private AuthenticationFailureHandler loginFailureHandler() {
+        return ((request, response, exception) -> {
+            request.getSession().setAttribute("flash", new FlashMessage("Incorrect username and/or password. " +
+                    "Please try again.", FlashMessage.Status.FAILURE));
+            response.sendRedirect("/login");
+        });
     }
 
 }

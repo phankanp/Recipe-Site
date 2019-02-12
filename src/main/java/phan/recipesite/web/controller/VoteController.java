@@ -23,7 +23,6 @@ public class VoteController {
     }
 
     @RequestMapping(value = "/vote/recipe/{recipeId}/direction/{direction}/votecount/{voteCount}", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public int vote(@PathVariable Long recipeId, @PathVariable short direction, @PathVariable int voteCount) {
         Recipe recipe = recipeService.findById(recipeId);
 

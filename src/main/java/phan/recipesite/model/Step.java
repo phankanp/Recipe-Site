@@ -21,7 +21,6 @@ public class Step extends BaseEntity {
     @NonNull
     private Recipe recipe;
 
-
     public Step(String name, Recipe recipe) {
         this.name = name;
         this.recipe = recipe;

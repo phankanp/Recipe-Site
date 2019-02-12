@@ -33,5 +33,4 @@ public class Ingredient extends BaseEntity {
         this.quantity = quantity;
         this.recipe = recipe;
     }
-
 }

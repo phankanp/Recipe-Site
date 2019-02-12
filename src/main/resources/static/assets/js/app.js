@@ -42,23 +42,28 @@ $('#search').on('keydown', function (e) {
     }
 });
 
-let id = "";
+$(document).ready(function () {
+    let recipeId = "";
 
-$('.favorite-button-index').each(function () {
-    $(this).click(function () {
-        id = $(this).attr('id');
+    $('.favorite-button-index').each(function () {
+        $(this).click(function () {
+            recipeId = $(this).attr('id');
+        });
     });
-});
 
+    $(".favorite").on("submit", function (e) {
+        e.preventDefault();
 
-$(".favorite").on("submit", function (e) {
+        recipeUrlId = recipeId.substring(21)
 
-    e.preventDefault();
-
-    $.post(this.action, function (data) {
-        let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
-        $('#' + id + '>img').attr('src', imageUrl);
-    });
+        $.post(`/recipes/${recipeUrlId}/favorite`, function (data) {
+                let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+                $('#' + recipeId + '>img').attr('src', imageUrl);
+            })
+            .fail(function (request) {
+                window.location.href = '/login';
+            })
+    })
 })
 
 $(".favorite-detail").on("submit", function (e) {
@@ -68,11 +73,12 @@ $(".favorite-detail").on("submit", function (e) {
     $.post(this.action, function (data) {
         let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
         $('#favorite-button-detail>img').attr('src', imageUrl);
-    });
+    })
+
 })
 
 
-$('.upvote').click(function(e) {
+$('.upvote').click(function (e) {
     const direction = 1;
     const recipeId = $(this).attr("data-id")
     const voteSum = $("#votecount-" + recipeId).html()
@@ -82,7 +88,7 @@ $('.upvote').click(function(e) {
     })
 })
 
-$('.downvote').click(function(e) {
+$('.downvote').click(function (e) {
     const direction = -1;
     const recipeId = $(this).attr("data-id")
     const voteSum = $("#votecount-" + recipeId).html()
@@ -92,29 +98,14 @@ $('.downvote').click(function(e) {
     })
 })
 
-$('.delete-button').click(function(e) {
-    const recipeId = $(this).attr("data-id")
-    const button = $(this)
-
-    e.preventDefault();
-
-    $.post(`http://localhost:8080/recipes/${recipeId}/delete`, function (data) {
-        console.log(this)
-        $(button).closest('.box').remove();
-    })
-    .fail(function (e) {
-        window.location.href = '/403';
-    })
-})
-
 let max = 50;
 let tot, str;
-$('.test').each(function() {
+$('.test').each(function () {
     str = String($(this).html());
     tot = str.length;
     str = (tot <= max)
         ? str
-        : str.substring(0,(max + 1))+"...";
+        : str.substring(0, (max + 1)) + "...";
     $(this).html(str);
 });
 
@@ -134,27 +125,55 @@ $(document).ready(function () {
         console.log(formData)
         $.ajax({
             type: "POST",
-            contentType : "application/json",
-            url : `http://localhost:8080/recipe/comments` + '?' + 'recipe_id=' + id,
-            data : JSON.stringify(formData),
-            dataType : 'json',
-            success : function(data) {
+            contentType: "application/json",
+            url: `http://localhost:8080/recipe/comments` + '?' + 'recipe_id=' + id,
+            data: JSON.stringify(formData),
+            dataType: 'json',
+            success: function (data) {
                 let commentadd = `<div class="row comment"><div class="col-12"><span class="comment-user">${data.createdBy} says:</span><p class="body">${data.commentBody}</p><hr></div></div>`;
 
                 $(".comments").append(commentadd)
-            }
+            },
+            error: (function (request) {
+                window.location.href = '/login';
+            })
         })
-
         resetData()
     }
-
     function resetData() {
         $('#comment').val("")
     }
 })
 
 
+$(document).ready(function () {
+    $('.delete-button').click(function (e) {
+        let recipeId = $(this).attr("data-id")
+        let button = $(this)
 
+        e.preventDefault();
+        ajaxdelete(recipeId, button)
+    })
+
+    function ajaxdelete(recipeId, button) {
+        $.ajax({
+            type: "DELETE",
+            url: `http://localhost:8080/recipes/${recipeId}`,
+            success: function (data) {
+                $(button).closest('.box').remove();
+            },
+            error: (function (request) {
+                console.log(request.getResponseHeader("error"))
+
+                if (request.getResponseHeader("error") === null) {
+                    window.location.href = '/login';
+                } else {
+                    window.location.href = '/403';
+                }
+            })
+        })
+    }
+})
 
 
 

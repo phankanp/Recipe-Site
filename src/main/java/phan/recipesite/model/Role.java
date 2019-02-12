@@ -11,8 +11,6 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
-
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Role extends BaseEntity {
@@ -22,4 +20,8 @@ public class Role extends BaseEntity {
 
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
+
+    public Role(@NonNull String name) {
+        this.name = name;
+    }
 }

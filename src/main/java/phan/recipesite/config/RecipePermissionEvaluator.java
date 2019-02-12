@@ -25,34 +25,37 @@ public class RecipePermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-        String desiredRoleName = (String) permission;
-
-        if (authentication.isAuthenticated()) {
-
-            for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
-
-                if (StringUtils.equalsIgnoreCase(grantedAuthority.getAuthority(), desiredRoleName)) {
-
-                    return true;
-
-                }
-            }
-        }
-
-//        if (desiredRoleName.equals("ROLE_ADMIN")) {
-//            return true;
-//        }
-
-        User user = userService.findByUsername(authentication.getName());
-
-        Recipe recipe = (Recipe) targetDomainObject;
-
-        return recipe.getUser() != null && recipe.getUser().equals(user);
+//        String desiredRoleName = (String)
+// permission;
+////
+////        if (authentication.isAuthenticated()) {
+////
+////            for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
+////
+////                if (StringUtils.equalsIgnoreCase(grantedAuthority.getAuthority(), desiredRoleName)) {
+////
+////                    return true;
+////
+////                }
+////            }
+////        }
+////
+////        User user = userService.findByUsername(authentication.getName());
+////
+////        Recipe recipe = (Recipe) targetDomainObject;
+////
+////        return recipe.getUser() != null && recipe.getUser().equals(user);
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object
             permission) {
+
+        if ((authentication == null) || (targetType == null) || !(permission instanceof String)) {
+            return false;
+        }
+
         String desiredRoleName = (String) permission;
 
         if (authentication.isAuthenticated()) {
@@ -66,10 +69,6 @@ public class RecipePermissionEvaluator implements PermissionEvaluator {
                 }
             }
         }
-
-//        if (desiredRoleName.equals("ROLE_ADMIN")) {
-//            return true;
-//        }
 
         User user = userService.findByUsername(authentication.getName());
 

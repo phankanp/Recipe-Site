@@ -21,6 +21,7 @@ import phan.recipesite.web.FlashMessage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -59,9 +60,18 @@ public class RecipeController {
 
     // Favorite/Unfavorite existing recipes
     @PostMapping("/recipes/{id}/favorite")
-    @ResponseBody
-    public Map<String, Object> favoriteRecipe(@PathVariable("id") Long id, Authentication authentication) {
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    public ResponseEntity<?> favoriteRecipe(@PathVariable("id") Long id, Authentication authentication) {
         User user = userService.findByUsername(authentication.getName());
+
+        System.out.println(user);
+
+        if (user == null) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .header("error", "/login")
+                    .body("Custom login header set");
+        }
 
         Recipe recipe = recipeService.findById(id);
         userService.toggleFavorite(user, recipe);
@@ -73,7 +83,7 @@ public class RecipeController {
         System.out.println(resultJson.toString());
         resultJson.put("favorited", hasFavorite);
 
-        return resultJson;
+        return new ResponseEntity<>(resultJson, HttpStatus.OK);
     }
 
     // Sort recipes by category
@@ -142,7 +152,6 @@ public class RecipeController {
     public String addRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
                             RedirectAttributes redirectAttributes, Authentication authentication) {
 
-
         if (result.hasErrors()) {
             List<FieldError> errors = result.getFieldErrors();
             List<String> messages = new ArrayList<>();
@@ -160,17 +169,16 @@ public class RecipeController {
 
         recipeService.save(recipe, user, imageFile);
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
-                .Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!",
+                FlashMessage.Status.SUCCESS));
 
         return "redirect:/details/" + recipe.getId();
     }
 
     // Edit recipe form with existing recipe details
     @RequestMapping(value = "/recipes/{id}/edit", method = RequestMethod.GET)
-    @PreAuthorize("isAuthenticated() and hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
-    public String editRecipeForm(@PathVariable Long id, Model model, RedirectAttributes
-            redirectAttributes, Authentication authentication, HttpServletRequest request) {
+    @PreAuthorize("hasPermission(#id, 'Recipe', 'ROLE_ADMIN')")
+    public String editRecipeForm(@PathVariable Long id, Model model) {
 
         Recipe recipe = recipeService.findById(id);
 
@@ -190,7 +198,6 @@ public class RecipeController {
 
     // Edit an existing recipe
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.POST)
-    @PreAuthorize("isAuthenticated() and hasPermission(#recipe, 'ROLE_USER')")
     public String editRecipe(@Valid Recipe recipe, BindingResult result, @PathVariable Long id, @RequestParam
             MultipartFile imageFile,
                              RedirectAttributes redirectAttributes, Authentication authentication) {
@@ -219,8 +226,7 @@ public class RecipeController {
     }
 
     // Delete a recipe
-    @RequestMapping(value = "/recipes/{id}/delete", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @RequestMapping(value = "/recipes/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteRecipe(@PathVariable("id") Long id, Authentication authentication) {
         User currentUser = userService.findByUsername(authentication.getName());
         User recipeUser = recipeService.findById(id).getUser();
@@ -235,8 +241,10 @@ public class RecipeController {
             recipeService.delete(recipeService.findById(id));
             return new ResponseEntity<>("Recipe has been deleted!", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new CustomErrorType("You can only delete recipes which you created"),
-                    HttpStatus.FORBIDDEN);
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .header("error", "/403")
+                    .body("Custom 403 header set");
         }
     }
 
@@ -275,6 +283,13 @@ public class RecipeController {
        Recipe recipe = recipeService.findById(recipeID);
 
         String commentCreator = authentication.getName();
+
+        if (commentCreator == null) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .header("error", "/login")
+                    .body("Custom comment header set");
+        }
 
         Comment newComment = (commmentService.save(comment, recipe, commentCreator));
 
