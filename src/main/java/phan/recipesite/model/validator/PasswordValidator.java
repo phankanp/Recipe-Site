@@ -23,8 +23,17 @@ public class PasswordValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty");
+        if (user.getUsername().length() < 2) {
+            errors.rejectValue("firstName", "Size.user.firstName");
+        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty");
+        if (user.getUsername().length() < 2) {
+            errors.rejectValue("lastName", "Size.user.lastName");
+        }
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-        if (user.getUsername().length() < 5 || user.getUsername().length() > 32) {
+        if (user.getUsername().length() < 8 || user.getUsername().length() > 20) {
             errors.rejectValue("username", "Size.user.username");
         }
         if (userService.findByUsername(user.getUsername()) != null) {
@@ -32,7 +41,7 @@ public class PasswordValidator implements Validator {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (user.getPassword().length() > 100) {
+        if (user.getPassword().length() < 6 || user.getPassword().length() > 60) {
             errors.rejectValue("password", "Size.user.password");
         }
 
@@ -44,6 +53,7 @@ public class PasswordValidator implements Validator {
             errors.rejectValue("passwordConfirm", "Diff.user.passwordConfirm");
         }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         if (userService.findByEmail(user.getEmail()) != null) {
             errors.rejectValue("email", "Duplicate.user.email");
         }

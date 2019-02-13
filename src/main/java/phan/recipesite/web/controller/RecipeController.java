@@ -169,8 +169,7 @@ public class RecipeController {
 
         recipeService.save(recipe, user, imageFile);
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!",
-                FlashMessage.Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!"));
 
         return "redirect:/details/" + recipe.getId();
     }
@@ -219,8 +218,7 @@ public class RecipeController {
 
         recipeServiceimpl.save(recipe, user, imageFile);
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!", FlashMessage
-                .Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!"));
 
         return "redirect:/details/" + recipe.getId();
     }

@@ -22,14 +22,12 @@ public class UserController {
 
     private final UserService userService;
 
-    @Autowired
-    private PasswordValidator passwordValidator;
+    private final PasswordValidator passwordValidator;
 
-    @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordValidator passwordValidator) {
         this.userService = userService;
+        this.passwordValidator = passwordValidator;
     }
-
 
     // User sign up form
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -48,17 +46,12 @@ public class UserController {
         passwordValidator.validate(user, result);
 
         if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("user", user);
-
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
-
-            return "redirect:/signup";
+            return "signup";
         }
 
         userService.save(user);
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully created account! Please login.",
-                FlashMessage.Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully created account! Please login."));
 
         return "redirect:/";
     }

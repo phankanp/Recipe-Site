@@ -24,31 +24,18 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Must enter a first name")
-    @Size(min = 2, message = "First name must be at least two characters")
     private String firstName;
 
-    @NotEmpty(message = "Must enter a last name")
-    @Size(min = 2, message = "Last name must be at least two characters")
     private String lastName;
 
-    @NotEmpty(message = "Must enter an email address")
-    @Size(min = 8, max = 20, message = "Email must be between 8 and 20 characters")
-    @Column(unique = true)
     @Email(message = "Must enter a valid email address")
     private String email;
 
-    @NotEmpty(message = "Must enter a username")
-    @Size(min = 8, max = 20, message = "Username must be between 8 and 20 characters")
-    @Column(unique = true)
     private String username;
 
-    @NotEmpty(message = "Must enter a password")
-    @Size(min = 6, max = 60, message = "Password must be between 6 and 60 characters")
     private String password;
 
     @Transient
-    @NotEmpty(message = "Please enter Password Confirmation.")
     private String passwordConfirm;
 
     @Column(nullable = false)
