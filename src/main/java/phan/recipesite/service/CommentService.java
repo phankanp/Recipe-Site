@@ -1,6 +1,5 @@
 package phan.recipesite.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phan.recipesite.model.Comment;
 import phan.recipesite.model.Recipe;
@@ -11,11 +10,9 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    @Autowired
     public CommentService(CommentRepository commentRepository) {
 
         this.commentRepository = commentRepository;
-
     }
 
     public Comment save(Comment comment) {
@@ -34,5 +31,7 @@ public class CommentService {
         commentRepository.delete(comment);
     }
 
-    public Comment findById(Long id) {return commentRepository.findCommentById(id);}
+    public Comment findById(Long id) {
+        return commentRepository.findCommentById(id);
+    }
 }

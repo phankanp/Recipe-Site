@@ -1,10 +1,10 @@
 package phan.recipesite.web.controller;
 
-import jdk.internal.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import phan.recipesite.model.Recipe;
 import phan.recipesite.model.Vote;
 import phan.recipesite.service.RecipeService;
@@ -22,7 +22,8 @@ public class VoteController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping(value = "/vote/recipe/{recipeId}/direction/{direction}/votecount/{voteCount}", method = RequestMethod.GET)
+    @RequestMapping(value = "/vote/recipe/{recipeId}/direction/{direction}/votecount/{voteCount}", method =
+            RequestMethod.GET)
     public int vote(@PathVariable Long recipeId, @PathVariable short direction, @PathVariable int voteCount) {
         Recipe recipe = recipeService.findById(recipeId);
 

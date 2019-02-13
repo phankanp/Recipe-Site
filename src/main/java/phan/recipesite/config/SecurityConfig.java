@@ -1,6 +1,7 @@
 package phan.recipesite.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import phan.recipesite.service.UserDetailsServiceImpl;
-import phan.recipesite.web.FlashMessage;
 
 
 @Configuration
@@ -31,6 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
+    // Register HttpSessionEventPublisher
+    @Bean
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
+    }
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -42,14 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN")
-                .antMatchers("/").permitAll()
+                .antMatchers("/recipes").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")
-//                .failureHandler(loginFailureHandler())
                 .and()
                 .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .permitAll()
                 .and()
                 .rememberMe().key("secretKey").tokenValiditySeconds(86400)
                 .and()
@@ -63,14 +70,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-
-//    // Redirects back to login if authentication fails
-//    private AuthenticationFailureHandler loginFailureHandler() {
-//        return ((request, response, exception) -> {
-//            request.getSession().setAttribute("flash", new FlashMessage("Incorrect username and/or password. " +
-//                    "Please try again.", FlashMessage.Status.FAILURE));
-//            response.sendRedirect("/login");
-//        });
-//    }
-
 }

@@ -1,6 +1,9 @@
 package phan.recipesite.model;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 import phan.recipesite.core.BaseEntity;
 

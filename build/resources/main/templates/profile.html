@@ -44,11 +44,11 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <a th:href="@{|/details/${recipe.id}|}">
+                                    <a th:href="@{|/recipes/${recipe.id}|}">
                                         <img class="index-img" th:src="@{|/recipes/image/${recipe.id}|}"/>
                                     </a>
                                     <h2>
-                                        <a th:href="@{|/details/${recipe.id}|}" th:text="${recipe.name}">Pancakes</a>
+                                        <a th:href="@{|/recipes/${recipe.id}|}" th:text="${recipe.name}">Pancakes</a>
                                     </h2>
                                     <p class="test" th:text="${recipe.description}">Lorem ipsum dolor sit amet,
                                         consectetur

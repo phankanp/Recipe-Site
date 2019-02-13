@@ -1,13 +1,10 @@
 package phan.recipesite.model;
 
 import lombok.*;
-import org.springframework.boot.CommandLineRunner;
 import phan.recipesite.core.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 @Entity

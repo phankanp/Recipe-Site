@@ -1,6 +1,5 @@
 package phan.recipesite.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,38 +12,22 @@ import phan.recipesite.service.UserService;
 
 import java.io.Serializable;
 
-@Component
 // Determines user permission for editing and deleting recipes
+@Component
 public class RecipePermissionEvaluator implements PermissionEvaluator {
 
-    @Autowired
-    private RecipeService recipeService;
+    private final RecipeService recipeService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public RecipePermissionEvaluator(RecipeService recipeService, UserService userService) {
+        this.recipeService = recipeService;
+        this.userService = userService;
+    }
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-//        String desiredRoleName = (String)
-// permission;
-////
-////        if (authentication.isAuthenticated()) {
-////
-////            for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
-////
-////                if (StringUtils.equalsIgnoreCase(grantedAuthority.getAuthority(), desiredRoleName)) {
-////
-////                    return true;
-////
-////                }
-////            }
-////        }
-////
-////        User user = userService.findByUsername(authentication.getName());
-////
-////        Recipe recipe = (Recipe) targetDomainObject;
-////
-////        return recipe.getUser() != null && recipe.getUser().equals(user);
+
         throw new UnsupportedOperationException();
     }
 

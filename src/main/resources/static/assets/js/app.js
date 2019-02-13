@@ -57,9 +57,9 @@ $(document).ready(function () {
         recipeUrlId = recipeId.substring(21)
 
         $.post(`/recipes/${recipeUrlId}/favorite`, function (data) {
-                let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
-                $('#' + recipeId + '>img').attr('src', imageUrl);
-            })
+            let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+            $('#' + recipeId + '>img').attr('src', imageUrl);
+        })
             .fail(function (request) {
                 window.location.href = '/login';
             })
@@ -140,6 +140,7 @@ $(document).ready(function () {
         })
         resetData()
     }
+
     function resetData() {
         $('#comment').val("")
     }

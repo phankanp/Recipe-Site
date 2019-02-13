@@ -1,7 +1,5 @@
 package phan.recipesite.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,6 @@ import phan.recipesite.model.validator.PasswordValidator;
 import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -53,7 +50,7 @@ public class UserController {
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully created account! Please login."));
 
-        return "redirect:/";
+        return "redirect:/recipes";
     }
 
     // Login form

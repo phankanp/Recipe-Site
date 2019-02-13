@@ -1,10 +1,8 @@
 package phan.recipesite.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -15,37 +13,39 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import phan.recipesite.model.*;
-import phan.recipesite.service.*;
-import phan.recipesite.util.CustomErrorType;
+import phan.recipesite.service.CommentService;
+import phan.recipesite.service.RecipeService;
+import phan.recipesite.service.UserService;
 import phan.recipesite.web.FlashMessage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.*;
 
 @Controller
 public class RecipeController {
 
-    private final IngredientService ingredientService;
     private final RecipeService recipeService;
     private final UserService userService;
     private final RecipeService recipeServiceimpl;
     private final CommentService commmentService;
 
-    @Autowired
-    public RecipeController(IngredientService ingredientService, RecipeService recipeService, UserService
+    public RecipeController(RecipeService recipeService, UserService
             userService, RecipeService recipeServiceimpl, CommentService commmentService) {
-        this.ingredientService = ingredientService;
+
         this.recipeService = recipeService;
         this.userService = userService;
         this.recipeServiceimpl = recipeServiceimpl;
         this.commmentService = commmentService;
     }
 
+    @RequestMapping("/")
+    public String redirectPage() {
+        return "redirect:recipes";
+    }
+
 
     // Index - Home page of all recipes
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/recipes", method = RequestMethod.GET)
     public String recipesIndex(Model model) {
 
         List<Recipe> recipes = recipeService.findAll();
@@ -59,12 +59,9 @@ public class RecipeController {
     }
 
     // Favorite/Unfavorite existing recipes
-    @PostMapping("/recipes/{id}/favorite")
-//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @RequestMapping(value = "/recipes/{id}/favorite", method = RequestMethod.POST)
     public ResponseEntity<?> favoriteRecipe(@PathVariable("id") Long id, Authentication authentication) {
         User user = userService.findByUsername(authentication.getName());
-
-        System.out.println(user);
 
         if (user == null) {
             return ResponseEntity
@@ -75,7 +72,6 @@ public class RecipeController {
 
         Recipe recipe = recipeService.findById(id);
         userService.toggleFavorite(user, recipe);
-        userService.save(user);
 
         boolean hasFavorite = recipe.getUserFavorites().contains(authentication.getName());
 
@@ -101,7 +97,7 @@ public class RecipeController {
     }
 
     // Details for a single recipe
-    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/recipes/{id}", method = RequestMethod.GET)
     public String recipeDetails(@PathVariable Long id, Model model) {
         Recipe recipe = recipeService.findById(id);
 
@@ -139,7 +135,7 @@ public class RecipeController {
 
         model.addAttribute("action", "/recipes");
         model.addAttribute("heading", "New Recipe");
-        model.addAttribute("redirect", "/");
+        model.addAttribute("redirect", "/recipes");
         model.addAttribute("categories", categories);
         model.addAttribute("ingredients", ingredients);
         model.addAttribute("instructions", steps);
@@ -171,7 +167,7 @@ public class RecipeController {
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!"));
 
-        return "redirect:/details/" + recipe.getId();
+        return "redirect:/recipes/" + recipe.getId();
     }
 
     // Edit recipe form with existing recipe details
@@ -187,7 +183,7 @@ public class RecipeController {
 
         model.addAttribute("recipe", recipe);
         model.addAttribute("categories", Arrays.asList(Category.values()));
-        model.addAttribute("redirect", "/details/" + recipe.getId());
+        model.addAttribute("redirect", "/recipes");
         model.addAttribute("heading", "Edit Recipe");
         model.addAttribute("action", "/recipes/" + id);
         model.addAttribute("submit", "Save");
@@ -197,8 +193,7 @@ public class RecipeController {
 
     // Edit an existing recipe
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.POST)
-    public String editRecipe(@Valid Recipe recipe, BindingResult result, @PathVariable Long id, @RequestParam
-            MultipartFile imageFile,
+    public String editRecipe(@Valid Recipe recipe, BindingResult result, @RequestParam MultipartFile imageFile,
                              RedirectAttributes redirectAttributes, Authentication authentication) {
 
         if (result.hasErrors()) {
@@ -220,7 +215,7 @@ public class RecipeController {
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Successfully saved recipe!"));
 
-        return "redirect:/details/" + recipe.getId();
+        return "redirect:/recipes/" + recipe.getId();
     }
 
     // Delete a recipe
@@ -248,12 +243,11 @@ public class RecipeController {
 
     // Search for recipes by description or ingredients
     @RequestMapping(value = "/recipes/search", method = RequestMethod.GET)
-    public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication
-            authentication) {
+    public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model) {
 
         List<Category> categories = recipeService.getAllCategories();
 
-        List<Recipe> recipes = new ArrayList<>();
+        List<Recipe> recipes;
         List<Recipe> results = new ArrayList<>();
 
         if (searchq != null) {
@@ -273,12 +267,12 @@ public class RecipeController {
         return "index";
     }
 
+    // Add comments to posts
     @RequestMapping(value = "/recipe/comments", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-    public ResponseEntity<?> addComment(@RequestBody Comment comment, @RequestParam(value = "recipe_id") long recipeID, BindingResult result, RedirectAttributes redirectAttributes, Authentication
-            authentication){
+    public ResponseEntity<?> addComment(@RequestBody Comment comment, @RequestParam(value = "recipe_id") long recipeID,
+                                        Authentication authentication) {
 
-       Recipe recipe = recipeService.findById(recipeID);
+        Recipe recipe = recipeService.findById(recipeID);
 
         String commentCreator = authentication.getName();
 

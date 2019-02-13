@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="nav">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/recipes">
             <i class="fas fa-hamburger" aria-hidden="true"></i>
             RECIPES
         </a>
@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="/recipes">
                         <i class="fas fa-home" aria-hidden="true"></i> Home
                     </a>
                 </li>
@@ -72,16 +72,16 @@
 </nav>
 
 
-    <div class="jumbotron jumbotron-fluid" th:fragment="jumbotron">
-        <div class="container">
-            <h2 class="display-4">Spring Boot Recipes Site</h2>
-            <p class="lead">This is a recipe site built using Spring Boot 2 and Spring Framework 5. This site allows
-                users to build and share recipes.
-                The site was built using additional projects including JPA, Thymeleaf, Security, and Lombok.</p>
-            <a href="https://github.com/phankanp/Recipe-Site" class="btn btn-success" target="_blank"><i
-                    class="fab fa-github"></i> Github Repo</a>
-        </div>
+<div class="jumbotron jumbotron-fluid" th:fragment="jumbotron">
+    <div class="container">
+        <h2 class="display-4">Spring Boot Recipes Site</h2>
+        <p class="lead">This is a recipe site built using Spring Boot 2 and Spring Framework 5. This site allows
+            users to build and share recipes.
+            The site was built using additional projects including JPA, Thymeleaf, Security, and Lombok.</p>
+        <a href="https://github.com/phankanp/Recipe-Site" class="btn btn-success" target="_blank"><i
+                class="fab fa-github"></i> Github Repo</a>
     </div>
+</div>
 
 
 <div class="container" th:fragment="content">
