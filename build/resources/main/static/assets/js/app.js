@@ -57,9 +57,9 @@ $(document).ready(function () {
         recipeUrlId = recipeId.substring(21)
 
         $.post(`/recipes/${recipeUrlId}/favorite`, function (data) {
-                let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
-                $('#' + recipeId + '>img').attr('src', imageUrl);
-            })
+            let imageUrl = (data.favorited) ? '/assets/images/favorited.svg' : '/assets/images/favorite.svg'
+            $('#' + recipeId + '>img').attr('src', imageUrl);
+        })
             .fail(function (request) {
                 window.location.href = '/login';
             })
@@ -140,6 +140,7 @@ $(document).ready(function () {
         })
         resetData()
     }
+
     function resetData() {
         $('#comment').val("")
     }
@@ -175,13 +176,86 @@ $(document).ready(function () {
     }
 })
 
+function categoryPageHideSection() {
+    if ($('.all').hasClass('active')) {
+        $('#all').fadeOut();
+    } else if ($('.breakfast').hasClass('active')) {
+        $('#breakfast').fadeOut();
+    } else if ($('.lunch').hasClass('active')) {
+        $('#lunch').fadeOut();
+    } else if ($('.dinner').hasClass('active')) {
+        $('#dinner').fadeOut();
+    } else if ($('.dessert').hasClass('active')) {
+        $('#dessert').fadeOut();
+    }
+}
 
+$(".all").click(function (e) {
+    categoryPageHideSection()
 
+    $('.sort').fadeOut();
 
+    $('.nav li a.active').removeClass('active');
+    $(this).addClass('active');
 
+    $('#all').fadeIn('slow');
+    return false;
+})
 
+$(".breakfast").click(function (e) {
+    categoryPageHideSection()
 
+    $('.sort').fadeOut();
 
+    $('.nav li a.active').removeClass('active');
+    $(this).addClass('active');
+
+    $('#breakfast').fadeIn('slow');
+    return false;
+})
+
+$(".lunch").click(function (e) {
+    categoryPageHideSection()
+
+    $('.sort').fadeOut();
+
+    $('.nav li a.active').removeClass('active');
+    $(this).addClass('active');
+
+    $('#lunch').fadeIn('slow');
+    return false;
+})
+
+$(".dinner").click(function (e) {
+    categoryPageHideSection()
+
+    $('.sort').fadeOut();
+
+    $('.nav li a.active').removeClass('active');
+    $(this).addClass('active');
+
+    $('#dinner').fadeIn('slow');
+    return false;
+})
+
+$(".dessert").click(function (e) {
+    categoryPageHideSection()
+
+    $('.sort').fadeOut();
+
+    $('.nav li a.active').removeClass('active');
+    $(this).addClass('active');
+
+    $('#dessert').fadeIn('slow');
+    return false;
+})
+
+$(".search").click(function (e) {
+    // categoryPageHideSection()
+
+    $('.sort').fadeIn('slow');
+    return false;
+})
 
 
 

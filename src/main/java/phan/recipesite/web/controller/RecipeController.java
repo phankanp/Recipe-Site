@@ -51,6 +51,16 @@ public class RecipeController {
         List<Recipe> recipes = recipeService.findAll();
         List<Category> categories = recipeService.getAllCategories();
 
+        List<Recipe> breakfast = recipeService.findByCategory(Category.BREAKFAST);
+        List<Recipe> lunch = recipeService.findByCategory(Category.LUNCH);
+        List<Recipe> dinner = recipeService.findByCategory(Category.DINNER);
+        List<Recipe> dessert = recipeService.findByCategory(Category.DESSERT);
+
+        model.addAttribute("breakfast", breakfast);
+        model.addAttribute("lunch", lunch);
+        model.addAttribute("dinner", dinner);
+        model.addAttribute("dessert", dessert);
+
         model.addAttribute("recipes", recipes);
         model.addAttribute("categories", categories);
         model.addAttribute("selectedCategory", Category.ALL);
@@ -87,9 +97,6 @@ public class RecipeController {
     public String recipesByCategory(@PathVariable Category category, Model model) {
         List<Category> categories = recipeService.getAllCategories();
 
-        List<Recipe> recipes = recipeService.findByCategory(category);
-
-        model.addAttribute("recipes", recipes);
         model.addAttribute("categories", categories);
         model.addAttribute("selectedCategory", Category.valueOf(category.toString().toUpperCase()));
 

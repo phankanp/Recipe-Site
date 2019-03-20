@@ -45,14 +45,16 @@
                             <div class="form-group">
                                 <label class="addNewRecipe">Recipe Title</label>
                                 <p>
-                                    <input placeholder="Recipe Title"  class="form-control add" type="text" th:field="*{name}"/>
+                                    <input placeholder="Recipe Title" class="form-control add" type="text"
+                                           th:field="*{name}"/>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <label class="addNewRecipe">Description</label>
 
                                 <p>
-                                    <textarea placeholder="Recipe Description" class="form-control add" rows="4" th:field="*{description}"></textarea>
+                                    <textarea placeholder="Recipe Description" class="form-control add" rows="4"
+                                              th:field="*{description}"></textarea>
                                 </p>
 
                             </div>
@@ -78,7 +80,7 @@
                             <div class="form-group">
                                 <label class="addNewRecipe">Cook Time(mins)</label>
                                 <p>
-                                    <input  class="form-control add" type="number" th:field="*{cookTime}"/>
+                                    <input class="form-control add" type="number" th:field="*{cookTime}"/>
                                 </p>
                             </div>
                             <div class="form-group">
@@ -88,12 +90,14 @@
                                            th:value="${ingredient.id}"/>
                                     <div>
                                         <p>
-                                            <input class="form-control add" placeholder="Ingredient Quantity" type="text"
+                                            <input class="form-control add" placeholder="Ingredient Quantity"
+                                                   type="text"
                                                    th:field="*{ingredients[__${stat.index}__].quantity}"
                                                    th:value="${ingredient.quantity}"/>
                                         </p>
                                         <p>
-                                            <input  class="form-control add" placeholder="Ingredient Condition" type="text"
+                                            <input class="form-control add" placeholder="Ingredient Condition"
+                                                   type="text"
                                                    th:field="*{ingredients[__${stat.index}__].ingredientCondition}"
                                                    th:value="${ingredient.ingredientCondition}"/>
                                         </p>
@@ -121,7 +125,8 @@
                                            th:value="${step.id}"/>
                                     <div>
                                         <p>
-                                            <input class="form-control add" placeholder="Step Description" type="text" name="name"
+                                            <input class="form-control add" placeholder="Step Description" type="text"
+                                                   name="name"
                                                    th:field="*{steps[__${stat.index}__].name}"
                                                    th:value="${step.name}"/>
                                         </p>
@@ -137,10 +142,10 @@
                                 <label class="addNewRecipe">Save</label>
                                 <div>
                                     <p>
-                                        <button id="btnSave" class="btn btn-primary" type="submit" value="save">Save Recipe</button>
-                                        <button id="btnCancel" class="btn btn-danger">
-                                            <a id="cancelRecipe" th:href="@{${redirect}}">Cancel</a>
-                                      </button>
+                                        <button id="btnSave" class="btn btn-primary" type="submit" value="save">Save
+                                            Recipe
+                                        </button>
+                                        <a id="btnCancel" class="btn btn-danger" th:href="@{${redirect}}">Cancel</a>
                                     </p>
                                 </div>
                             </div>
@@ -149,11 +154,8 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </section>
 <div th:replace="layout :: scripts"></div>
-
 </body>
 </html>

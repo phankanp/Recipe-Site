@@ -17,11 +17,13 @@ body {
 .jumbotron {
     background-color: deepskyblue;
     color: #ffffff;
-}
-
-.jumbotron {
+    text-align: center;
     padding: 80px 80px 40px;
 }
+
+/*.jumbotron {*/
+    /*padding: 80px 80px 40px;*/
+/*}*/
 
 .jumbotron h2 {
     color: black;
@@ -473,5 +475,23 @@ button:hover.favorite-button-index {
 .form-control-file {
     display: inline-block;
     width: 20%;
+}
 
+.card {
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: 0 6px 15px rgba(36, 37, 38, .08);
+}
+
+.sort {
+    margin-bottom: 30px;
+}
+
+.detail-title {
+    margin-bottom: 30px;
+}
+
+#search {
+    text-align: center;
+    cursor: pointer;
 }
