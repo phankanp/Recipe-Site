@@ -81,21 +81,25 @@ $(".favorite-detail").on("submit", function (e) {
 $('.upvote').click(function (e) {
     const direction = 1;
     const recipeId = $(this).attr("data-id")
-    const voteSum = $("#votecount-" + recipeId).html()
+    const voteSum = $(".votecount-" + recipeId).html()
 
     $.get(`http://localhost:8080/vote/recipe/${recipeId}/direction/${direction}/votecount/${voteSum}`, function (data) {
-        $("#votecount-" + recipeId).html(data)
+        $(".votecount-" + recipeId).html(data)
     })
+
+    return false
 })
 
 $('.downvote').click(function (e) {
     const direction = -1;
     const recipeId = $(this).attr("data-id")
-    const voteSum = $("#votecount-" + recipeId).html()
+    const voteSum = $(".votecount-" + recipeId).html()
 
     $.get(`http://localhost:8080/vote/recipe/${recipeId}/direction/${direction}/votecount/${voteSum}`, function (data) {
-        $("#votecount-" + recipeId).html(data)
+        $(".votecount-" + recipeId).html(data)
     })
+
+    return false
 })
 
 let max = 50;
@@ -161,7 +165,7 @@ $(document).ready(function () {
             type: "DELETE",
             url: `http://localhost:8080/recipes/${recipeId}`,
             success: function (data) {
-                $(button).closest('.box').remove();
+                $("." + recipeId).closest(".col-md-6").remove();
             },
             error: (function (request) {
                 console.log(request.getResponseHeader("error"))
@@ -247,11 +251,9 @@ $(".dessert").click(function (e) {
     $(this).addClass('active');
 
     $('#dessert').fadeIn('slow');
-    return false;
 })
 
 $(".search").click(function (e) {
-    // categoryPageHideSection()
 
     $('.sort').fadeIn('slow');
     return false;
