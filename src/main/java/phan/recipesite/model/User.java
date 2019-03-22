@@ -55,6 +55,11 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     private List<Recipe> favorites;
 
+    @ElementCollection
+    private List<Long> upvotes;
+
+    @ElementCollection
+    private List<Long> downvotes;
 
     public User(String firstName, String lastName, String email, String username, String password, String
             passwordConfirm) {

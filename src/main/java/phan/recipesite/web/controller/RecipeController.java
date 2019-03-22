@@ -46,7 +46,7 @@ public class RecipeController {
 
     // Index - Home page of all recipes
     @RequestMapping(value = "/recipes", method = RequestMethod.GET)
-    public String recipesIndex(Model model) {
+    public String recipesIndex(Model model, Authentication authentication) {
 
         List<Recipe> recipes = recipeService.findAll();
         List<Category> categories = recipeService.getAllCategories();
@@ -56,14 +56,34 @@ public class RecipeController {
         List<Recipe> dinner = recipeService.findByCategory(Category.DINNER);
         List<Recipe> dessert = recipeService.findByCategory(Category.DESSERT);
 
-        model.addAttribute("breakfast", breakfast);
-        model.addAttribute("lunch", lunch);
-        model.addAttribute("dinner", dinner);
-        model.addAttribute("dessert", dessert);
 
-        model.addAttribute("recipes", recipes);
-        model.addAttribute("categories", categories);
-        model.addAttribute("selectedCategory", Category.ALL);
+        try {
+            if ( userService.findByUsername(authentication.getName()) != null) {
+                List<Long> upvotes = userService.findByUsername(authentication.getName()).getUpvotes();
+                List<Long> downvotes = userService.findByUsername(authentication.getName()).getDownvotes();
+
+                model.addAttribute("upvotes", upvotes);
+                model.addAttribute("downvotes", downvotes);
+
+                model.addAttribute("breakfast", breakfast);
+                model.addAttribute("lunch", lunch);
+                model.addAttribute("dinner", dinner);
+                model.addAttribute("dessert", dessert);
+
+                model.addAttribute("recipes", recipes);
+                model.addAttribute("categories", categories);
+                model.addAttribute("selectedCategory", Category.ALL);
+            }
+        } catch (NullPointerException ex) {
+            model.addAttribute("breakfast", breakfast);
+            model.addAttribute("lunch", lunch);
+            model.addAttribute("dinner", dinner);
+            model.addAttribute("dessert", dessert);
+
+            model.addAttribute("recipes", recipes);
+            model.addAttribute("categories", categories);
+            model.addAttribute("selectedCategory", Category.ALL);
+        }
 
         return "index";
     }

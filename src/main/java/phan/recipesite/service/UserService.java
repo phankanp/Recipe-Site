@@ -1,5 +1,6 @@
 package phan.recipesite.service;
 
+import jdk.nashorn.internal.ir.IfNode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import phan.recipesite.model.Recipe;
@@ -42,6 +43,24 @@ public class UserService {
         } else {
             user.getFavorites().add(recipe);
         }
+        userRepository.save(user);
+    }
+
+    public void upVoteDownVoteTracker(User user, Long recipeId, short direction) {
+
+        System.out.println(recipeId + "*****************");
+        if (direction == 1) {
+            if (user.getDownvotes().contains(recipeId)) {
+                user.getDownvotes().remove(recipeId);
+            }
+            user.getUpvotes().add(recipeId);
+        } else if (direction == -1) {
+            if (user.getUpvotes().contains(recipeId)) {
+                user.getUpvotes().remove(recipeId);
+            }
+            user.getDownvotes().add(recipeId);
+        }
+
         userRepository.save(user);
     }
 

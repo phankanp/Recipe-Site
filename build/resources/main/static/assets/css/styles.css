@@ -1,5 +1,4 @@
 /* Body */
-
 body {
     /*max-width: 800px;*/
     background: whitesmoke;
@@ -13,7 +12,6 @@ body {
 }
 
 /* Jumbotron */
-
 .jumbotron {
     background-color: deepskyblue;
     color: #ffffff;
@@ -382,4 +380,13 @@ button:hover.favorite-button-index {
 #search {
     text-align: center;
     cursor: pointer;
+}
+
+a[disabled], a[disabled]:hover {
+    pointer-events: none;
+    color: #e1e1e1;
+}
+
+.upvote {
+    cursor: pointer ;
 }

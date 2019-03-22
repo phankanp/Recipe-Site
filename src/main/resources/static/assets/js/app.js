@@ -87,6 +87,9 @@ $('.upvote').click(function (e) {
         $(".votecount-" + recipeId).html(data)
     })
 
+    $('.upvote-' + recipeId).attr("disabled", true);
+    $('.downvote-' + recipeId).attr("disabled", false);
+
     return false
 })
 
@@ -98,6 +101,10 @@ $('.downvote').click(function (e) {
     $.get(`http://localhost:8080/vote/recipe/${recipeId}/direction/${direction}/votecount/${voteSum}`, function (data) {
         $(".votecount-" + recipeId).html(data)
     })
+
+    $('.upvote-' + recipeId).attr("disabled", false);
+    $('.downvote-' + recipeId).attr("disabled", true);
+
 
     return false
 })

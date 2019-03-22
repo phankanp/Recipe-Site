@@ -52,7 +52,8 @@
                     <div th:class="${recipe.id}">
                         <div class="card box-shadow">
                             <a th:href="@{|/recipes/${recipe.id}|}">
-                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350" width="300"/>
+                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350"
+                                     width="300"/>
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -76,26 +77,52 @@
                                         <button class="favorite-button-index"
                                                 th:id="'favorite-button-index' + ${recipe.id}" type="submit">
                                             <img
-                                                 th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
-                                                 style="height: 12px;">
+                                                    th:src="${recipe.userFavorites.contains(#authentication.name)} ? @{/assets/images/favorited.svg} : @{/assets/images/favorite.svg}"
+                                                    style="height: 12px;">
                                         </button>
                                     </form>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span th:text="${recipe.user.username}">User</span>
-                                    </div>
-                                    <div>
+                            <div sec:authorize="isAuthenticated()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" class="upvote" th:data-id="${recipe.id}"><i
-                                                    class="fas fa-arrow-up"></i></a>
-                                            <span th:class="|votecount-${recipe.id}|" class="votecount"
-                                                  th:text="${recipe.getVoteCount()}">0</span>
-                                            <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
-                                                    class="fas fa-arrow-down"></i></a>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a th:object="${upvotes}" href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(upvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a th:object="${downvotes}" href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(downvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +139,8 @@
                     <div th:class="${recipe.id}">
                         <div class="card box-shadow">
                             <a th:href="@{|/recipes/${recipe.id}|}">
-                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350" width="300"/>
+                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350"
+                                     width="300"/>
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -142,20 +170,46 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span th:text="${recipe.user.username}">User</span>
-                                    </div>
-                                    <div>
+                            <div sec:authorize="isAuthenticated()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" class="upvote" th:data-id="${recipe.id}"><i
-                                                    class="fas fa-arrow-up"></i></a>
-                                            <span th:class="|votecount-${recipe.id}|" class="votecount"
-                                                  th:text="${recipe.getVoteCount()}">0</span>
-                                            <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
-                                                    class="fas fa-arrow-down"></i></a>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a th:object="${upvotes}" href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(upvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a th:object="${downvotes}" href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(downvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +226,8 @@
                     <div th:class="${recipe.id}">
                         <div class="card box-shadow">
                             <a th:href="@{|/recipes/${recipe.id}|}">
-                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350" width="300"/>
+                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350"
+                                     width="300"/>
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -202,20 +257,46 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span th:text="${recipe.user.username}">User</span>
-                                    </div>
-                                    <div>
+                            <div sec:authorize="isAuthenticated()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" class="upvote" th:data-id="${recipe.id}"><i
-                                                    class="fas fa-arrow-up"></i></a>
-                                            <span th:class="|votecount-${recipe.id}|" class="votecount"
-                                                  th:text="${recipe.getVoteCount()}">0</span>
-                                            <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
-                                                    class="fas fa-arrow-down"></i></a>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a th:object="${upvotes}" href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(upvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a th:object="${downvotes}" href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(downvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +313,8 @@
                     <div th:class="${recipe.id}">
                         <div class="card box-shadow">
                             <a th:href="@{|/recipes/${recipe.id}|}">
-                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350" width="300"/>
+                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350"
+                                     width="300"/>
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -262,20 +344,46 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span th:text="${recipe.user.username}">User</span>
-                                    </div>
-                                    <div>
+                            <div sec:authorize="isAuthenticated()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" class="upvote" th:data-id="${recipe.id}"><i
-                                                    class="fas fa-arrow-up"></i></a>
-                                            <span th:class="|votecount-${recipe.id}|" class="votecount"
-                                                  th:text="${recipe.getVoteCount()}">0</span>
-                                            <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
-                                                    class="fas fa-arrow-down"></i></a>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a th:object="${upvotes}" href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(upvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a th:object="${downvotes}" href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(downvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +400,8 @@
                     <div th:class="${recipe.id}">
                         <div class="card box-shadow">
                             <a th:href="@{|/recipes/${recipe.id}|}">
-                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350" width="300"/>
+                                <img class="card-img-top" th:src="@{|/recipes/image/${recipe.id}|}" height="350"
+                                     width="300"/>
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -322,20 +431,46 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span th:text="${recipe.user.username}">User</span>
-                                    </div>
-                                    <div>
+                            <div sec:authorize="isAuthenticated()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" class="upvote" th:data-id="${recipe.id}"><i
-                                                    class="fas fa-arrow-up"></i></a>
-                                            <span th:class="|votecount-${recipe.id}|" class="votecount"
-                                                  th:text="${recipe.getVoteCount()}">0</span>
-                                            <a href="#" class="downvote" th:data-id="${recipe.id}" th:disabled="true"><i
-                                                    class="fas fa-arrow-down"></i></a>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a th:object="${upvotes}" href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(upvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a th:object="${downvotes}" href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}" th:disabled="${#lists.contains(downvotes, recipe.id)}? 'true' : 'false'"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span th:text="${recipe.user.username}">User</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <a href="#" th:class="|upvote upvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-up"></i></a>
+                                                <span th:class="|votecount-${recipe.id}|" class="votecount"
+                                                      th:text="${recipe.getVoteCount()}">0</span>
+                                                <a href="#" th:class="|downvote downvote-${recipe.id}|"
+                                                   th:data-id="${recipe.id}"><i
+                                                        class="fas fa-arrow-down"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -381,3 +381,12 @@ button:hover.favorite-button-index {
     text-align: center;
     cursor: pointer;
 }
+
+a[disabled], a[disabled]:hover {
+    pointer-events: none;
+    color: #e1e1e1;
+}
+
+.upvote {
+    cursor: pointer ;
+}
