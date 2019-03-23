@@ -369,6 +369,10 @@ button:hover.favorite-button-index {
     box-shadow: 0 6px 15px rgba(36, 37, 38, .08);
 }
 
+.card h5 {
+    text-align: center;
+}
+
 .sort {
     margin-bottom: 30px;
 }

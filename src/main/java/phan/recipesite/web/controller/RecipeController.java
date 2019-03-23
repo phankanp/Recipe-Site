@@ -103,17 +103,6 @@ public class RecipeController {
         return new ResponseEntity<>(resultJson, HttpStatus.OK);
     }
 
-//    // Sort recipes by category
-//    @RequestMapping(value = "/recipes/category/{category}", method = RequestMethod.GET)
-//    public String recipesByCategory(@PathVariable Category category, Model model) {
-//        List<Category> categories = recipeService.getAllCategories();
-//
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("selectedCategory", Category.valueOf(category.toString().toUpperCase()));
-//
-//        return "index";
-//    }
-
     // Details for a single recipe
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.GET)
     public String recipeDetails(@PathVariable Long id, Model model) {

@@ -89,24 +89,26 @@
                                     <input type="hidden" th:field="*{ingredients[__${stat.index}__].id}"
                                            th:value="${ingredient.id}"/>
                                     <div>
-                                        <p>
-                                            <input class="form-control add" placeholder="Ingredient Quantity"
+                                        <div>
+                                            <label style="display: block">Ingredient Quantity</label>
+                                            <input id="ingredientQuantity" class="form-control add" placeholder="Ingredient Quantity"
                                                    type="text"
                                                    th:field="*{ingredients[__${stat.index}__].quantity}"
                                                    th:value="${ingredient.quantity}"/>
-                                        </p>
-                                        <p>
+                                        </div>
+                                        <div>
+                                            <label style="display: block">Ingredient Condition</label>
                                             <input class="form-control add" placeholder="Ingredient Condition"
                                                    type="text"
                                                    th:field="*{ingredients[__${stat.index}__].ingredientCondition}"
                                                    th:value="${ingredient.ingredientCondition}"/>
-                                        </p>
-                                        <p>
-
+                                        </div>
+                                        <div>
+                                            <label style="display: block">Ingredient Name</label>
                                             <input class="form-control add" placeholder="Ingredient Name" type="text"
                                                    th:field="*{ingredients[__${stat.index}__].name}"
                                                    th:value="${ingredient.name}"/>
-                                        </p>
+                                        </div>
                                         <hr class="addRows">
                                     </div>
                                 </div>
