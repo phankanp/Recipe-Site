@@ -57,35 +57,26 @@ public class RecipeController {
         List<Recipe> dessert = recipeService.findByCategory(Category.DESSERT);
 
 
-        try {
-            if ( userService.findByUsername(authentication.getName()) != null) {
-                List<Long> upvotes = userService.findByUsername(authentication.getName()).getUpvotes();
-                List<Long> downvotes = userService.findByUsername(authentication.getName()).getDownvotes();
+        userUpDownVotes(model, authentication);
 
-                model.addAttribute("upvotes", upvotes);
-                model.addAttribute("downvotes", downvotes);
+        model.addAttribute("breakfast", breakfast);
+        model.addAttribute("lunch", lunch);
+        model.addAttribute("dinner", dinner);
+        model.addAttribute("dessert", dessert);
 
-                model.addAttribute("breakfast", breakfast);
-                model.addAttribute("lunch", lunch);
-                model.addAttribute("dinner", dinner);
-                model.addAttribute("dessert", dessert);
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("categories", categories);
+        model.addAttribute("selectedCategory", Category.ALL);
 
-                model.addAttribute("recipes", recipes);
-                model.addAttribute("categories", categories);
-                model.addAttribute("selectedCategory", Category.ALL);
-            }
-        } catch (NullPointerException ex) {
-            model.addAttribute("breakfast", breakfast);
-            model.addAttribute("lunch", lunch);
-            model.addAttribute("dinner", dinner);
-            model.addAttribute("dessert", dessert);
-
-            model.addAttribute("recipes", recipes);
-            model.addAttribute("categories", categories);
-            model.addAttribute("selectedCategory", Category.ALL);
-        }
+        model.addAttribute("href", "#");
+        model.addAttribute("icon", "fas fa-search");
+        model.addAttribute("aClass", "nav-link search");
 
         return "index";
+    }
+
+    private void userUpDownVotes(Model model, Authentication authentication) {
+        UserController.getUpDownVotes(model, authentication, userService);
     }
 
     // Favorite/Unfavorite existing recipes
@@ -112,16 +103,16 @@ public class RecipeController {
         return new ResponseEntity<>(resultJson, HttpStatus.OK);
     }
 
-    // Sort recipes by category
-    @RequestMapping(value = "/recipes/category/{category}", method = RequestMethod.GET)
-    public String recipesByCategory(@PathVariable Category category, Model model) {
-        List<Category> categories = recipeService.getAllCategories();
-
-        model.addAttribute("categories", categories);
-        model.addAttribute("selectedCategory", Category.valueOf(category.toString().toUpperCase()));
-
-        return "index";
-    }
+//    // Sort recipes by category
+//    @RequestMapping(value = "/recipes/category/{category}", method = RequestMethod.GET)
+//    public String recipesByCategory(@PathVariable Category category, Model model) {
+//        List<Category> categories = recipeService.getAllCategories();
+//
+//        model.addAttribute("categories", categories);
+//        model.addAttribute("selectedCategory", Category.valueOf(category.toString().toUpperCase()));
+//
+//        return "index";
+//    }
 
     // Details for a single recipe
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.GET)
@@ -270,12 +261,17 @@ public class RecipeController {
 
     // Search for recipes by description or ingredients
     @RequestMapping(value = "/recipes/search", method = RequestMethod.GET)
-    public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model) {
+    public String search(@RequestParam(value = "searchq", required = false) String searchq, Model model, Authentication authentication) {
 
         List<Category> categories = recipeService.getAllCategories();
 
         List<Recipe> recipes;
         List<Recipe> results = new ArrayList<>();
+
+        List<Recipe> breakfast = new ArrayList<>();
+        List<Recipe> lunch = new ArrayList<>();
+        List<Recipe> dinner = new ArrayList<>();
+        List<Recipe> dessert = new ArrayList<>();
 
         if (searchq != null) {
             recipes = recipeService.findByDescriptionOrIngredients(searchq);
@@ -284,12 +280,46 @@ public class RecipeController {
                 if (!results.contains(r)) {
                     results.add(r);
                 }
+
+                switch (r.getCategory()) {
+                    case BREAKFAST:
+                        if (!breakfast.contains(r)) {
+                            breakfast.add(r);
+                        }
+                        break;
+                    case LUNCH:
+                        if (!lunch.contains(r)) {
+                            lunch.add(r);
+                        }
+                        break;
+                    case DINNER:
+                        if (!dinner.contains(r)) {
+                            dinner.add(r);
+                        }
+                        break;
+                    case DESSERT:
+                        if (!dessert.contains(r)) {
+                            dessert.add(r);
+                        }
+                        break;
+                }
             }
         }
+
+        userUpDownVotes(model, authentication);
+
+        model.addAttribute("breakfast", breakfast);
+        model.addAttribute("lunch", lunch);
+        model.addAttribute("dinner", dinner);
+        model.addAttribute("dessert", dessert);
 
         model.addAttribute("categories", categories);
         model.addAttribute("recipes", results);
         model.addAttribute("selectedCategory", Category.ALL);
+
+        model.addAttribute("href", "http://localhost:8080/");
+        model.addAttribute("icon", "fas fa-times-circle");
+        model.addAttribute("aClass", "nav-link");
 
         return "index";
     }

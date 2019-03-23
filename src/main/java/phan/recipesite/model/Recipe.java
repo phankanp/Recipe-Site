@@ -104,4 +104,16 @@ public class Recipe extends BaseEntity {
         }
         return userFavorites;
     }
+
+//    public List<String> ingredientSearch;
+//
+//    public void setIngredientSearch(List<Ingredient> ingredients) {
+//        List<String> results = new ArrayList<>();
+//
+//        for (Ingredient i : ingredients) {
+//            results.add(i.toString());
+//        }
+//
+//        ingredientSearch = results;
+//    }
 }

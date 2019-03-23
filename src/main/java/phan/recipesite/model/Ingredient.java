@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@ToString
 public class Ingredient extends BaseEntity {
 
     @NotEmpty(message = "Must enter an ingredient name for every field")

@@ -29,11 +29,6 @@ $('#add-step').click(function () {
     $("#add-step-row").before(stepRow);
 });
 
-$(document).on("change", "#select-category", function () {
-    let category = $('#select-category').val();
-    window.location.href = '/recipes/category/' + category;
-});
-
 $('#search').on('keydown', function (e) {
     if (e.which === 13 && this.value.length < 13) {
         $(this).prop("disabled", true);
@@ -263,8 +258,10 @@ $(".dessert").click(function (e) {
 $(".search").click(function (e) {
 
     $('.sort').fadeIn('slow');
+
     return false;
 })
+
 
 
 

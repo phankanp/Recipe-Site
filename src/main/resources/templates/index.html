@@ -30,13 +30,11 @@
                 <a class="nav-link dessert" href="#">Dessert</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link search"><i class="fas fa-search" aria-hidden="true"></i></a>
+                <a th:class="${aClass}" th:href="${href}"><i th:class="${icon}" aria-hidden="true"></i></a>
             </li>
-
         </ul>
         <hr id="divider">
     </div>
-
 
     <div class="container sort" style="display:none;">
         <div class="row">
@@ -115,12 +113,12 @@
                                         <div>
                                             <div>
                                                 <a href="#" th:class="|upvote upvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-up"></i></a>
                                                 <span th:class="|votecount-${recipe.id}|" class="votecount"
                                                       th:text="${recipe.getVoteCount()}">0</span>
                                                 <a href="#" th:class="|downvote downvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-down"></i></a>
                                             </div>
                                         </div>
@@ -202,12 +200,12 @@
                                         <div>
                                             <div>
                                                 <a href="#" th:class="|upvote upvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-up"></i></a>
                                                 <span th:class="|votecount-${recipe.id}|" class="votecount"
                                                       th:text="${recipe.getVoteCount()}">0</span>
                                                 <a href="#" th:class="|downvote downvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-down"></i></a>
                                             </div>
                                         </div>
@@ -289,12 +287,12 @@
                                         <div>
                                             <div>
                                                 <a href="#" th:class="|upvote upvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-up"></i></a>
                                                 <span th:class="|votecount-${recipe.id}|" class="votecount"
                                                       th:text="${recipe.getVoteCount()}">0</span>
                                                 <a href="#" th:class="|downvote downvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-down"></i></a>
                                             </div>
                                         </div>
@@ -376,12 +374,12 @@
                                         <div>
                                             <div>
                                                 <a href="#" th:class="|upvote upvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-up"></i></a>
                                                 <span th:class="|votecount-${recipe.id}|" class="votecount"
                                                       th:text="${recipe.getVoteCount()}">0</span>
                                                 <a href="#" th:class="|downvote downvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-down"></i></a>
                                             </div>
                                         </div>
@@ -463,12 +461,12 @@
                                         <div>
                                             <div>
                                                 <a href="#" th:class="|upvote upvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-up"></i></a>
                                                 <span th:class="|votecount-${recipe.id}|" class="votecount"
                                                       th:text="${recipe.getVoteCount()}">0</span>
                                                 <a href="#" th:class="|downvote downvote-${recipe.id}|"
-                                                   th:data-id="${recipe.id}"><i
+                                                   th:data-id="${recipe.id}" th:disabled="true"><i
                                                         class="fas fa-arrow-down"></i></a>
                                             </div>
                                         </div>

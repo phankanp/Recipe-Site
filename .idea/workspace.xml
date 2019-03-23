@@ -13,16 +13,21 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/service/RecipeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/service/RecipeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/web/controller/RecipeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/phan/recipesite/web/controller/RecipeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/VoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/VoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -78,8 +83,30 @@
       <file leaf-file-name="RecipeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
-              <caret line="84" column="65" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
+            <state relative-caret-position="507">
+              <caret line="72" column="53" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="516">
+              <caret line="259" column="30" selection-start-line="259" selection-start-column="30" selection-end-line="259" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -87,42 +114,38 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="657">
+              <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <file leaf-file-name="Recipe.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="476" column="34" selection-start-line="476" selection-start-column="34" selection-end-line="476" selection-end-column="34" />
+            <state relative-caret-position="755">
+              <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
               <folding>
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/js/app.js">
+      <file leaf-file-name="RecipeService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="581">
+              <caret line="116" column="79" selection-start-line="116" selection-start-column="79" selection-end-line="116" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ingredient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -632,11 +655,9 @@
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/VoteRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/service/VoteService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/CommentRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/403.html" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Step.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Vote.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Role.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/detail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
@@ -647,10 +668,8 @@
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/validator/PasswordValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/FlashMessage.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/recipeForm.html" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/config/RecipePermissionEvaluator.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/core/DatabaseLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/service/CommentService.java" />
@@ -660,15 +679,19 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/index2.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/assets/css/styles2.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/assets/css/styles.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/assets/js/app.js" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/VoteController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
+        <option value="$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/assets/js/app.js" />
       </list>
     </option>
   </component>
@@ -679,8 +702,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1564" />
-    <option name="width" value="2286" />
+    <option name="x" value="1833" />
+    <option name="width" value="2018" />
     <option name="height" value="2111" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -743,6 +766,16 @@
               <item name="phan" type="462c0819:PsiDirectoryNode" />
               <item name="recipesite" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="r2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="phan" type="462c0819:PsiDirectoryNode" />
+              <item name="recipesite" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RecipeSite" type="b2602c69:ProjectViewProjectNode" />
@@ -1071,7 +1104,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="540857000" />
+    <option name="totallyTimeSpent" value="560509000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1083,7 +1116,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1043" y="0" width="1524" height="1407" extended-state="0" />
+    <frame x="1222" y="0" width="1345" height="1407" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50110704" side_tool="true" weight="0.26688102" />
@@ -1105,7 +1138,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49965635" weight="0.32790887" />
       <window_info anchor="bottom" id="Spring" order="12" weight="0.3292683" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32872254" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18647541" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.34007782" />
       <window_info anchor="bottom" id="Problems" order="15" weight="0.3295362" />
       <window_info anchor="right" id="Bean Validation" order="10" />
       <window_info id="Web" order="7" side_tool="true" />
@@ -1169,7 +1202,6 @@
       <window_info anchor="bottom" id="Messages" order="14" weight="0.329582" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.3295362" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32872254" />
       <window_info anchor="bottom" id="Problems" order="15" weight="0.3295362" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -1185,8 +1217,9 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32872254" />
       <window_info anchor="right" id="Bean Validation" order="10" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1232,7 +1265,8 @@
     <MESSAGE value="Fixed issue with requests not redirecting to login page, when user is &#10;not logged in." />
     <MESSAGE value="Removed validation annotations from User class and added custom&#10;validation properties and messages to validator class. Edited&#10;flash messages to remove need for a status." />
     <MESSAGE value="Re-designed home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-designed home page" />
+    <MESSAGE value="Re-factored upvote and downvote features, to prevent multiple votes and &#10;for vote history to persist on page reload." />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-factored upvote and downvote features, to prevent multiple votes and &#10;for vote history to persist on page reload." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1240,13 +1274,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="14" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/validator/PasswordsMatch.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/repository/VoteRepository.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1352,13 +1379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1377,13 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
@@ -1453,13 +1466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1481,29 +1487,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="221">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
-          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="386" column="19" selection-start-line="386" selection-start-column="19" selection-end-line="386" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="2618">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
         </state>
       </provider>
     </entry>
@@ -1511,16 +1503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#492#493#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
     </entry>
@@ -1531,34 +1513,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="84" column="65" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/VoteController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="50" column="56" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="69" column="22" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1582,26 +1540,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/repository/RecipeRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/service/RecipeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="116" column="79" selection-start-line="116" selection-start-column="79" selection-end-line="116" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/9.0.13/6a0e5cfa0bfcb46c8849118a19015c5000b1e4f9/tomcat-embed-core-9.0.13-sources.jar!/javax/servlet/http/HttpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="633" selection-start-line="633" selection-end-line="633" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/VoteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Ingredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/model/Recipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="755">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phan/recipesite/web/controller/RecipeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="72" column="53" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="476" column="34" selection-start-line="476" selection-start-column="34" selection-end-line="476" selection-end-column="34" />
+        <state relative-caret-position="391">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="259" column="30" selection-start-line="259" selection-start-column="30" selection-end-line="259" selection-end-column="30" />
         </state>
       </provider>
     </entry>

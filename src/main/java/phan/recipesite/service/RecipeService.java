@@ -6,6 +6,7 @@ import phan.recipesite.model.*;
 import phan.recipesite.repository.RecipeRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -104,6 +105,23 @@ public class RecipeService {
     }
 
     public List<Recipe> findByDescriptionOrIngredients(String search) {
-        return recipeRepository.findByDescriptionContainingOrIngredientsNameIgnoreCase(search, search);
+
+        List<Recipe> results = new ArrayList<>(recipeRepository.findByDescriptionContainingIgnoreCase(search));
+
+//        results.addAll(recipeRepository.findByIngredientsContainsIgnoreCase(ingredient));
+
+        List<Recipe> allRecipes = recipeRepository.findAll();
+
+        for (Recipe r : allRecipes) {
+            for (Ingredient i : r.getIngredients()) {
+                System.out.println(i.toString()+"******************************");
+                if (i.toString().contains(search)) {
+                    results.add(r);
+                    break;
+                }
+            }
+        }
+
+        return results;
     }
 }
