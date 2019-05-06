@@ -14,5 +14,5 @@ Recipe website which allows users to find and share meal recipes. Users are able
   - Lombok
   - Thymeleaf
 - Javascript (jQuery)
-- Boostrap 4
+- Bootstrap 4
 - PostgreSQL
