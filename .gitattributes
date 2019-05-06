@@ -20,3 +20,4 @@ application.properties
 
 
 static/* linguist-vendored
+*.html linguist-vendored
