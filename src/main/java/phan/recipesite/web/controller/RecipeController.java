@@ -118,7 +118,7 @@ public class RecipeController {
     }
 
     // Gets recipe image
-    @GetMapping(value = "/recipes/image/{imageId}", produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/recipes/image/{imageId}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] recipeImage(@PathVariable Long imageId) {
 
