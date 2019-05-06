@@ -6,7 +6,7 @@ Recipe website which allows users to find and share meal recipes. Users are able
 
 ### Tech Stack
 
--Java
+- Java
 - Spring Boot 2
   - Spring Security
   - Spring Data JPA
